@@ -1,67 +1,67 @@
-### Get a list of playlists
+### List playlists
 
 * Endpoint path: api/playlists
 * Endpoint method: GET
 
+
 * Headers:
-  * Authorization: Bearer token
+    * Authorization: Bearer token
 
 * Response: A list of playlists
+
 * Response shape:
-    ```json
+
+```json 
+{
+  "playlists": [
     {
-      "playlists": [
-        {
-            "name": string,
-        }
-      ]
+        "name": "string",
     }
-    ```
+  ]
+}
+```
 
-### Update playlist details
+### Update Playlist
 
-* Endpoint path: api/playlists/<int:pk>
+* Endpoint path: api/playlist/<int:pk>
 * Endpoint method: PUT
 
 * Headers:
   * Authorization: Bearer token
 
 * Request body:
+
     ```json
     {
-        "name": string,
-        "songs": [
-            { 
-            "title": string,
-            "artist": string,
-            "duration": string,
-            },
-            { 
-            "title": string,
-            "artist": string,
-            "duration": string,
-            },
+          "username": "string",  
+          "playlist_name": "string",
+          "song_list" : [
+            {
+            "song_title": "string",
+            "artist": "string",
+            "duration": "string"
+            }
         ]
-    }
     ```
 
 * Response: A list of playlists
 * Response shape:
+
     ```json
     {
-        "name": string,
-        "songs": [
-            { 
-            "title": string,
-            "artist": string,
-            "duration": string,
-            },
-            { 
-            "title": string,
-            "artist": string,
-            "duration": string,
-            },
-        ]
+      "playlist": [
+        {
+          "id": "int",
+          "username": "string",  
+          "playlist_name": "string",
+          "song_list" : [
+            {
+            "song_title": "string",
+            "artist": "string",
+            "duration": "string"
+            }
+        }
+      ]
     }
     ```
 
@@ -76,12 +76,13 @@
 
 * Response: Account information and a token
 * Response shape (JSON):
+
     ```json
     {
       "account": {
-        «key»: type»,
+        "«key»: type»,"
       },
-      "token": string
+      "token": "string"
     }
     ```
 
@@ -95,6 +96,7 @@
 
 * Response: Always true
 * Response shape (JSON):
+
     ```json
     true
     ```
