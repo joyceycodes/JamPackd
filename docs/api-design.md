@@ -29,7 +29,7 @@
     }
     ```
 
-### Create a new Playlist
+### CREATE New Playlist
 
 * Endpoint path: api/tweets
 * Endpoint method: POST
