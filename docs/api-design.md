@@ -3,15 +3,14 @@
 * Endpoint path: api/playlists
 * Endpoint method: GET
 
-
 * Headers:
-    * Authorization: Bearer token
+  * Authorization: Bearer token
 
 * Response: A list of playlists
 
 * Response shape:
 
-```json 
+```json
 {
   "playlists": [
     {
@@ -100,6 +99,48 @@
     ```json
     true
     ```
+
+### Delete playlist and song from playlist
+
+* Endpoint path: tunder.com/api/playlists
+* Endpoint method: DELETE
+
+* Headers:
+  * Authorization: Bearer token
+
+* Response:
+* Response shape:
+
+    ```json
+    {
+      "playlist": [
+        {
+          "name": string,
+          "id":
+
+          
+        }
+      ]
+    }
+    ```
+
+* Endpoint path: tunder.com/api/playlist
+* Endpoint method: DELETE
+
+* Headers:
+  * Authorization: Bearer token
+
+* Response:
+* Response shape:
+
+    ```json
+    {
+      "song": [
+        {
+          "name": string,
+          "artist": string,
+          "duration":string,
+          
 ### GET Song Details
 
 * Endpoint path: api/song
@@ -158,6 +199,12 @@
             "album_art": img,
             "duration": string
         }]
+    }
+    ```
+          
+
+        }
+      ]
     }
     ```
 
