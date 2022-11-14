@@ -133,7 +133,7 @@
 
 ### CREATE New Playlist
 
-* Endpoint path: api/tweets
+* Endpoint path: api/playlist
 * Endpoint method: POST
 
 * Headers:
