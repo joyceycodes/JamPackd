@@ -27,10 +27,9 @@
     {
       "playlist": [
         {
-          "id": 0,
+          "id": "int",
           "username": "string",  
           "playlist_name": "string",
-          "song_list" : {
           "song_list" : {
           "song_title": "string",
           "artist": "string",
