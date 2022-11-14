@@ -1,4 +1,4 @@
-### Delete playlist and song fromn playlist
+### Delete playlist and song from playlist
 
 * Endpoint path: tunder.com/api/playlists
 * Endpoint method: DELETE
