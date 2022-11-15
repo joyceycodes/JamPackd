@@ -1,3 +1,7 @@
+## Postgres vs MongoDB - think about shapes of bodies
+## Postgres requires joining of tables, everything would need to have a table, likes, playlists, etc.
+## MongoDB might be slightly easier, dot notation (playlist.update), denormalized data.
+
 ### List playlists
 
 * Endpoint path: api/playlists
@@ -102,7 +106,7 @@
 
 ### Delete playlist and song from playlist
 
-* Endpoint path: tunder.com/api/playlists
+* Endpoint path: tunder.com/api/playlists/<int:pk>
 * Endpoint method: DELETE
 
 * Headers:
@@ -124,7 +128,7 @@
     }
     ```
 
-* Endpoint path: tunder.com/api/playlist
+* Endpoint path: tunder.com/api/playlist/song/<int:pk> or something like tunder.com/api/playlist/like/id
 * Endpoint method: DELETE
 
 * Headers:
