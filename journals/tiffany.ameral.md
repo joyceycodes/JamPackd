@@ -13,3 +13,10 @@
     -Troublesot Z's issues with his merge/merge request
     -Went over and presented our API design and wireframe(and extra-updated wireframe) to James
     -Scott and I discussed the differnce between MongoDB and Postgres to Joyce and Z 
+
+#### 11/14
+
+    -Created a to-do list
+    -Created a draft of issues for later exporting to gitlab
+    -Talked about our current blockers
+    -

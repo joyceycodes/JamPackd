@@ -1,6 +1,8 @@
 ## Postgres vs MongoDB - think about shapes of bodies
-## Postgres requires joining of tables, everything would need to have a table, likes, playlists, etc.
-## MongoDB might be slightly easier, dot notation (playlist.update), denormalized data.
+
+## Postgres requires joining of tables, everything would need to have a table, likes, playlists, etc
+
+## MongoDB might be slightly easier, dot notation (playlist.update), denormalized data
 
 ### List playlists
 
