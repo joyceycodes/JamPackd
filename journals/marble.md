@@ -13,3 +13,4 @@
 - started working on docker-compose.yaml file with group. 
 - ghi container is not coming up when running docker compose up --build
 - pulling from main
+- got docker to run with accounts, playlists and songs microservice containers, pushed to main
