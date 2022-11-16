@@ -42,6 +42,7 @@ services:
     ports:
       - "3000:3000"
     environment:
+      HOST_OS: windows
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
