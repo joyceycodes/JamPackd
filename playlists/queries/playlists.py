@@ -8,7 +8,9 @@ class PlaylistQueries:
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(""" 
-                    some SQL lines here
+                    SELECT
+                        name
+                    FROM playlist
                 """)
 
             results = []

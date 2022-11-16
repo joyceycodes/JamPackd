@@ -1,12 +1,9 @@
 from fastapi import FastAPI, Depends
-from models import Playlist
+from queries.playlists import PlaylistsOut
 from db import PlaylistQueries as PlaylistQ
+from routers import playlists
 
 app = FastAPI()
 
-@app.get("/api/playlists", response_model=Playlist)
-def list_playlists(queries: PlaylistQ = Depends()):
-    return{
-        "playlists": queries.get_all_playlists(),
-    }
+app.include_router(playlists.router)
 
