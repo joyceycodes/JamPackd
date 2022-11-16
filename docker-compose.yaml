@@ -1,5 +1,16 @@
-# volumes:
+volumes:
+    accounts:
+        external: true
+    # other volumes...
 services:
+  mongo:
+    image: mongo:5
+    volumes:
+        - accounts:/data/db
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: password
+
   fastapi:
     build:
       context: sample_service
@@ -8,6 +19,19 @@ services:
       - 8000:8000
     volumes:
       - ./sample_service:/app
+
+  accounts:
+      build:
+          context: ./apis/accounts
+          dockerfile: ./Dockerfile.dev
+      ports:
+          - "8001:8000"
+      volumes:
+          - ./accounts:/app
+      environment:
+        DATABASE_URL: mongodb://root:password@mongo
+        DATABASE_NAME: accounts
+        WAIT_HOSTS: mongo:27017
       
   ghi:
     image: node:lts-bullseye
@@ -18,9 +42,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      HOST_OS: ${OS}
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
       REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-            
+      REACT_APP_accounts: http://localhost:8001
