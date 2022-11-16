@@ -1,19 +1,22 @@
 volumes:
   accounts:
     external: true
-  # songs:
-  #     external: true
-  # playlists:
-  #     external: true
-
+  songs:
+    external: true
+  playlists:
+    external: true
+  # other volumes...
 services:
   mongo:
     image: mongo:5
     volumes:
       - accounts:/data/db
+      - songs:/data/db
+      - playlists:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: zoybh
-      MONGO_INITDB_ROOT_PASSWORD: hussein
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
   fastapi:
     build:
       context: sample_service
@@ -22,6 +25,7 @@ services:
       - 8000:8000
     volumes:
       - ./sample_service:/app
+
   accounts:
     build:
       context: ./apis/accounts
@@ -34,30 +38,32 @@ services:
       DATABASE_URL: mongodb://root:password@mongo
       DATABASE_NAME: accounts
       WAIT_HOSTS: mongo:27017
-  # playlists:
-  #     build:
-  #         context: ./apis/playlists
-  #         dockerfile: ./Dockerfile.dev
-  #     ports:
-  #         - "8002:8000"
-  #     volumes:
-  #         - ./apis/playlists
-  #     environment:
-  #       DATABASE_URL: mongodb://root:password@mongo
-  #       DATABASE_NAME: playlists
-  #       WAIT_HOSTS: mongo:27017
-  # songs:
-  #     build:
-  #         context: ./apis/songs
-  #         dockerfile: ./Dockerfile.dev
-  #     ports:
-  #         - "8003:8000"
-  #     volumes:
-  #         - ./apis/songs
-  #     environment:
-  #       DATABASE_URL: mongodb://root:password@mongo
-  #       DATABASE_NAME: songs
-  #       WAIT_HOSTS: mongo:27017
+
+  songs:
+    build:
+      context: ./apis/songs
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./songs:/app
+    environment:
+      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_NAME: songs
+      WAIT_HOSTS: mongo:27017
+
+  playlists:
+    build:
+      context: ./apis/playlists
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8003:8000"
+    volumes:
+      - ./playlists:/app
+    environment:
+      DATABASE_URL: mongodb:/root:password@mongo
+      DATABASE_NAME: playlists
+      WAIT_HOSTS: mongo:27017
 
   ghi:
     image: node:lts-bullseye
@@ -68,11 +74,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      HOST_OS: ${OS}
+      HOST_OS: windows
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_ACCOUNTS: http://localhost:8001
-      REACT_APP_PLAYLISTS: http://localhost:8002
-      REACT_APP_SONGS: http://localhost:8003
-      # REACT_APP_THIRD_PARTY_SERVICE: http://third-party.com # not sure what this is for
+      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
+      REACT_APP_accounts: http://localhost:8001
