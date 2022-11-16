@@ -6,4 +6,10 @@
 11/14/2022
 
 - worked on fleshing out api designs with team and James
-- going to do more work on Learn modules for FastAPI
+- going to do more work on Learn modules for FastAPI 
+
+11/15/2022
+
+- started working on docker-compose.yaml file with group. 
+- ghi container is not coming up when running docker compose up --build
+- pulling from main
