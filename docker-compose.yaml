@@ -1,12 +1,18 @@
 volumes:
     accounts:
         external: true
+    songs:
+        external: true
+    playlists:
+        external: true
     # other volumes...
 services:
   mongo:
     image: mongo:5
     volumes:
         - accounts:/data/db
+        - songs:/data/db
+        - playlists:/data/db
     environment:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: password
@@ -32,6 +38,32 @@ services:
         DATABASE_URL: mongodb://root:password@mongo
         DATABASE_NAME: accounts
         WAIT_HOSTS: mongo:27017
+
+  songs:
+    build:
+        context: ./apis/songs
+        dockerfile: ./Dockerfile.dev
+    ports:
+        - "8002:8000"
+    volumes:
+        - ./songs:/app
+    environment:
+      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_NAME: songs
+      WAIT_HOSTS: mongo:27017
+    
+  playlists:
+    build:
+        context: ./apis/playlists
+        dockerfile: ./Dockerfile.dev
+    ports:
+        - "8003:8000"
+    volumes:
+        - ./playlists:/app
+    environment:
+      DATABASE_URL: mongodb:/root:password@mongo
+      DATABASE_NAME: playlists
+      WAIT_HOSTS: mongo:27017
       
   ghi:
     image: node:lts-bullseye
