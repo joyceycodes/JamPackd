@@ -1,21 +1,21 @@
 volumes:
-    accounts:
-        external: true
-    songs:
-        external: true
-    playlists:
-        external: true
-    # other volumes...
+  accounts:
+    external: true
+  songs:
+    external: true
+  playlists:
+    external: true
+  # other volumes...
 services:
   mongo:
     image: mongo:5
     volumes:
-        - accounts:/data/db
-        - songs:/data/db
-        - playlists:/data/db
+      - accounts:/data/db
+      - songs:/data/db
+      - playlists:/data/db
     environment:
-        MONGO_INITDB_ROOT_USERNAME: root
-        MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
 
   fastapi:
     build:
@@ -27,44 +27,44 @@ services:
       - ./sample_service:/app
 
   accounts:
-      build:
-          context: ./apis/accounts
-          dockerfile: ./Dockerfile.dev
-      ports:
-          - "8001:8000"
-      volumes:
-          - ./accounts:/app
-      environment:
-        DATABASE_URL: mongodb://root:password@mongo
-        DATABASE_NAME: accounts
-        WAIT_HOSTS: mongo:27017
+    build:
+      context: accounts
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./accounts:/app
+    environment:
+      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_NAME: accounts
+      WAIT_HOSTS: mongo:27017
 
   songs:
     build:
-        context: ./apis/songs
-        dockerfile: ./Dockerfile.dev
+      context: songs
+      dockerfile: ./Dockerfile.dev
     ports:
-        - "8002:8000"
+      - "8002:8000"
     volumes:
-        - ./songs:/app
+      - ./songs:/app
     environment:
       DATABASE_URL: mongodb://root:password@mongo
       DATABASE_NAME: songs
       WAIT_HOSTS: mongo:27017
-    
+
   playlists:
     build:
-        context: ./apis/playlists
-        dockerfile: ./Dockerfile.dev
+      context: playlists
+      dockerfile: ./Dockerfile.dev
     ports:
-        - "8003:8000"
+      - "8003:8000"
     volumes:
-        - ./playlists:/app
+      - ./playlists:/app
     environment:
       DATABASE_URL: mongodb:/root:password@mongo
       DATABASE_NAME: playlists
       WAIT_HOSTS: mongo:27017
-      
+
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
