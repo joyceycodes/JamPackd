@@ -1,5 +1,14 @@
-# volumes:
+volumes:
+  mongo-data:
+    external: true
 services:
+  mongo:
+    image: mongo:5
+    volumes:
+        - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
   fastapi:
     build:
       context: sample_service
@@ -23,4 +32,30 @@ services:
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
       REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-            
+      REACT_APP_ACCOUTS: http://localhost:8001
+
+  accounts:
+    build:
+        context: ./apis/accounts
+        dockerfile: ./Dockerfile.dev
+    ports:
+        - "8001:8000"
+    volumes:
+        - ./apis/accounts:/app
+    environment:
+      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_NAME: db-name
+      WAIT_HOSTS: mongo:27017
+      
+  playlists:
+    build:
+        context: ./apis/playlists
+        dockerfile: ./Dockerfile.dev
+    ports:
+        - "8002:8000"
+    volumes:
+        - ./apis/playlists:/app
+    environment:
+      DATABASE_URL: mongodb://root:password@mongo
+      DATABASE_NAME: db-name
+      WAIT_HOSTS: mongo:27017
