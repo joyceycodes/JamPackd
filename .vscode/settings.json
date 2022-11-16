@@ -8,5 +8,8 @@
   },
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   }
 }
