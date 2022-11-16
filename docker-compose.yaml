@@ -28,7 +28,7 @@ services:
 
   accounts:
     build:
-      context: ./apis/accounts
+      context: accounts
       dockerfile: ./Dockerfile.dev
     ports:
       - "8001:8000"
@@ -41,7 +41,7 @@ services:
 
   songs:
     build:
-      context: ./apis/songs
+      context: songs
       dockerfile: ./Dockerfile.dev
     ports:
       - "8002:8000"
@@ -54,7 +54,7 @@ services:
 
   playlists:
     build:
-      context: ./apis/playlists
+      context: playlists
       dockerfile: ./Dockerfile.dev
     ports:
       - "8003:8000"
