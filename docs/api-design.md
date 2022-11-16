@@ -1,6 +1,8 @@
 ## Postgres vs MongoDB - think about shapes of bodies
-## Postgres requires joining of tables, everything would need to have a table, likes, playlists, etc.
-## MongoDB might be slightly easier, dot notation (playlist.update), denormalized data.
+
+## Postgres requires joining of tables, everything would need to have a table, likes, playlists, etc
+
+## MongoDB might be slightly easier, dot notation (playlist.update), denormalized data
 
 ### List playlists
 
@@ -144,7 +146,7 @@
           "name": string,
           "artist": string,
           "duration":string,
-          
+
 ### GET Song Details
 
 * Endpoint path: api/song
@@ -154,6 +156,7 @@
   * Authorization: Bearer token
 
 * Request shape (JSON):
+
     ```json
     {
         "song_ID": int,
@@ -166,6 +169,7 @@
 
 * Response: song title, artist name
 * Response shape (JSON):
+
     ```json
     {
         "song_ID": int,
@@ -185,6 +189,7 @@
   * Authorization: Bearer token
 
 * Request body:
+
     ```json
     {
         "name": string,
@@ -205,7 +210,6 @@
         }]
     }
     ```
-          
 
         }
       ]
@@ -214,6 +218,7 @@
 
 * Response: An indication of success or failure
 * Response shape:
+
     ```json
     {
         "success": boolean,
