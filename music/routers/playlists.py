@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
+
+from db import UserQueries
 
 router = APIRouter()
 
