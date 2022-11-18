@@ -1,18 +1,14 @@
 volumes:
   accounts:
     external: true
-  songs:
+  music:
     external: true
-  playlists:
-    external: true
-  # other volumes...
 services:
   mongo:
     image: mongo:5
     volumes:
       - accounts:/data/db
-      - songs:/data/db
-      - playlists:/data/db
+      - music:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
@@ -43,30 +39,17 @@ services:
       # DATABASE_NAME: accounts
       # WAIT_HOSTS: mongo:27017
 
-  songs:
+  music:
     build:
-      context: songs
-      dockerfile: ./Dockerfile.dev
-    ports:
-      - "8002:8000"
-    volumes:
-      - ./songs:/app
-    environment:
-      DATABASE_URL: mongodb://root:password@mongo
-      DATABASE_NAME: songs
-      WAIT_HOSTS: mongo:27017
-
-  playlists:
-    build:
-      context: playlists
+      context: music
       dockerfile: ./Dockerfile.dev
     ports:
       - "8003:8000"
     volumes:
-      - ./playlists:/app
+      - ./music:/app
     environment:
       DATABASE_URL: mongodb:/root:password@mongo
-      DATABASE_NAME: playlists
+      DATABASE_NAME: music
       WAIT_HOSTS: mongo:27017
 
   ghi:
@@ -84,6 +67,7 @@ services:
       PUBLIC_URL: http://localhost:3000
       REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
       REACT_APP_accounts: http://localhost:8001
+      REACT_APP_THIRD_PARTY_SERVICE: https://api.spotify.com
 
   mongo-express:
     image: mongo-express:latest
