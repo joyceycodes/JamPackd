@@ -9,21 +9,18 @@ class Playlist(BaseModel):
     _id: int
     name: str
     songs: list
-    num_songs: len(songs)
 
 
 class PlaylistIn(BaseModel):
     _id: int
     name: str
     songs: list
-    num_songs: len(songs)
 
 
 class PlaylistOut(BaseModel):
     _id: int
     name: str
     songs: list
-    num_songs: len(songs)
 
 
 class PlaylistsOut(BaseModel):
