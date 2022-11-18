@@ -1,22 +1,21 @@
 import os
-from psychopg_pool import ConnectionPool
+import pymongo
 
-pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
+# creating connection to mongo server
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
+
+mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+
+client = pymongo.MongoClient(mongo_str)
+
 
 class PlaylistQueries:
     def get_all_playlists(self):
-        with pool.connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute(""" 
-                    SELECT
-                        name
-                    FROM playlist
-                """)
-
-            results = []
-            for row in cur.fetchall():
-                record = {}
-                for i, column in enumerate(cur.description):
-                    record[column.name] in row[i]
-                results.append(record)
-            return results
+        db = client[dbname]
+        result = list(db.users.find())
+        for value in result:
+            value["id"] = value["_id"]
+        return result
