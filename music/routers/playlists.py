@@ -6,7 +6,9 @@ router = APIRouter()
 
 
 class Playlist(BaseModel):
+    _id: int
     name: str
+<<<<<<< HEAD:playlists/routers/playlists.py
     playlist_id: int
     songs: list
     length: int
@@ -18,6 +20,24 @@ class PlaylistIn(BaseModel):
 
 class PlaylistOut(BaseModel):
     name: str
+=======
+    songs: list
+    num_songs: len(songs)
+
+
+class PlaylistIn(BaseModel):
+    _id: int
+    name: str
+    songs: list
+    num_songs: len(songs)
+
+
+class PlaylistOut(BaseModel):
+    _id: int
+    name: str
+    songs: list
+    num_songs: len(songs)
+>>>>>>> main:music/routers/playlists.py
 
 
 class PlaylistsOut(BaseModel):
@@ -34,5 +54,10 @@ def list_playlists(queries: PlaylistQueries = Depends()):
 
 # get playlist by ID
 @router.get("/api/playlists/{id}", response_model=Playlist)
-def get_playlist_detail(int: id):
+def get_playlist_detail():
     return Playlist
+
+
+@router.get("/api/recommendations")
+def get_recommendations():
+    pass
