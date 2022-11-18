@@ -5,7 +5,7 @@ from pydantic import BaseModel
 router = APIRouter()
 
 
-class Playlist(BaseModel):
+class PlaylistIn(BaseModel):
     _id: int
     name: str
     songs: list
