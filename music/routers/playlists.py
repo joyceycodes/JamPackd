@@ -7,7 +7,7 @@ from db import UserQueries
 router = APIRouter()
 
 
-class PlaylistIn(BaseModel):
+class Playlist(BaseModel):
     _id: int
     name: str
     songs: list
