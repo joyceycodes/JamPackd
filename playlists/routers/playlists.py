@@ -1,22 +1,28 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
 
+from db import UserQueries
+
 router = APIRouter()
 
-class Playlist(BaseModel):
+
+class PlaylistIn(BaseModel):
     name: str
     user_id: int
 
+
 class PlaylistsOut(BaseModel):
-    playlists: list[Playlist]
+    playlists: list[PlaylistIn]
+
 
 # get all playlists
 @router.get("/api/playlists", response_model=PlaylistsOut)
 def list_playlists(queries: PlaylistQueries = Depends()):
-    return{
+    return {
         "playlists": queries.get_all_playlists(),
     }
+
 
 # get playlist by ID
 @router.get("/api/playlists/{id}", response_model=Playlist)
