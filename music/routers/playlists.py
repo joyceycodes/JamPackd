@@ -8,36 +8,19 @@ router = APIRouter()
 class Playlist(BaseModel):
     _id: int
     name: str
-<<<<<<< HEAD:playlists/routers/playlists.py
-    playlist_id: int
     songs: list
-    length: int
-
-
-class PlaylistIn(BaseModel):
-    name: str
-
-
-class PlaylistOut(BaseModel):
-    name: str
-=======
-    songs: list
-    num_songs: len(songs)
 
 
 class PlaylistIn(BaseModel):
     _id: int
     name: str
     songs: list
-    num_songs: len(songs)
 
 
 class PlaylistOut(BaseModel):
     _id: int
     name: str
     songs: list
-    num_songs: len(songs)
->>>>>>> main:music/routers/playlists.py
 
 
 class PlaylistsOut(BaseModel):
