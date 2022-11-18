@@ -25,6 +25,6 @@ def list_playlists(queries: PlaylistQueries = Depends()):
 
 
 # get playlist by ID
-@router.get("/api/playlists/{id}", response_model=Playlist)
+@router.get("/api/playlists/{id}", response_model=PlaylistIn)
 def get_playlist_detail(int: id):
     return Playlist

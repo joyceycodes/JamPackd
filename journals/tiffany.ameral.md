@@ -37,3 +37,16 @@
     -Made minor changes to the playlist microservice 
     -Essentially did more group planning on how to re-desgin the application 
     -Made attempts to use the Spotify API docs
+
+#### 11/17
+
+    -Collaborated on getting some endpoints setup, starting with accounts and moving outwards from there
+    -Explored Spotify's API
+    -Attempted to make changes to the playlist endpoints
+
+#### 11/17
+
+    -Worked on completing the API endpoints 
+    -
+    -
+    -
