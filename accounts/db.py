@@ -1,6 +1,6 @@
 import os
 import pymongo
-
+from bson.objectid import ObjectId
 
 dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
@@ -22,9 +22,11 @@ class UserQueries:
 
     def get_user(self, id):
         db = client[dbname]
-        result = db.users.find_one({"_id": id})
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", id)
+        result = db.users.find_one({"_id": ObjectId(id)})
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", result)
         if result:
-            result["id"] = result["_id"]
+            result["id"] = str(result["_id"])
         return result
 
     """
@@ -39,8 +41,8 @@ class UserQueries:
         db = client[dbname]
         result = db.users.insert_one(data.dict())
         if result.inserted_id:
-            result = self.get_user(result.inserted_id)
-            result["id"] = str(result["id"])
+            result = self.get_user(str(result.inserted_id))
+            result["id"] = str(result["_id"])
             return result
 
 
