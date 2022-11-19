@@ -1,8 +1,9 @@
 # import os
-
+# from psycopg_pool import ConnectionPool
 # import pymongo
 # import bson
 
+# pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
 
 # dbhost = os.environ["MONGOHOST"]
 # dbname = os.environ["MONGODATABASE"]
