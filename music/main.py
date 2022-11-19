@@ -9,9 +9,9 @@ app = FastAPI()
 app.include_router(playlists.router)
 
 # playlist bound for spotify
-@app.post("/api/playlist")
-def playlist():
-    return "X"
+# @app.post("/api/playlist")
+# def playlist():
+#     return "X"
 
 
 # playlist stored in database

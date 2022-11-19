@@ -34,7 +34,7 @@ def users_list(queries: UserQueries = Depends()):
 
 @router.get("/api/users/{user_id}", response_model=UserOut)
 def get_user(
-    user_id: int,
+    user_id: str,
     response: Response,
     queries: UserQueries = Depends(),
 ):
@@ -52,7 +52,7 @@ def create_user(user_in: UserIn, queries: UserQueries = Depends()):
 
 @router.put("/api/users/{user_id}", response_model=UserOut)
 def update_user(
-    user_id: int,
+    user_id: str,
     user_in: UserIn,
     response: Response,
     queries: UserQueries = Depends(),
@@ -65,6 +65,6 @@ def update_user(
 
 
 @router.delete("/api/users/{user_id}", response_model=bool)
-def delete_user(user_id: int, queries: UserQueries = Depends()):
+def delete_user(user_id: str, queries: UserQueries = Depends()):
     queries.delete_user(user_id)
     return True
