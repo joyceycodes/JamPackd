@@ -1,3 +1,11 @@
+### November 18, 2022
+Today I worked on:
+- Group programming to get the Create and Get Account by ID endpoint running
+- Solidified backend design with the inclusion on a songs model
+- Learned that the songs can be related to the playlists by creating a songs attribute in the Playlist model with the value list[Song]
+- Learned that the unique identifier created by MongoDB for each model instance is an ObjectID type, not a string
+- Got the Create Playlist endpoint working but still working on getting the Get and Get All endpoints working. Running into a type error.
+
 ### November 17, 2022
 Today I worked on:
 - Created a diagram that navigated through the user's experience and the corresponding HTTP requests
