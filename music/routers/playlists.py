@@ -12,21 +12,15 @@ class Song(BaseModel):
     uri: str
 
 
-class Playlist(BaseModel):
-    id: int
-    name: str
-    songs: list[Song]
-    playlist_id: str
+# class Playlist(BaseModel):
+#     id: int
+#     name: str
+#     songs: list[Song]
 
 
 class PlaylistIn(BaseModel):
-    id: int
     name: str
     songs: list[Song]
-
-
-class PlaylistsOut(BaseModel):
-    playlists: list[Playlist]
 
 
 class PlaylistOut(BaseModel):
@@ -35,16 +29,25 @@ class PlaylistOut(BaseModel):
     songs: list[Song]
 
 
+class PlaylistsOut(BaseModel):
+    playlists: list[PlaylistOut]
+
+
 # get all playlists
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(queries: PlaylistQueries = Depends()):
-    return {
-        "playlists": queries.get_all_playlists(),
-    }
+    playlists = []
+    for playlist in queries.get_all_playlists():
+        playlist["id"] = str(playlist["_id"])
+        playlists.append(playlist)
+    return {"playlists": playlists}
+    # return {
+    #   "playlists": queries.get_all_playlists()
+    # }
 
 
 # get playlist by ID
-@router.get("/api/playlists/{id}", response_model=Playlist)
+@router.get("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def get_playlist(
     playlist_id: str,
     response: Response,

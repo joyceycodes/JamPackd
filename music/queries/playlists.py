@@ -16,8 +16,6 @@ class PlaylistQueries:
     def get_all_playlists(self):
         db = client[dbname]
         result = list(db.playlists.find())
-        for value in result:
-            value["id"] = value["_id"]
         return result
 
     def get_playlist(self, id):
