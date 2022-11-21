@@ -22,20 +22,10 @@ class UserQueries:
 
     def get_user(self, id):
         db = client[dbname]
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", id)
         result = db.users.find_one({"_id": ObjectId(id)})
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", result)
         if result:
             result["id"] = str(result["_id"])
         return result
-
-    """
-        data.first == error
-        data.last,
-        data.avatar,
-        data.email,
-        data.username,
-    """
 
     def create_user(self, data):
         db = client[dbname]
@@ -44,51 +34,3 @@ class UserQueries:
             result = self.get_user(str(result.inserted_id))
             result["id"] = str(result["_id"])
             return result
-
-
-# Update and Delete are still WIP
-
-# def update_user(self, user_id, data):
-#     with pool.connection() as conn:
-#         with conn.cursor() as cur:
-#             params = [
-#                 data.first,
-#                 data.last,
-#                 data.avatar,
-#                 data.email,
-#                 data.username,
-#                 user_id,
-#             ]
-#             cur.execute(
-#                 """
-#                 UPDATE users
-#                 SET first = %s
-#                 , last = %s
-#                 , avatar = %s
-#                 , email = %s
-#                 , username = %s
-#                 WHERE id = %s
-#                 RETURNING id, first, last, avatar, email, username
-#                 """,
-#                 params,
-#             )
-
-#             record = None
-#             row = cur.fetchone()
-#             if row is not None:
-#                 record = {}
-#                 for i, column in enumerate(cur.description):
-#                     record[column.name] = row[i]
-
-#             return record
-
-# def delete_user(self, user_id):
-#     with pool.connection() as conn:
-#         with conn.cursor() as cur:
-#             cur.execute(
-#                 """
-#                 DELETE FROM users
-#                 WHERE id = %s
-#                 """,
-#                 [user_id],
-#             )
