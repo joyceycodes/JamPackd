@@ -44,9 +44,15 @@
     -Explored Spotify's API
     -Attempted to make changes to the playlist endpoints
 
-#### 11/17
+#### 11/18
 
     -Worked on completing the API endpoints 
+    -
+    -
+    -
+
+#### 11/20
+
     -
     -
     -
