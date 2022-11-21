@@ -14,3 +14,8 @@ learning to do spotify apis
 Spent time working on the API's
 Danioel came and helped us out
 Another group coding session
+
+11/21
+Restarted work on api endpoints with Marble
+Got the user delete function working have a blocker with the uodate feature
+Couldnt work on the Playlist features because we cant test without the create endpoints.
