@@ -1,46 +1,45 @@
-# import os
-# from psycopg_pool import ConnectionPool
-# import pymongo
-# import bson
+import os
 
-# pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
-
-# dbhost = os.environ["MONGOHOST"]
-# dbname = os.environ["MONGODATABASE"]
-# dbuser = os.environ["MONGOUSER"]
-# dbpass = os.environ["MONGOPASSWORD"]
+import pymongo
+import bson
 
 
-# mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
-# client = pymongo.MongoClient(mongo_str)
+
+mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+
+client = pymongo.MongoClient(mongo_str)
 
 
-# class PlaylistQueries:
-#     def get_all_playlists(self):
-#         db = client[dbname]
-#         result = list(db.users.find())
-#         for value in result:
-#             value["id"] = value["_id"]
-#         return result
+class PlaylistQueries:
+    def get_all_playlists(self):
+        db = client[dbname]
+        result = list(db.users.find())
+        for value in result:
+            value["id"] = value["_id"]
+        return result
 
-#     def get_playlist(self, id):
-#         db = client[dbname]
-#         result = db.users.findone({"_id": id})
-#         if result:
-#             result["id"] = result["_id"]
-#         return result
+    def get_playlist(self, id):
+        db = client[dbname]
+        result = db.users.findone({"_id": id})
+        if result:
+            result["id"] = result["_id"]
+        return result
 
-#     def create_playlist(self, data):
-#         db = client[dbname]
-#         result = db.users.insert_one(data.dict())
-#         if result.inserted_id:
-#             result = self.get_user(result.inserted_id)
-#             result["id"] = str(result["id"])
-#             return result
+    def create_playlist(self, data):
+        db = client[dbname]
+        result = db.users.insert_one(data.dict())
+        if result.inserted_id:
+            result = self.get_user(result.inserted_id)
+            result["id"] = str(result["id"])
+            return result
 
-#     def update_playlist(self, pl_id, data):
-#         pass
+    def update_playlist(self, pl_id, data):
+        pass
 
-#     def delete_playlist(self, pl_id):
-#         pass
+    def delete_playlist(self, pl_id):
+        pass
