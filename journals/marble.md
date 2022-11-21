@@ -37,3 +37,8 @@
 - Worked on on API endpoints with Z
 - Got the delete user function to work, have a blocker with the update feature
 - Couldn't work on the Playlist features because we cant test without the create endpoints.
+
+11/22/22
+
+- working with Z on frontend and discussing project overall with team
+- 
