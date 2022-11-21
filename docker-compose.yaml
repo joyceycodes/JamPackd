@@ -48,9 +48,11 @@ services:
     volumes:
       - ./music:/app
     environment:
-      DATABASE_URL: mongodb:/root:password@mongo
-      DATABASE_NAME: music
-      WAIT_HOSTS: mongo:27017
+      DATABASE_URL: mongodb://admin:admin@mongo
+      MONGOHOST: mongo
+      MONGODATABASE: music
+      MONGOUSER: admin
+      MONGOPASSWORD: admin
 
   ghi:
     image: node:lts-bullseye
