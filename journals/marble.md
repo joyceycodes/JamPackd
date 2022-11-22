@@ -32,13 +32,14 @@
 - Daniel came and helped us out
 - Another group coding session
 
-11/21/22
+11/20/22
 
 - Worked on on API endpoints with Z
 - Got the delete user function to work, have a blocker with the update feature
 - Couldn't work on the Playlist features because we cant test without the create endpoints.
 
-11/22/22
+11/21/22
 
 - working with Z on frontend and discussing project overall with team
-- 
+- realized we didn't need update user so we're scrapping that as a part of MVP and moving on to other endpoints.
+- began working on update and delete playlist
