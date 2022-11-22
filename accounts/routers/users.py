@@ -20,8 +20,8 @@ class UserOut(BaseModel):
     username: str
 
 
-# class UsersOut(BaseModel):
-#     users: list[UserOut]
+class UsersOut(BaseModel):
+    users: list[UserOut]
 
 
 # class UpdateUser(BaseModel):
