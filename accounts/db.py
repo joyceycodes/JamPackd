@@ -22,20 +22,10 @@ class UserQueries:
 
     def get_user(self, id):
         db = client[dbname]
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", id)
         result = db.users.find_one({"_id": ObjectId(id)})
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", result)
         if result:
             result["id"] = str(result["_id"])
         return result
-
-    """
-        data.first == error
-        data.last,
-        data.avatar,
-        data.email,
-        data.username,
-    """
 
     def create_user(self, data):
         db = client[dbname]
@@ -44,6 +34,25 @@ class UserQueries:
             result = self.get_user(str(result.inserted_id))
             result["id"] = str(result["_id"])
             return result
+
+    def delete_user(self, id: str):
+        db = client[dbname]
+        user = db.users.find_one({"_id": ObjectId(id)})
+        if user:
+            db.users.delete_one({"_id": ObjectId(id)})
+
+    def update_user(self, id: str, data: dict):
+        if len(data) < 1:
+            return False
+        db = client[dbname]
+        user = db.users.find_one({"_id": ObjectId(id)})
+        if user:
+            updated_user = db.user.update_one(
+                {"_id": ObjectId(id)}, {"$set": data}
+            )
+            if updated_user:
+                return True
+            return False
 
 
 # Update and Delete are still WIP
