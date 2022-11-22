@@ -24,6 +24,7 @@ class UserQueries:
         db = client[dbname]
         result = db.users.find_one({"_id": ObjectId(id)})
         if result:
+            # change this later to not be a string - Lee
             result["id"] = str(result["_id"])
         return result
 
