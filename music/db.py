@@ -62,10 +62,13 @@ class SongQueries:
 
     def create_song(self, data):
         db = client[dbname]
-        result = db.users.insert_one(data.dict())
+        result = db.songs.insert_one(data.dict())
+        print("result 1: *******************", result)
         if result.inserted_id:
             result = self.get_song(str(result.inserted_id))
-            result["id"] = str(result["_id"])
+            print("*****************result", result)
+            result["id"] = str(result["id"])
+            # result["id"] = str(result["id"])
             return result
 
     def update_song(self, _id, data):

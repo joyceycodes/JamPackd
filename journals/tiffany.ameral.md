@@ -56,3 +56,12 @@
     -
     -
     -
+
+#### 11/21
+
+    -While working on the songs endpoints, talking to James we may
+    have decided to go a differnt direaction
+        -The songs design that we(*I*) worked on, it seems as though we might not need it,
+        instead 
+    -Made a piviot to reading through spotiPY's documentation 
+    -
