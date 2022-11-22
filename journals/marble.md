@@ -43,3 +43,7 @@
 - working with Z on frontend and discussing project overall with team
 - realized we didn't need update user so we're scrapping that as a part of MVP and moving on to other endpoints.
 - began working on update and delete playlist
+
+11/22/22
+
+- working with James on Update playlist

@@ -32,3 +32,20 @@ class PlaylistQueries:
             result = self.get_playlist(str(result.inserted_id))
             result["id"] = str(result["_id"])
             return result
+
+    def update_playlist(self, _id: str, data):
+        db = client[dbname]
+        result = db.playlists.find_one({"_id": ObjectId(_id)})
+        if result:
+            result = db.playlists.update_one(
+                {"_id": ObjectId(_id)}, {"$set": data.dict()}
+            )
+            result = self.get_playlist(_id)
+            result["id"] = str(result["_id"])
+            return result
+
+    def delete_playlist(self, id: str):
+        db = client[dbname]
+        plist = db.playlists.find_one({"_id": ObjectId(id)})
+        if plist:
+            db.playlists.delete_one({"_id": ObjectId(id)})
