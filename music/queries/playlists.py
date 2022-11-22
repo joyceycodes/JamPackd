@@ -1,6 +1,6 @@
 import os
-from bson.objectid import ObjectId
 import pymongo
+from bson.objectid import ObjectId
 
 dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
@@ -34,3 +34,20 @@ class PlaylistQueries:
             result["id"] = str(result["_id"])
             print(result["id"], str(result["_id"]))
             return result
+
+    def update_playlist(self, _id: str, data):
+        db = client[dbname]
+        result = db.playlists.find_one({"_id": ObjectId(_id)})
+        if result:
+            result = db.playlists.update_one(
+                {"_id": ObjectId(_id)}, {"$set": data.dict()}
+            )
+            result = self.get_playlist(_id)
+            result["id"] = str(result["_id"])
+            return result
+
+    def delete_playlist(self, id: str):
+        db = client[dbname]
+        plist = db.playlists.find_one({"_id": ObjectId(id)})
+        if plist:
+            db.playlists.delete_one({"_id": ObjectId(id)})
