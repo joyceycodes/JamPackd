@@ -15,7 +15,12 @@ Spent time working on the API's
 Danioel came and helped us out
 Another group coding session
 
-11/21
+11/20
 Restarted work on api endpoints with Marble
 Got the user delete function working have a blocker with the uodate feature
 Couldnt work on the Playlist features because we cant test without the create endpoints.
+
+11/21
+We started working on update user again
+Realized we dont really need to update a user
+Now we are going to work on update/delte playlists features
