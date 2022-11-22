@@ -1,3 +1,9 @@
+### November 21, 2022
+Today I worked on:
+- Pair programming with Tiffany to get the Songs endpoints that she worked on connected to Mongo. James came and had some suggestions for our back end design. He suggested that we may not need endpoints for Songs afterall but that having the pydantic model for Song will still be helpful to make sure the shape of the data is correct. Scrapped all the endpoints that we had for Songs.
+- Worked with Spotipy API. I was able to get some data using their search functions that does not require user authentication. Am still working on getting track recommendations. 
+- Will need to figure out how to use their authenticated endpoints as well. It's slightly more complex in that it requires a redirect uri and a spotify username.
+
 ### November 18, 2022
 Today I worked on:
 - Group programming to get the Create and Get Account by ID endpoint running
