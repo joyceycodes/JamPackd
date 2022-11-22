@@ -21,7 +21,6 @@ import sys
 #         track = item["track"]
 #         print(idx, track["artists"][0]["name"], " – ", track["name"])
 
-
 # print(getSongs())
 
 
@@ -34,27 +33,14 @@ sp = spotipy.Spotify(
     )
 )
 
-# results = sp.search(q="weezer", limit=20)
-# for idx, track in enumerate(results["tracks"]["items"]):
-#     print(idx, track["name"])
-
-# playlists = sp.user_playlists("spotify")
-# while playlists:
-#     for i, playlist in enumerate(playlists["items"]):
-#         print(
-#             "%4d %s %s"
-#             % (i + 1 + playlists["offset"], playlist["uri"], playlist["name"])
-#         )
-#     if playlists["next"]:
-#         playlists = sp.next(playlists)
-#     else:
-#         playlists = None
-
 if len(sys.argv) > 1:
     seed_genre = sys.argv[1]
 else:
-    seed_genre = "country"
+    seed_genre = ["country"]
 
-results = sp.recommendations(seed_genres=seed_genre)
-for idx, track in enumerate(results["tracks"]["items"]):
-    print(idx, track["name"])
+data = sp.recommendations(seed_genres=seed_genre, limit=10)
+
+for idx, track in enumerate(data["tracks"]):
+    print(idx, "NAME:", track["name"])
+    print("URI:", track["uri"])
+    print("ARTIST:", track["artists"][0]["name"])
