@@ -47,3 +47,5 @@
 11/22/22
 
 - working with James on Update playlist
+- was able to successfully update playlist
+- working with Z on front end stuff
