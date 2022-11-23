@@ -1,21 +1,11 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
+
+# from .songs import Song
 from pydantic import BaseModel
 
+
 router = APIRouter()
-
-
-class Song(BaseModel):
-    id: str
-    name: str
-    artist: str
-    uri: str
-
-
-# class Playlist(BaseModel):
-#     id: int
-#     name: str
-#     songs: list[Song]
 
 
 class PlaylistIn(BaseModel):
