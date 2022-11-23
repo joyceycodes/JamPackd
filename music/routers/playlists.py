@@ -9,6 +9,7 @@ router = APIRouter()
 
 
 class PlaylistIn(BaseModel):
+    id: str
     name: str
     songs: list[Song]
 
@@ -57,7 +58,25 @@ def create_playlist(
     return queries.create_playlist(playlist_in)
 
 
+@router.delete("/api/playlists/", response_model=bool)
+def delete_playlist(playlist_id: str, queries: PlaylistQueries = Depends()):
+    queries.delete_playlist(playlist_id)
+    return True
+
+
+@router.put("/api/playlists/", response_model=PlaylistOut)
+def update_playlist(
+    playlist_id: str,
+    playlist: PlaylistIn,
+    queries: PlaylistQueries = Depends(),
+):
+    return queries.update_playlist(playlist_id, playlist)
+
+
 @router.get("/api/recommendations/")
 def get_recommendations():
     # import requests
     pass
+
+
+# 637d4829ffc9742a850ed495
