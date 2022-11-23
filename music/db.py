@@ -41,7 +41,7 @@ class PlaylistQueries:
         db = client[dbname]
         result = db.music.find_one({"_id": ObjectId(_id)})
         print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", result)
-        if result:
+        if result.id:
             result = self.update_playlist({"_id": ObjectId(_id)})
             result["id"] = str(result["_id"])
             return result
