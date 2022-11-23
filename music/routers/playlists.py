@@ -1,22 +1,11 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
+
+# from .songs import Song
 from pydantic import BaseModel
-from db import PlaylistQueries
+
 
 router = APIRouter()
-
-
-class Song(BaseModel):
-    id: str
-    name: str
-    artist: str
-    uri: str
-
-
-# class Playlist(BaseModel):
-#     id: int
-#     name: str
-#     songs: list[Song]
 
 
 class PlaylistIn(BaseModel):
@@ -90,4 +79,4 @@ def get_recommendations():
     pass
 
 
-# 637c24e089781140088abe50
+# 637d4829ffc9742a850ed495
