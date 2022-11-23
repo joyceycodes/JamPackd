@@ -1,3 +1,4 @@
-client_ID = "b18a943447ff4219ab09d47ac036a7b3"
-client_SECRET = "eb6b6f5947f44b1b9d861533e48a6862"
-redirect_url = "http://localhost/"
+client_ID = "26c21b44542b466295adedc6ee996cb2"
+client_SECRET = "1144c6e7b2564a019d531d536d5e9d5e"
+redirect_uri = "http://localhost:8003/"
+user = "31gv6grbwedyw3u7fxfucsuvq7ua"

@@ -12,22 +12,18 @@ class Song(BaseModel):
     uri: str
 
 
-# class Playlist(BaseModel):
-#     id: int
-#     name: str
-#     songs: list[Song]
-
-
 class PlaylistIn(BaseModel):
     id: str
     name: str
     songs: list[Song]
+    ext_url: str
 
 
 class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
+    ext_url: str
 
 
 class PlaylistsOut(BaseModel):
@@ -81,12 +77,3 @@ def update_playlist(
     queries: PlaylistQueries = Depends(),
 ):
     return queries.update_playlist(playlist_id, playlist)
-
-
-@router.get("/api/recommendations/")
-def get_recommendations():
-    # import requests
-    pass
-
-
-# 637d4829ffc9742a850ed495
