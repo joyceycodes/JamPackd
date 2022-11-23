@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
+
+# from .songs import Song
 from pydantic import BaseModel
+
 
 router = APIRouter()
 
 
+<<<<<<< HEAD
 class Song(BaseModel):
     id: str
     name: str
@@ -12,6 +16,8 @@ class Song(BaseModel):
     uri: str
 
 
+=======
+>>>>>>> main
 class PlaylistIn(BaseModel):
     id: str
     name: str
@@ -72,8 +78,21 @@ def delete_playlist(playlist_id: str, queries: PlaylistQueries = Depends()):
 
 @router.put("/api/playlists/", response_model=PlaylistOut)
 def update_playlist(
-    playlist_id: str,
+    # playlist_id: str,
     playlist: PlaylistIn,
     queries: PlaylistQueries = Depends(),
 ):
+<<<<<<< HEAD
     return queries.update_playlist(playlist_id, playlist)
+=======
+    return queries.update_playlist(playlist)
+
+
+@router.get("/api/recommendations/")
+def get_recommendations():
+    # import requests
+    pass
+
+
+# 637d4829ffc9742a850ed495
+>>>>>>> main

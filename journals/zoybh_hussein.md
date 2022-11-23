@@ -24,3 +24,12 @@ Couldnt work on the Playlist features because we cant test without the create en
 We started working on update user again
 Realized we dont really need to update a user
 Now we are going to work on update/delte playlists features
+Fixed create and get playlist features
+Switched off with marble as driiver
+Finished delete function
+Blocker: update playlist need help worked on it for hours
+
+11/22
+GOT JAMES IN THE ROOM AND FINALLY HAVE UPDATE WORKING WITH SCOTT
+Now going to start working on front end
+Started on the main page have the buttons and working on the css group coding with Scott again today
