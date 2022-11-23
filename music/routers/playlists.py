@@ -8,16 +8,27 @@ from pydantic import BaseModel
 router = APIRouter()
 
 
+class Song(BaseModel):
+    id: str
+    title: str
+    artist: str
+    # duration: str
+    # album_art: img --not sure what the correct tag is for images
+    uri: str
+
+
 class PlaylistIn(BaseModel):
     id: str
     name: str
     songs: list[Song]
+    ext_url: str
 
 
 class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
+    ext_url: str
 
 
 class PlaylistsOut(BaseModel):
@@ -79,4 +90,4 @@ def get_recommendations():
     pass
 
 
-# 637d4829ffc9742a850ed495
+# @router.get("/api/spot_playlists/", response_model=)
