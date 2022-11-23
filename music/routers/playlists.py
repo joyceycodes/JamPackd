@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
-from .songs import Song
+
+# from .songs import Song
 from pydantic import BaseModel
 
 
