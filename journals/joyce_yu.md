@@ -1,3 +1,8 @@
+### November 22, 2022
+- Group programming to get the Update Playlist endpoint working, with help from James
+- Pair programming with Tiffany. We were able to make successful requests to create and update a playlist, which was such an AHA! moment. We ran into an obstacle where we would try to create a playlist on our group account, but getting a 403 error that said the User was not autherized with our app. The fix was for Tiffany to restart her computer (which restarted the session?) and grant autherization for our app to make changes on our group Spotify account. Now need to get it working with FastAPI.
+- The way it works with the Spotify API, each user needs to autherize our app (Jam Pack'd) to make changes on their Spotify account. This would drastically limit the usage of our app to only Spotify users. I'm thinking the best option is to create and update playlists on our group account, so that way the only account that needs to be autherized is our group Spotify account. Hopefully the option for the user to autherize us if they wanted to will be something we'll be able to implement. Still unsure how to make sure that it's always our group account that is being used to create and update playlists. 
+
 ### November 21, 2022
 Today I worked on:
 - Pair programming with Tiffany to get the Songs endpoints that she worked on connected to Mongo. James came and had some suggestions for our back end design. He suggested that we may not need endpoints for Songs afterall but that having the pydantic model for Song will still be helpful to make sure the shape of the data is correct. Scrapped all the endpoints that we had for Songs.
