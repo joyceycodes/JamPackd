@@ -32,3 +32,4 @@ Blocker: update playlist need help worked on it for hours
 11/22
 GOT JAMES IN THE ROOM AND FINALLY HAVE UPDATE WORKING WITH SCOTT
 Now going to start working on front end
+Started on the main page have the buttons and working on the css group coding with Scott again today
