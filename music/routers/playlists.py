@@ -77,11 +77,11 @@ def delete_playlist(playlist_id: str, queries: PlaylistQueries = Depends()):
 
 @router.put("/api/playlists/", response_model=PlaylistOut)
 def update_playlist(
-    playlist_id: str,
+    # playlist_id: str,
     playlist: PlaylistIn,
     queries: PlaylistQueries = Depends(),
 ):
-    return queries.update_playlist(playlist_id, playlist)
+    return queries.update_playlist(playlist)
 
 
 @router.get("/api/recommendations/")
