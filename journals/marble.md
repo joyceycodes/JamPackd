@@ -47,3 +47,9 @@
 11/22/22
 
 - working with James on Update playlist
+- successfully finished update playlist, began work on frontend and stylization of website
+
+11/23/22
+
+- mandatory fun, helped team to finish ideation of how shape of data gathered from spotify recommendations endpoint would look
+- was successfully able to get correct JSON shape from spotify recommendations endpoint
