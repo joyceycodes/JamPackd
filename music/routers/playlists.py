@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
+from queries.spotify import SpotifyQueries
 
 # from .songs import Song
 from pydantic import BaseModel
@@ -8,7 +9,6 @@ from pydantic import BaseModel
 router = APIRouter()
 
 
-<<<<<<< HEAD
 class Song(BaseModel):
     id: str
     name: str
@@ -16,8 +16,10 @@ class Song(BaseModel):
     uri: str
 
 
-=======
->>>>>>> main
+class Recommendations(BaseModel):
+    recommendations: list[Song]
+
+
 class PlaylistIn(BaseModel):
     id: str
     name: str
@@ -44,9 +46,6 @@ def get_all_playlists(queries: PlaylistQueries = Depends()):
         playlist["id"] = str(playlist["_id"])
         playlists.append(playlist)
     return {"playlists": playlists}
-    # return {
-    #   "playlists": queries.get_all_playlists()
-    # }
 
 
 # get playlist by ID
@@ -70,29 +69,36 @@ def create_playlist(
     return queries.create_playlist(playlist_in)
 
 
-@router.delete("/api/playlists/", response_model=bool)
+@router.delete("/api/playlists/{playlist_id}", response_model=bool)
 def delete_playlist(playlist_id: str, queries: PlaylistQueries = Depends()):
     queries.delete_playlist(playlist_id)
     return True
 
 
-@router.put("/api/playlists/", response_model=PlaylistOut)
+@router.put("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def update_playlist(
     # playlist_id: str,
     playlist: PlaylistIn,
     queries: PlaylistQueries = Depends(),
 ):
-<<<<<<< HEAD
-    return queries.update_playlist(playlist_id, playlist)
-=======
     return queries.update_playlist(playlist)
 
 
-@router.get("/api/recommendations/")
-def get_recommendations():
-    # import requests
-    pass
+@router.get("/api/spotify/recommendations/")
+def get_recommendations(
+    queries: SpotifyQueries = Depends(),
+):
+    return queries.get_recommendations(["pop"])
 
 
-# 637d4829ffc9742a850ed495
->>>>>>> main
+# @router.post("/api/spotify/create/")
+# def create_sp_playlist(queries: SpotifyQueries = Depends()):
+#     print("AAaaaaaa")
+#     return queries.create_sp_playlist(["Playlist1"])
+
+
+# @router.post("/api/spotify/update/")
+# def update_sp_playlist(
+#     queries: SpotifyQueries = Depends(),
+# ):
+#     return queries.update_sp_playlist()
