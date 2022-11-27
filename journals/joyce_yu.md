@@ -1,3 +1,11 @@
+### November 25, 2022
+- Group programming to look at the post request endpoints for Spotify. Wasn't making too much progress so we decided to shift gears and work on front end. 
+- Started on auth in the accounts microservice. Moved some things around, specifically the basemodels. I kept running into an issue where there was a circular import, so moved all the pydantic models from routers.users to db.py. Login/logout endpoints are showing up on Swagger UI. 
+
+### November 23, 2022
+- Group programming to get the Get track recommendations endpoint working with FastAPI. Was able to figure out how to parse the JSON data so that it only returns the information that we want. 
+- The POST requests with Spotipy are proving to be a challenge as well. Running into an issue where we'd try to execute the the post request on Swagger UI but it just keeps loading until it times out. No error on the terminal either. The main difference between the get and post requests with Spotipy are that the post requests require user authentication.
+
 ### November 22, 2022
 - Group programming to get the Update Playlist endpoint working, with help from James
 - Created a gmail and Spotify account for our project with Tiffany
