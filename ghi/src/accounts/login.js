@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useToken } from "./Auth";
+import { useToken } from "./auth";
 import { useState } from "react";
 
 function LoginComponent() {
@@ -14,6 +14,7 @@ function LoginComponent() {
     login(username, password);
     e.preventDefault();
     navigate("/");
+    // redirect to homepage loggedin, not "/"
   };
 
   return (

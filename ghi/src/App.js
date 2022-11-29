@@ -1,10 +1,21 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 // import { useEffect, useState } from 'react';
-// import SignupForm from './accounts/signup';
+import { AuthProvider, useToken, useAuthContext } from './accounts/auth.js';
 
 import './css/App.css';
-import MainPage from './mainpage';
+import MainPage from './mainpage'
+import SignupComponent from "./accounts/signup";
+import LoginComponent from "./accounts/login"
+import LogoutComponent from './accounts/logout.js';
+
+
+
+// function GetToken() {
+//   useToken();
+//   return null
+// }
+
+
 
 function App() {
 
@@ -27,21 +38,25 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <div className="container">
-          <div className="tabs is-centered" style={{ display: "flex" }}>
+        <div className="nav-container">
+          <div className="nav-tabs is-centered">
             <ul>
-              <li><NavLink to="/">Home Page</NavLink></li>
-              <li><NavLink to="/cart">Shop Produce</NavLink></li>
-              <li><NavLink to="/produce-admin">Admin Produce</NavLink></li>
-              <li><NavLink to="/orders">Orders</NavLink></li>
-              <li><NavLink to="/login">Login</NavLink></li>
-              <li><NavLink to="/logout">Logout</NavLink></li>
-              <li><NavLink to="/signup">Signup</NavLink></li>
+              <li><button><NavLink to="/">Home Page</NavLink></button></li>
+              <li><button><NavLink to="/signup">Signup</NavLink></button></li>
+              <li><button><NavLink to="/login">Login</NavLink></button></li>
+              <li><button><NavLink to="/logout">Logout</NavLink></button></li>
+              {/* /* <li><NavLink to="/new_playlist">Create a new Playlist</NavLink></li> */}
+              {/* <li><NavLink to="/playlists">My Playlists</NavLink></li> */}
+              {/* there are more to add!!!  */}
             </ul>
           </div>
         </div>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
+          <Route path="/signup" element={<SignupComponent SignupComponent={SignupComponent} />} />
+          <Route path="/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
+          {/* <Route path="/new_playlist" element={} */}
         </Routes>
       </div>
     </BrowserRouter>

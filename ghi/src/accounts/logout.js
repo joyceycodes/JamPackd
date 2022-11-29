@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "./Auth";
+import { useAuthContext } from "./auth";
 let internalToken = null;
 console.log(internalToken);
 
@@ -26,10 +26,11 @@ function LogoutComponent() {
     };
 
     return (
-        <div>
+        <div className="logout-container">
             <center>
                 <form onSubmit={submitHandler}>
-                    <button>Logout</button>
+                    <p className="Verification">Verify Logout</p>
+                    <button className="logout-btn">Logout</button>
                 </form>
             </center>
         </div>
