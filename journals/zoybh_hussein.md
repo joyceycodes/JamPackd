@@ -33,3 +33,11 @@ Blocker: update playlist need help worked on it for hours
 GOT JAMES IN THE ROOM AND FINALLY HAVE UPDATE WORKING WITH SCOTT
 Now going to start working on front end
 Started on the main page have the buttons and working on the css group coding with Scott again today
+
+11/26
+Got on with the group on the weekend to try and work on last few endpoints.
+Ran into errors, need to wait till monday
+
+11/28
+worked on api endpoints with James and Andrew, have to work more on it tomorrow
+Gropu coding with Marble for the front end log in log out and signup features.
