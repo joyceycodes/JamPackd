@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, Response, Body
-from pydantic import BaseModel, EmailStr
-from db import UserQueries
+from fastapi import APIRouter, Depends, Response
+from pydantic import BaseModel
+from queries.users import UserQueries
 
 router = APIRouter()
 
@@ -9,7 +9,7 @@ class UserIn(BaseModel):
     first: str
     last: str
     email: str
-    username: str
+    password: str
 
 
 class UserOut(BaseModel):
@@ -17,40 +17,16 @@ class UserOut(BaseModel):
     first: str
     last: str
     email: str
-    username: str
+    password: str
 
 
 class UsersOut(BaseModel):
     users: list[UserOut]
 
 
-# class UpdateUser(BaseModel):
-#     first: str
-#     last: str
-#     email: EmailStr
-#     username: str
-
-#     class Config:
-#         schema_extra = {
-#             "example": {
-#                 "first": "z",
-#                 "last": "z",
-#                 "email": "z@z.com",
-#                 "username": "Z",
-#             }
-#         }
-
-
-# def ResponseModel(data, message):
-#     return {
-#         "data": [data],
-#         "code": 200,
-#         "message": message,
-#     }
-
-
-# def ErrorResponseModel(error, code, message):
-#     return {"error": error, "code": code, "message": message}
+@router.post("/api/users", response_model=UserIn)
+def create_user(user_in: UserIn, queries: UserQueries = Depends()):
+    return queries.create_user(user_in)
 
 
 @router.get("/api/users", response_model=UsersOut)
@@ -61,7 +37,7 @@ def users_list(queries: UserQueries = Depends()):
 
 
 @router.get("/api/users/{user_id}", response_model=UserOut)
-def get_user(
+def get_single_user(
     user_id: str,
     response: Response,
     queries: UserQueries = Depends(),
@@ -72,32 +48,6 @@ def get_user(
         response.status_code = 404
     else:
         return record
-
-
-@router.post("/api/users/", response_model=UserOut)
-def create_user(user_in: UserIn, queries: UserQueries = Depends()):
-    return queries.create_user(user_in)
-
-
-# @router.put("/api/users/{user_id}", response_model=UserOut)
-# async def update_user(id: str, req: UpdateUser = Body(...)):
-#     req = {k: v for k, v in req if v is not None}
-#     updated_user = update_user(id, req)
-#     update_query = {
-#         "$set": {k: v for k, v in updated_user.items()}
-#     }
-# if updated_user:
-#     return ResponseModel(
-#         "User with ID: {} name update is successful".format(id),
-#         "User updated successfully",
-#     )
-# return ErrorResponseModel(
-#     "An error occurred",
-#     404,
-#     "There was an error updating the user data.",
-# )
-
-# @router.put("/api/users/{user_id}", response_model=UserOut)
 
 
 @router.delete("/api/users/{user_id}", response_model=bool)
