@@ -40,15 +40,15 @@ def create_playlist():
     print(results)
 
 
-def add_to_playlist():
+# def add_to_playlist():
 
-    results = sp.user_playlist_add_tracks(
-        key.user, playlist_id="0By2izdMAVY0hiyYOi9SB2", tracks=uris
-    )
-    print(results)
+#     results = sp.user_playlist_add_tracks(
+#         key.user, playlist_id="0By2izdMAVY0hiyYOi9SB2", tracks=uris
+#     )
+#     print(results)
 
 
-add_to_playlist()
+create_playlist()
 # # results = sp.user("1254524921")
 # print("Results********", results["id"])
 

@@ -143,8 +143,8 @@ genres = [
     "work-out",
     "world-music",
 ]
-
-
+# queries are to access db
+# rename to spotifyAPI later
 class SpotifyQueries:
     def get_recommendations(self, genre):
         sp = spotipy.Spotify(
@@ -165,27 +165,30 @@ class SpotifyQueries:
             )
         return recommendations
 
-    # def create_sp_playlist(self, pl_name):
-    #     scope = ["playlist-modify-private", "playlist-modify-public"]
-
-    #     sp = spotipy.Spotify(
-    #         auth_manager=SpotifyOAuth(
-    #             client_id=keys.client_ID,
-    #             client_secret=keys.client_SECRET,
-    #             redirect_uri=keys.redirect_uri,
-    #             scope=scope,
-    #         )
-    #     )
-
-    #     playlist = sp.user_playlist_create(
-    #         keys.user,
-    #         pl_name,
-    #         public=True,
-    #         collaborative=True,
-    #         description="",
-    #     )
-    #     print("AAAAAAAA", playlist["id"])
-    #     return playlist["id"]
+    async def create_sp_playlist(self, pl_name):
+        scope = ["playlist-modify-private", "playlist-modify-public"]
+        print("*********** HERE")
+        print(pl_name)
+        sp = await spotipy.Spotify(
+            auth_manager=SpotifyOAuth(
+                client_id=keys.client_ID,
+                client_secret=keys.client_SECRET,
+                redirect_uri=keys.redirect_uri,
+                scope=scope,
+            )
+        )
+        print("***********", sp)
+        print(keys.user)
+        playlist = sp.user_playlist_create(
+            keys.user,
+            pl_name,
+            public=False,
+            collaborative=True,
+            description="",
+        )
+        # print("AAAAAAAA", playlist["id"])
+        print(playlist)
+        return True
 
     # def update_sp_playlist(self):
     #     uris = ["spotify:track:1LDeuD3jbSpHucsd0nOt6t"]
