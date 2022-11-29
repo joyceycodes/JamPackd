@@ -1,26 +1,23 @@
-import { useEffect, useState } from 'react';
+import React from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import SignupForm from './accounts/signup';
 
 import './css/App.css';
+import MainPage from './mainpage';
 
 function App() {
 
 
   return (
-    <header>
-    <p className="JP_title borderstyle">JamPack'd</p>
-    <p className="JP_subtitle borderstyle">Pack'd Full of Tasty Jams!</p>
-        <nav>
-      <ul>
-        <li>
-          <button type="button" className="login-btn fbstyle">Login</button>
-        </li>
-        <li>
-          <button type="button" className="signup-btn fbstyle">Sign Up</button>
-        </li>
-      </ul>
-    </nav>
-    </header>
-    
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div >
+
   );
 }
 
