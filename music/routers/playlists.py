@@ -8,8 +8,8 @@ import os
 import json
 import requests
 
-# from requests_oauthlib import OAuth2Session
-# from requests.auth import HTTPBasicAuth
+from requests_oauthlib import OAuth2Session
+from requests.auth import HTTPBasicAuth
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 # from .songs import Song
@@ -107,6 +107,10 @@ def get_token():
     client_secret = keys.client_SECRET
     redirect_uri = keys.redirect_uri
 
+    client_id = "26c21b44542b466295adedc6ee996cb2"
+    client_secret = "1144c6e7b2564a019d531d536d5e9d5e"
+    redirect_uri = "http://localhost:8003"
+
     # OAuth endpoints given in the Spotify API documentation
     # https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
     authorization_base_url = "https://accounts.spotify.com/authorize"
@@ -152,9 +156,7 @@ def get_token():
 
 
 @router.post("/api/spotify/create/")
-def create_sp_playlist(
-    # playlist=Depends(create_playlist),
-):
+def create_sp_playlist():
     token = "BQCLNn6jNlCU1IpFTHz-mpsyRFzhLAfNbtmD1MVE1n0Zegb5xkI_5Po7GV8dwMnjK1wCSMBqGa8k8BJIaQhOH3lgCcvdEVkmIfrZrzx_yjr1t-wZ5Wk"
     print(token)
     user_id = "1254524921"
@@ -179,17 +181,18 @@ def create_sp_playlist(
     return True
 
 
-# @router.post("/api/spotify/update/")
-# def update_sp_playlist(
-#     queries: SpotifyQueries = Depends(),
-# ):
-#     return queries.update_sp_playlist()
+@router.post("/api/spotify/update/")
+def update_sp_playlist(
+    queries: SpotifyQueries = Depends(),
+):
+    return queries.update_sp_playlist()
 
-# import random
-# import math
-# import base64
-# from fastapi.responses import RedirectResponse, HTMLResponse
-# from urllib.parse import urlencode
+
+import random
+import math
+import base64
+from fastapi.responses import RedirectResponse, HTMLResponse
+from urllib.parse import urlencode
 
 # STATE_KEY = "spotify_auth_state"
 # CLIENT_ID = keys.client_ID
@@ -221,7 +224,7 @@ def create_sp_playlist(
 #         "client_id": CLIENT_ID,
 #         "scope": scope,
 #         "redirect_uri": REDIRECT_URI,
-#         "state": state,
+#         # "state": state,
 #     }
 #     response = RedirectResponse(
 #         url="https://accounts.spotify.com/authorize?" + urlencode(params)
@@ -247,7 +250,10 @@ def create_sp_playlist(
 #         request_string = CLIENT_ID + ":" + CLIENT_SECRET
 #         encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
 #         encoded_string = str(encoded_bytes, "utf-8")
-#         header = {"Authorization": "Basic " + encoded_string}
+#         header = {
+#             "Authorization": "Basic " + encoded_string,
+#             # "content-type": "application/x-www-form-urlencoded",
+#         }
 
 #         form_data = {
 #             "code": code,

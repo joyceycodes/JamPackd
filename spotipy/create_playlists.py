@@ -72,6 +72,8 @@
 
 #     print(token)
 #     return token
+
+
 #     # Fetch a protected resource, i.e. user profile
 #     # auth_url = "https://accounts.spotify.com/api/token"
 #     # data = {
@@ -119,12 +121,15 @@
 # https://github.com/duranbe/spotify-fastapi-sample
 # *****************************************************
 
-
+# from music.routers import keys
 # import random
 # import math
 # import base64
 # from fastapi.responses import RedirectResponse, HTMLResponse
 # from urllib.parse import urlencode
+# from fastapi import Response, Request, HTTPException
+# import requests
+
 
 # STATE_KEY = "spotify_auth_state"
 # CLIENT_ID = keys.client_ID
