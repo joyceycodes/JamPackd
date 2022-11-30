@@ -6,18 +6,15 @@ router = APIRouter()
 
 
 class UserIn(BaseModel):
-    first: str
-    last: str
+    full_name: str
     email: str
     password: str
 
 
 class UserOut(BaseModel):
     id: int | str
-    first: str
-    last: str
+    full_name: str
     email: str
-    password: str
 
 
 class UsersOut(BaseModel):
@@ -26,7 +23,7 @@ class UsersOut(BaseModel):
 
 @router.post("/api/users", response_model=UserIn)
 def create_user(user_in: UserIn, queries: UserQueries = Depends()):
-    return queries.create_user(user_in)
+    return queries.create_user(user_in, queries)
 
 
 # @router.get("/api/users", response_model=UsersOut)

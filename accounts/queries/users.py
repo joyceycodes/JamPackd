@@ -1,6 +1,8 @@
 import os
-from bson.objectid import ObjectId
 import pymongo
+from bson.objectid import ObjectId
+
+from pydantic import BaseModel
 
 dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
@@ -12,6 +14,33 @@ mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 client = pymongo.MongoClient(mongo_str)
 
 
+class UserIn(BaseModel):
+    full_name: str
+    email: str
+    password: str
+
+
+class UserOut(BaseModel):
+    id: int | str
+    full_name: str
+    email: str
+
+
+class UsersOut(BaseModel):
+    users: list[UserOut]
+
+
+class UserOutWithPassword(BaseModel):
+    hashed_password: str
+    id: int | str
+    full_name: str
+    email: str
+
+
+# class DuplicateAccountError(ValueError):
+#     pass
+
+
 class UserQueries:
     def get_all_users(self):
         db = client[dbname]
@@ -20,36 +49,33 @@ class UserQueries:
             value["id"] = value["_id"]
         return result
 
-    def get_user(self, id):
+    def get_user(self, email: str):
         db = client[dbname]
-        result = db.users.find_one({"_id": ObjectId(id)})
+        result = db.users.find_one({"email": email})
         if result:
             result["id"] = str(result["_id"])
-        return result
+        return UserOutWithPassword(**result)
 
-    def create_user(self, data):
+    def create_user(
+        self, account: UserIn, hashed_password: str
+    ) -> UserOutWithPassword:
         db = client[dbname]
-        result = db.users.insert_one(data.dict())
-        if result.inserted_id:
-            result = self.get_user(str(result.inserted_id))
-            result["id"] = str(result["_id"])
-            return result
+        props = account.dict()
+        props["hashed_password"] = hashed_password
+        props.pop("password")
+        print("AAAAAAAAAA PROPS AAAAAAAAAAAAAAAAAAAAA!!!!!!", props)
+        # try:
+        db.users.insert_one(props)
+        # except DuplicateAccountError:
+        #     raise DuplicateAccountError()
+
+        # got rid of this exception for testing
+
+        props["id"] = str(props["_id"])
+        return UserOutWithPassword(**props)
 
     def delete_user(self, id: str):
         db = client[dbname]
-        plist = db.users.find_one({"_id": ObjectId(id)})
-        if plist:
-            db.users.delete_one({"_id": ObjectId(id)})
-
-    def update_user(self, id: str, data: dict):
-        if len(data) < 1:
-            return False
-        db = client[dbname]
         user = db.users.find_one({"_id": ObjectId(id)})
         if user:
-            updated_user = db.user.update_one(
-                {"_id": ObjectId(id)}, {"$set": data}
-            )
-            if updated_user:
-                return True
-            return False
+            db.users.delete_one({"_id": ObjectId(id)})

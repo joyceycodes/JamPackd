@@ -63,7 +63,11 @@
         - Create logged in home page
         - Create playlist page
 
-11/28/22
+11/29/22
 
 - T and J are working on CI/CD stuff, Z and I are working on frontend
-- 
+- Worked with group on ci/cd stuff with group
+- Broke off with Z to do frontend work
+- Cleaned up our code with the group to push to main
+- Fixed our error with our post user
+- Now working with our fetch 500 error

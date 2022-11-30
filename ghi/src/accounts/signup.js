@@ -5,18 +5,17 @@ import { useNavigate } from "react-router-dom";
 function SignupComponent() {
     const navigate = useNavigate();
     const [token, login] = useToken();
-    async function signup(email, first, last, password) {
+    async function signup(email, full_name, password) {
         const url = `${process.env.REACT_APP_accounts}/api/users`;
         const response = await fetch(url, {
             method: "post",
             body: JSON.stringify({
-                first,
-                last,
+                full_name,
                 email,
                 password,
             }),
             headers: {
-                "Content-Type": "application/json",
+                "content-type": "application/json",
             },
         });
         console.log("TOKEN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!", token);
@@ -25,15 +24,14 @@ function SignupComponent() {
             navigate("/login");
         }
         return false;
-    }
+    };
 
-    let [first, setFirst] = useState();
-    let [last, setLast] = useState();
+    let [full_name, setFullName] = useState();
     let [password, setPassword] = useState();
     let [email, setEmail] = useState();
 
     const submitHandler = (e) => {
-        signup(email, first, last, password);
+        signup(email, full_name, password);
 
         e.preventDefault();
     };
@@ -43,20 +41,12 @@ function SignupComponent() {
             <center>
                 <h2>Sign Up for JamPack'd</h2>
                 <form onSubmit={submitHandler}>
-                    First Name: <input
+                    Full Name: <input
                         type="text"
-                        name="first"
-                        placeholder="John"
-                        value={first}
-                        onChange={(event) => setFirst(event.target.value)}
-                    />
-                    <br />
-                    Last Name: <input
-                        type="text"
-                        name="last"
-                        placeholder="Doe"
-                        value={last}
-                        onChange={(event) => setLast(event.target.value)}
+                        name="full_name"
+                        placeholder="John Doe"
+                        value={full_name}
+                        onChange={(event) => setFullName(event.target.value)}
                     />
                     <br />
                     Email Address <input
@@ -80,5 +70,7 @@ function SignupComponent() {
             </center>
         </div>
     );
-}
+};
+
+
 export default SignupComponent;
