@@ -29,11 +29,11 @@ def create_user(user_in: UserIn, queries: UserQueries = Depends()):
     return queries.create_user(user_in)
 
 
-@router.get("/api/users", response_model=UsersOut)
-def users_list(queries: UserQueries = Depends()):
-    return {
-        "users": queries.get_all_users(),
-    }
+# @router.get("/api/users", response_model=UsersOut)
+# def users_list(queries: UserQueries = Depends()):
+#     return {
+#         "users": queries.get_all_users(),
+#     }
 
 
 @router.get("/api/users/{user_id}", response_model=UserOut)

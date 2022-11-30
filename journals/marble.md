@@ -62,3 +62,8 @@
 - For tomorrow:
         - Create logged in home page
         - Create playlist page
+
+11/28/22
+
+- T and J are working on CI/CD stuff, Z and I are working on frontend
+- 
