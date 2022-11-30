@@ -1,6 +1,10 @@
+### November 29, 2022
+- Worked with Tiffany to deploy our music microservice. It was very gratifying to see our site up on a URL that is not localhost!
+- Considering other options if we aren't able to get the create playlist endpoint working with Spotify since we've been working on it for a week now. Rather than having a Spotify playlist at the end of the swiping feature, we may just show all of the liked songs as a list of embedded iFrame players instead. 
+
 ### November 28, 2022
 - Group programming with Andrew and James to get our post requests with Spotify working. We were dealing with the issue of the request hanging on SwaggerUI and thought that it could possibly be an issue of not using async await, however the use of it was never specified in the docs for Spotipy or Spotify API. 
-- We moved away from using Spotipy since it doesn't work well with FastAPI as they both want to handle redirects on their own. Playing around with making requests directly to Spotify API but running into a CORS issue. Andrew says we may need to deploy our site first in order to make this work. 
+- We moved away from using Spotipy since it doesn't work well with FastAPI as they both want to handle redirects on their own. Playing around with making requests directly to Spotify API but running into a CORS and HTTPS issue. Andrew says we may need to deploy our site first in order to make this work. 
 
 ### November 25, 2022
 - Group programming to look at the post request endpoints for Spotify. Wasn't making too much progress so we decided to shift gears and work on front end. 
