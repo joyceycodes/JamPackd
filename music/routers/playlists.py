@@ -1,12 +1,14 @@
-from fastapi import APIRouter, Depends, Response, Request, HTTPException
+from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from queries.spotify import SpotifyQueries
-from routers import keys
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+
+# from routers import keys
+# import spotipy
+# from spotipy.oauth2 import SpotifyOAuth
 import os
-import json
-import requests
+
+# import json
+# import requests
 
 # from requests_oauthlib import OAuth2Session
 # from requests.auth import HTTPBasicAuth
@@ -107,14 +109,13 @@ def get_recommendations(
 #     client_secret = keys.client_SECRET
 #     redirect_uri = keys.redirect_uri
 
-#     # OAuth endpoints given in the Spotify API documentation
-#     # https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
+
 #     authorization_base_url = "https://accounts.spotify.com/authorize"
 #     token_url = "https://accounts.spotify.com/api/token"
-#     # https://developer.spotify.com/documentation/general/guides/authorization/scopes/
 #     scope = ["playlist-modify-private", "playlist-modify-public"]
 
-#     spotify = OAuth2Session(client_id, scope=scope, redirect_uri=redirect_uri)
+#     spotify = OAuth2Session(client_id,
+#     scope=scope, redirect_uri=redirect_uri)
 
 #     # Redirect user to Spotify for authorization
 #     authorization_url, state = spotify.authorization_url(
@@ -155,7 +156,7 @@ def get_recommendations(
 # def create_sp_playlist(
 #     # playlist=Depends(create_playlist),
 # ):
-#     token = "BQCLNn6jNlCU1IpFTHz-mpsyRFzhLAfNbtmD1MVE1n0Zegb5xkI_5Po7GV8dwMnjK1wCSMBqGa8k8BJIaQhOH3lgCcvdEVkmIfrZrzx_yjr1t-wZ5Wk"
+#     token = ""
 #     print(token)
 #     user_id = "1254524921"
 #     print(user_id)
@@ -199,7 +200,7 @@ def get_recommendations(
 
 
 # def generate_random_string(string_length):
-#     possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+#     possible = "ABCDEFGHI789"
 #     text = "".join(
 #         [
 #             possible[math.floor(random.random() * len(possible))]
@@ -276,15 +277,18 @@ def get_recommendations(
 #     request_string = CLIENT_ID + ":" + CLIENT_SECRET
 #     encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
 #     encoded_string = str(encoded_bytes, "utf-8")
-#     header = {"Authorization": "Basic " + encoded_string}
+#     header = {"Authorization": "Basic " +
+# encoded_string}
 
-#     form_data = {"grant_type": "refresh_token", "refresh_token": refresh_token}
+#     form_data = {"grant_type":
+# "refresh_token", "refresh_token": refresh_token}
 
 #     url = "https://accounts.spotify.com/api/token"
 
 #     response = requests.post(url, data=form_data, headers=header)
 #     if response.status_code != 200:
-#         raise HTTPException(status_code=400, detail="Error with refresh token")
+#         raise HTTPException
+# (status_code=400, detail="Error with refresh token")
 #     else:
 #         data = response.json()
 #         access_token = data["access_token"]

@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import playlists
-from routers import spotify
+
+# from routers import spotify
 import os
 
 app = FastAPI()
