@@ -39,5 +39,15 @@ Got on with the group on the weekend to try and work on last few endpoints.
 Ran into errors, need to wait till monday
 
 11/28
-worked on api endpoints with James and Andrew, have to work more on it tomorrow
-Gropu coding with Marble for the front end log in log out and signup features.
+Worked on api endpoints with James and Andrew, have to work more on it tomorrow.
+Group coding with Marble for the front end log in log out and signup features.
+Figuring out how to get the signup router to work keep getting a get error and cors error.
+For tomorrow:
+Create logged in home page
+Create playlist page
+
+11/29
+Worked on ci/cd stuff with group broke off with Marble to do frontend work
+Cleaned up our code with the group to push to main
+Fixed our error with our post user
+Now working with our fetch 500 error.
