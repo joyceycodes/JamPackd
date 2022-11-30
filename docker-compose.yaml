@@ -31,6 +31,7 @@ services:
     volumes:
       - ./accounts:/app
     environment:
+      SIGNING_KEY: admin
       DATABASE_URL: mongodb://admin:admin@mongo
       MONGOHOST: mongo
       MONGODATABASE: accounts

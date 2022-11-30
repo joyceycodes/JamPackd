@@ -1,4 +1,6 @@
 import os
+from bson.objectid import ObjectId
+import pymongo
 import pymongo
 from bson.objectid import ObjectId
 
@@ -6,9 +8,15 @@ dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
 dbuser = os.environ["MONGOUSER"]
 dbpass = os.environ["MONGOPASSWORD"]
+dbhost = os.environ["MONGOHOST"]
+dbname = os.environ["MONGODATABASE"]
+dbuser = os.environ["MONGOUSER"]
+dbpass = os.environ["MONGOPASSWORD"]
 
 mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 
+client = pymongo.MongoClient(mongo_str)
 client = pymongo.MongoClient(mongo_str)
 
 
@@ -28,9 +36,11 @@ class PlaylistQueries:
     def create_playlist(self, data):
         db = client[dbname]
         result = db.playlists.insert_one(data.dict())
+        print("INSERTED ID:", result.inserted_id)
         if result.inserted_id:
             result = self.get_playlist(str(result.inserted_id))
             result["id"] = str(result["_id"])
+            print(result["id"], str(result["_id"]))
             return result
 
     def update_playlist(self, _id: str, data):
