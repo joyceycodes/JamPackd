@@ -15,19 +15,15 @@ client = pymongo.MongoClient(mongo_str)
 
 
 class UserIn(BaseModel):
-    first: str
-    last: str
+    full_name: str
     email: str
-    username: str
     password: str
 
 
 class UserOut(BaseModel):
     id: int | str
-    first: str
-    last: str
+    full_name: str
     email: str
-    username: str
 
 
 class UsersOut(BaseModel):
@@ -37,10 +33,8 @@ class UsersOut(BaseModel):
 class UserOutWithPassword(BaseModel):
     hashed_password: str
     id: int | str
-    first: str
-    last: str
+    full_name: str
     email: str
-    username: str
 
 
 class DuplicateAccountError(ValueError):

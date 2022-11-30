@@ -1,14 +1,14 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends, Response, Request, HTTPException
 from queries.playlists import PlaylistQueries
 from queries.spotify import SpotifyQueries
 
-# from routers import keys
-# import spotipy
-# from spotipy.oauth2 import SpotifyOAuth
+from routers import keys
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
 import os
 
-# import json
-# import requests
+import json
+import requests
 
 from requests_oauthlib import OAuth2Session
 from requests.auth import HTTPBasicAuth
@@ -103,22 +103,14 @@ def get_recommendations(
     return queries.get_recommendations(["pop"])
 
 
-<<<<<<< HEAD
 @router.post("/api/spotify/get_token")
 def get_token():
     client_id = keys.client_ID
     client_secret = keys.client_SECRET
     redirect_uri = keys.redirect_uri
 
-    client_id = "26c21b44542b466295adedc6ee996cb2"
-    client_secret = "1144c6e7b2564a019d531d536d5e9d5e"
-    redirect_uri = "http://localhost:8003"
-
-    # OAuth endpoints given in the Spotify API documentation
-    # https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
     authorization_base_url = "https://accounts.spotify.com/authorize"
     token_url = "https://accounts.spotify.com/api/token"
-    # https://developer.spotify.com/documentation/general/guides/authorization/scopes/
     scope = ["playlist-modify-private", "playlist-modify-public"]
 
     spotify = OAuth2Session(client_id, scope=scope, redirect_uri=redirect_uri)
@@ -130,7 +122,7 @@ def get_token():
     print("Please go here and authorize: ", authorization_url)
 
     # Get the authorization verifier code from the callback url
-    redirect_response = redirect_uri
+    redirect_response = input("\n\nPaste the full redirect URL here: ")
 
     auth = HTTPBasicAuth(client_id, client_secret)
 
@@ -143,80 +135,21 @@ def get_token():
 
     print(token)
     return token
-    # Fetch a protected resource, i.e. user profile
-    # auth_url = "https://accounts.spotify.com/api/token"
-    # data = {
-    #     "grant_type": "client_credentials",
-    #     "client_id": keys.client_ID,
-    #     "client_secret": keys.client_SECRET,
-    #     # "scope": ["playlist-modify-private", "playlist-modify-public"],
-    #     # "redirect_uri": keys.redirect_uri,
-    # }
-    # auth_response = requests.post(auth_url, data=data)
-    # access_token = auth_response.json().get("access_token")
-    # print(access_token)
-    # return access_token
 
 
-@router.post("/api/spotify/create/")
-def create_sp_playlist():
-    token = "BQCLNn6jNlCU1IpFTHz-mpsyRFzhLAfNbtmD1MVE1n0Zegb5xkI_5Po7GV8dwMnjK1wCSMBqGa8k8BJIaQhOH3lgCcvdEVkmIfrZrzx_yjr1t-wZ5Wk"
-    print(token)
-    user_id = "1254524921"
-    print(user_id)
-    endpoint_url = f"https://api.spotify.com/v1/users/{user_id}/playlists"
-    request_body = json.dumps(
-        {
-            "name": "Indie bands like Franz Ferdinand but using Python",
-            "description": "My first programmatic playlist, yooo!",
-            "public": False,
-        }
-    )
-    response = requests.post(
-        url=endpoint_url,
-        data=request_body,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": "Bearer {}".format(token),
-        },
-    )
-    print(response)
-    return True
-=======
-# @router.post("/api/spotify/get_token")
-# def get_token():
-#     client_id = keys.client_ID
-#     client_secret = keys.client_SECRET
-#     redirect_uri = keys.redirect_uri
+# @router.get("/user_auth")
+# def get_user_auth():
+#     auth_url = "https://accounts.spotify.com/authorize"
+#     data = {
+#         "response_type": "code",
+#         "client_id": keys.client_ID,
+#         "scope": ["playlist-modify-private", "playlist-modify-public"],
+#         "redirect_uri": keys.redirect_uri,
+#     }
+#     auth_response = requests.post(auth_url, data=data)
+#     return auth_response
 
 
-#     authorization_base_url = "https://accounts.spotify.com/authorize"
-#     token_url = "https://accounts.spotify.com/api/token"
-#     scope = ["playlist-modify-private", "playlist-modify-public"]
-
-#     spotify = OAuth2Session(client_id,
-#     scope=scope, redirect_uri=redirect_uri)
-
-#     # Redirect user to Spotify for authorization
-#     authorization_url, state = spotify.authorization_url(
-#         authorization_base_url
-#     )
-#     print("Please go here and authorize: ", authorization_url)
-
-#     # Get the authorization verifier code from the callback url
-#     redirect_response = redirect_uri
-
-#     auth = HTTPBasicAuth(client_id, client_secret)
-
-#     # Fetch the access token
-#     token = spotify.fetch_token(
-#         token_url,
-#         auth=auth,
-#         authorization_response=redirect_response,
-#     )
-
-#     print(token)
-#     return token
 # Fetch a protected resource, i.e. user profile
 # auth_url = "https://accounts.spotify.com/api/token"
 # data = {
@@ -258,14 +191,13 @@ def create_sp_playlist():
 #     )
 #     print(response)
 #     return True
->>>>>>> main
 
 
-@router.post("/api/spotify/update/")
-def update_sp_playlist(
-    queries: SpotifyQueries = Depends(),
-):
-    return queries.update_sp_playlist()
+# @router.post("/api/spotify/update/")
+# def update_sp_playlist(
+#     queries: SpotifyQueries = Depends(),
+# ):
+#     return queries.update_sp_playlist()
 
 
 import random
@@ -274,108 +206,105 @@ import base64
 from fastapi.responses import RedirectResponse, HTMLResponse
 from urllib.parse import urlencode
 
-# STATE_KEY = "spotify_auth_state"
-# CLIENT_ID = keys.client_ID
-# CLIENT_SECRET = keys.client_SECRET
-# URI = keys.redirect_uri
-# REDIRECT_URI = URI + "/callback"
+STATE_KEY = "spotify_auth_state"
+CLIENT_ID = keys.client_ID
+CLIENT_SECRET = keys.client_SECRET
+URI = keys.redirect_uri
+REDIRECT_URI = URI
 
 
-# def generate_random_string(string_length):
-#     possible = "ABCDEFGHI789"
-#     text = "".join(
-#         [
-#             possible[math.floor(random.random() * len(possible))]
-#             for i in range(string_length)
-#         ]
-#     )
+def generate_random_string(string_length):
+    possible = "ABCDEFGHI789"
+    text = "".join(
+        [
+            possible[math.floor(random.random() * len(possible))]
+            for i in range(string_length)
+        ]
+    )
 
-#     return text
-
-
-# @router.get("/login")
-# def read_root(response: Response):
-#     state = generate_random_string(20)
-
-#     scope = "playlist-modify-private playlist-modify-public"
-
-#     params = {
-#         "response_type": "code",
-#         "client_id": CLIENT_ID,
-#         "scope": scope,
-#         "redirect_uri": REDIRECT_URI,
-#         # "state": state,
-#     }
-#     response = RedirectResponse(
-#         url="https://accounts.spotify.com/authorize?" + urlencode(params)
-#     )
-#     response.set_cookie(key=STATE_KEY, value=state)
-#     return response
+    return text
 
 
-# @router.get("/callback")
-# def callback(request: Request, response: Response):
+@router.get("/login")
+def read_root(response: Response):
+    state = generate_random_string(20)
 
-#     code = request.query_params["code"]
-#     state = request.query_params["state"]
-#     stored_state = request.cookies.get(STATE_KEY)
+    scope = "playlist-modify-private playlist-modify-public"
 
-#     if state == None or state != stored_state:
-#         raise HTTPException(status_code=400, detail="State mismatch")
-#     else:
-
-#         response.delete_cookie(STATE_KEY, path="/", domain=None)
-
-#         url = "https://accounts.spotify.com/api/token"
-#         request_string = CLIENT_ID + ":" + CLIENT_SECRET
-#         encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
-#         encoded_string = str(encoded_bytes, "utf-8")
-#         header = {
-#             "Authorization": "Basic " + encoded_string,
-#             # "content-type": "application/x-www-form-urlencoded",
-#         }
-
-#         form_data = {
-#             "code": code,
-#             "redirect_uri": REDIRECT_URI,
-#             "grant_type": "authorization_code",
-#         }
-
-#         api_response = requests.post(url, data=form_data, headers=header)
-
-#         if api_response.status_code == 200:
-#             data = api_response.json()
-#             access_token = data["access_token"]
-#             refresh_token = data["refresh_token"]
-
-#             response = RedirectResponse(url=URI)
-#             response.set_cookie(key="accessToken", value=access_token)
-#             response.set_cookie(key="refreshToken", value=refresh_token)
-
-#         return response
+    params = {
+        "response_type": "code",
+        "client_id": CLIENT_ID,
+        "scope": scope,
+        "redirect_uri": REDIRECT_URI,
+        "state": state,
+    }
+    response = RedirectResponse(
+        url="https://accounts.spotify.com/authorize?" + urlencode(params)
+    )
+    response.set_cookie(key=STATE_KEY, value=state)
+    return response
 
 
-# @router.get("/refresh_token")
-# def refresh_token(request: Request):
+@router.get("/callback")
+def callback(request: Request, response: Response):
 
-#     refresh_token = request.query_params["refresh_token"]
-#     request_string = CLIENT_ID + ":" + CLIENT_SECRET
-#     encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
-#     encoded_string = str(encoded_bytes, "utf-8")
-#     header = {"Authorization": "Basic " +
-# encoded_string}
+    code = request.query_params["code"]
+    state = request.query_params["state"]
+    stored_state = request.cookies.get(STATE_KEY)
 
-#     form_data = {"grant_type":
-# "refresh_token", "refresh_token": refresh_token}
+    if state == None or state != stored_state:
+        raise HTTPException(status_code=400, detail="State mismatch")
+    else:
 
-#     url = "https://accounts.spotify.com/api/token"
+        response.delete_cookie(STATE_KEY, path="/", domain=None)
 
-#     response = requests.post(url, data=form_data, headers=header)
-#     if response.status_code != 200:
-#         raise HTTPException
-# (status_code=400, detail="Error with refresh token")
-#     else:
-#         data = response.json()
-#         access_token = data["access_token"]
+        url = "https://accounts.spotify.com/api/token"
+        request_string = CLIENT_ID + ":" + CLIENT_SECRET
+        encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
+        encoded_string = str(encoded_bytes, "utf-8")
+        header = {
+            "Authorization": "Basic " + encoded_string,
+            # "content-type": "application/x-www-form-urlencoded",
+        }
 
-#         return {"access_token": access_token}
+        form_data = {
+            "code": code,
+            "redirect_uri": REDIRECT_URI,
+            "grant_type": "authorization_code",
+        }
+
+        api_response = requests.post(url, data=form_data, headers=header)
+
+        if api_response.status_code == 200:
+            data = api_response.json()
+            access_token = data["access_token"]
+            refresh_token = data["refresh_token"]
+
+            response = RedirectResponse(url=URI)
+            response.set_cookie(key="accessToken", value=access_token)
+            response.set_cookie(key="refreshToken", value=refresh_token)
+
+        return response
+
+
+@router.get("/refresh_token")
+def refresh_token(request: Request):
+
+    refresh_token = request.query_params["refresh_token"]
+    request_string = CLIENT_ID + ":" + CLIENT_SECRET
+    encoded_bytes = base64.b64encode(request_string.encode("utf-8"))
+    encoded_string = str(encoded_bytes, "utf-8")
+    header = {"Authorization": "Basic " + encoded_string}
+
+    form_data = {"grant_type": "refresh_token", "refresh_token": refresh_token}
+
+    url = "https://accounts.spotify.com/api/token"
+
+    response = requests.post(url, data=form_data, headers=header)
+    if response.status_code != 200:
+        raise HTTPException(status_code=400, detail="Error with refresh token")
+    else:
+        data = response.json()
+        access_token = data["access_token"]
+
+        return {"access_token": access_token}
