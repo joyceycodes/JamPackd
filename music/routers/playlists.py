@@ -7,11 +7,12 @@ from queries.spotify import SpotifyQueries
 # from spotipy.oauth2 import SpotifyOAuth
 import os
 
-# import json
-# import requests
+import json
+import requests
 
-# from requests_oauthlib import OAuth2Session
-# from requests.auth import HTTPBasicAuth
+from requests_oauthlib import OAuth2Session
+
+from requests.auth import HTTPBasicAuth
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 # from .songs import Song
@@ -103,40 +104,40 @@ def get_recommendations(
     return queries.get_recommendations(["pop"])
 
 
-# @router.post("/api/spotify/get_token")
-# def get_token():
-#     client_id = keys.client_ID
-#     client_secret = keys.client_SECRET
-#     redirect_uri = keys.redirect_uri
+@router.post("/api/spotify/get_token")
+def get_token():
+    client_id = os.environ["CLIENT_ID"]
+    client_secret = os.environ["CLIENT_SECRET"]
+    redirect_uri = os.environ["REDIRECT_URL"]
+
+    authorization_base_url = "https://accounts.spotify.com/authorize"
+    token_url = "https://accounts.spotify.com/api/token"
+    scope = ["playlist-modify-private", "playlist-modify-public"]
+
+    spotify = OAuth2Session(client_id, scope=scope, redirect_uri=redirect_uri)
+
+    # Redirect user to Spotify for authorization
+    authorization_url, state = spotify.authorization_url(
+        authorization_base_url
+    )
+    print("Please go here and authorize: ", authorization_url)
+
+    # Get the authorization verifier code from the callback url
+    redirect_response = redirect_uri
+
+    auth = HTTPBasicAuth(client_id, client_secret)
+
+    # Fetch the access token
+    token = spotify.fetch_token(
+        token_url,
+        auth=auth,
+        authorization_response=redirect_response,
+    )
+
+    print(token)
+    return token
 
 
-#     authorization_base_url = "https://accounts.spotify.com/authorize"
-#     token_url = "https://accounts.spotify.com/api/token"
-#     scope = ["playlist-modify-private", "playlist-modify-public"]
-
-#     spotify = OAuth2Session(client_id,
-#     scope=scope, redirect_uri=redirect_uri)
-
-#     # Redirect user to Spotify for authorization
-#     authorization_url, state = spotify.authorization_url(
-#         authorization_base_url
-#     )
-#     print("Please go here and authorize: ", authorization_url)
-
-#     # Get the authorization verifier code from the callback url
-#     redirect_response = redirect_uri
-
-#     auth = HTTPBasicAuth(client_id, client_secret)
-
-#     # Fetch the access token
-#     token = spotify.fetch_token(
-#         token_url,
-#         auth=auth,
-#         authorization_response=redirect_response,
-#     )
-
-#     print(token)
-#     return token
 # Fetch a protected resource, i.e. user profile
 # auth_url = "https://accounts.spotify.com/api/token"
 # data = {
@@ -152,32 +153,32 @@ def get_recommendations(
 # return access_token
 
 
-# @router.post("/api/spotify/create/")
-# def create_sp_playlist(
-#     # playlist=Depends(create_playlist),
-# ):
-#     token = ""
-#     print(token)
-#     user_id = "1254524921"
-#     print(user_id)
-#     endpoint_url = f"https://api.spotify.com/v1/users/{user_id}/playlists"
-#     request_body = json.dumps(
-#         {
-#             "name": "Indie bands like Franz Ferdinand but using Python",
-#             "description": "My first programmatic playlist, yooo!",
-#             "public": False,
-#         }
-#     )
-#     response = requests.post(
-#         url=endpoint_url,
-#         data=request_body,
-#         headers={
-#             "Content-Type": "application/json",
-#             "Authorization": "Bearer {}".format(token),
-#         },
-#     )
-#     print(response)
-#     return True
+@router.post("/api/spotify/create/")
+def create_sp_playlist(
+    # playlist=Depends(create_playlist),
+):
+    token = ""
+    print(token)
+    user_id = "1254524921"
+    print(user_id)
+    endpoint_url = f"https://api.spotify.com/v1/users/{user_id}/playlists"
+    request_body = json.dumps(
+        {
+            "name": "Indie bands like Franz Ferdinand but using Python",
+            "description": "My first programmatic playlist, yooo!",
+            "public": False,
+        }
+    )
+    response = requests.post(
+        url=endpoint_url,
+        data=request_body,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": "Bearer {}".format(token),
+        },
+    )
+    print(response)
+    return True
 
 
 # @router.post("/api/spotify/update/")
