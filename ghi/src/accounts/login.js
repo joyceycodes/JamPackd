@@ -7,13 +7,13 @@ function LoginComponent() {
   let [token, login] = useToken();
   console.log(token);
 
-  let [username, setUsername] = useState();
+  let [email, setEmail] = useState();
   let [password, setPassword] = useState();
 
   const submitHandler = (e) => {
-    login(username, password);
+    login(email, password);
     e.preventDefault();
-    navigate("/");
+    navigate("/accountpage");
     // redirect to homepage loggedin, not "/"
   };
 
@@ -24,10 +24,10 @@ function LoginComponent() {
         <form onSubmit={submitHandler}>
           <input
             type="text"
-            name="username"
+            name="email"
             placeholder="Email"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <br />
           <input
@@ -45,3 +45,40 @@ function LoginComponent() {
   );
 }
 export default LoginComponent;
+
+
+// const submitLogin = async () => {
+//   const requestOptions = {
+//     method: "POST",
+
+//     headers: {
+//       "Content-Type": "application/x-www-form-urlencoded",
+//       "Authorization": `Bearer ${fastapi_token}`
+//     },
+//     credentials: "include",
+//     body: JSON.stringify(
+//       `grant_type=&email=${email}&password=${password}&scope=&client_id=&client_secret=`
+//     ),
+//   };
+
+//   const response = await fetch(
+//     `${process.env.REACT_APP_ACCOUNTS_HOST}/token`,
+//     requestOptions
+//   );
+//   const data = await response.json();
+//   if (!response.ok) {
+//     setErrorMessage(data.detail);
+//   } else {
+//     localStorage.setItem("Email", email);
+//     setToken(data.access_token);
+//     navigate("/accountpage");
+//   }
+// };
+
+// const submitHandler = (e) => {
+//   login(email, password);
+//   e.preventDefault();
+//   submitLogin();
+//   navigate("/accountpage");
+//   // redirect to homepage loggedin, not "/"
+// };

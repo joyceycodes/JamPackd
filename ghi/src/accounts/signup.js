@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 function SignupComponent() {
     const navigate = useNavigate();
     const [token, login] = useToken();
-    async function signup(email, full_name, password) {
-        const url = `${process.env.REACT_APP_accounts}/api/users`;
+    console.log("TOKEN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!", token);
+    async function signup(full_name, email, password) {
+        const url = `${process.env.REACT_APP_accounts}/api/accounts`;
+        console.log("heloooooooo", url)
         const response = await fetch(url, {
             method: "post",
             body: JSON.stringify({
@@ -18,7 +20,7 @@ function SignupComponent() {
                 "content-type": "application/json",
             },
         });
-        console.log("TOKEN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!", token);
+        console.log("hello", token);
         if (response.ok) {
             await login(email, password);
             navigate("/login");
@@ -31,9 +33,9 @@ function SignupComponent() {
     let [email, setEmail] = useState();
 
     const submitHandler = (e) => {
-        signup(email, full_name, password);
-
         e.preventDefault();
+        signup(full_name, email, password);
+
     };
 
     return (
