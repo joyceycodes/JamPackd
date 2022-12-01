@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { useToken } from "./auth";
 import { useNavigate } from "react-router-dom";
 
 function SignupComponent() {
     const navigate = useNavigate();
-    const [token, login] = useToken();
-    console.log("TOKEN HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!", token);
     async function signup(full_name, email, password) {
         const url = `${process.env.REACT_APP_accounts}/api/accounts`;
         console.log("heloooooooo", url)
@@ -20,10 +17,9 @@ function SignupComponent() {
                 "content-type": "application/json",
             },
         });
-        console.log("hello", token);
         if (response.ok) {
-            await login(email, password);
-            navigate("/login");
+
+            navigate("/accountpage");
         }
         return false;
     };
