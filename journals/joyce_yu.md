@@ -1,3 +1,13 @@
+### November 30, 2022
+- Worked more on the create playlist endpoint. Andrew says we're really close! Using OAuth has been really challenging but also exciting to learn how to implement. 
+- There's a lot of back and forth going on between our app, the user, and the external API:
+1. User gets to the spotify authorization page where they allow our app to access their Spotify information.
+2. User gets redirected to our render page. 
+3. We receive a code as a response and use that to exchange for an access token. 
+4. The token will last for an hour and we'll use the token to create a new playlist in the user's account.
+- Even though Andrew suggested using the OAuth2 library in requests, I was able to get some endpoints working with Spotipy! The code is a lot cleaner so I prefer it. It wasn't working before but after learning more about the OAuth workflow, I was able to make successful requests to create and update playlists. The missing piece was the auth url and receiving the code in response. Still need to figure out how to get the code programatically.
+- I've spent a lot of time exploring OAuth but really think my time is going to be better spent on some of our other incomplete tasks. Now that I think about it, having the playlist generated through Spotify is just a small portion of our project scope. The main feature is still the swiping aspect. Still need to complete getting the songs displayed on the front end and then the frontend for all of the CRUD for playlists.
+
 ### November 29, 2022
 - Worked with Tiffany to deploy our music microservice. It was very gratifying to see our site up on a URL that is not localhost!
 - Considering other options if we aren't able to get the create playlist endpoint working with Spotify since we've been working on it for a week now. Rather than having a Spotify playlist at the end of the swiping feature, we may just show all of the liked songs as a list of embedded iFrame players instead. 
