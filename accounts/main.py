@@ -1,20 +1,26 @@
-from fastapi import FastAPI, Request
-from routers import users
-from fastapi.middleware.cors import CORSMiddleware
-from authenticator import authenticator
 import os
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.encoders import jsonable_encoder
+from routers import users
+
+# from queries.users import UserIn
 from pydantic import BaseModel
+from fastapi import FastAPI, Request
+from authenticator import authenticator
+from fastapi.encoders import jsonable_encoder
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 
 origins = [
+    "http://localhost",
     "http://localhost:3000",
-    # may need to change this url above MAYBE
+    "http://localhost:8000",
+    "http://localhost:8001",
+    "http://localhost:8003",
+    "http://localhost:8081",
     os.environ.get("CORS_HOST", None),
 ]
+# may need to change this url above MAYBE
 
 
 app.add_middleware(
@@ -30,16 +36,6 @@ app.include_router(users.router)
 app.include_router(authenticator.router)
 
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://localhost:8001",
-    "http://localhost:8003",
-    "http://localhost:8081",
-]
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -49,24 +45,13 @@ app.add_middleware(
 )
 
 
-# @app.get("/")
-# async def main():
-#     return {"message": "Hello World"}
-
-
-class UserIn(BaseModel):
-    hashed_password: str
-    id: int | str
-    full_name: str
-    email: str
-
-
 @app.get("/")
 async def read_root(request: Request):
     print(request)
     return {}
 
 
+# import UserIn
 @app.put("/users/{id}")
 async def remove_hashing_password(UserIn):
     data = UserIn

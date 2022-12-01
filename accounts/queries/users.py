@@ -37,18 +37,14 @@ class UserOutWithPassword(BaseModel):
     email: str
 
 
-# class DuplicateAccountError(ValueError):
-#     pass
+class DuplicateAccountError(ValueError):
+    pass
+
+
+# checks for duplicate accounts
 
 
 class UserQueries:
-    def get_all_users(self):
-        db = client[dbname]
-        result = list(db.users.find())
-        for value in result:
-            value["id"] = value["_id"]
-        return result
-
     def get_user(self, email: str):
         db = client[dbname]
         result = db.users.find_one({"email": email})
@@ -63,14 +59,10 @@ class UserQueries:
         props = account.dict()
         props["hashed_password"] = hashed_password
         props.pop("password")
-        print("AAAAAAAAAA PROPS AAAAAAAAAAAAAAAAAAAAA!!!!!!", props)
-        # try:
-        db.users.insert_one(props)
-        # except DuplicateAccountError:
-        #     raise DuplicateAccountError()
-
-        # got rid of this exception for testing
-
+        try:
+            db.users.insert_one(props)
+        except DuplicateAccountError:
+            raise DuplicateAccountError()
         props["id"] = str(props["_id"])
         return UserOutWithPassword(**props)
 
