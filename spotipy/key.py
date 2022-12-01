@@ -5,7 +5,7 @@ client_ID = "26c21b44542b466295adedc6ee996cb2"
 client_SECRET = "1144c6e7b2564a019d531d536d5e9d5e"
 
 
-redirect_url = "http://localhost:8003/"
+redirect_url = "http://localhost:8080/"
 user = "31gv6grbwedyw3u7fxfucsuvq7ua"
 user_joyce = "1254524921"
 user_2 = "Semi Serious Solutions"

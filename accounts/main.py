@@ -1,14 +1,33 @@
 from fastapi import FastAPI, Request
 from routers import users
 from fastapi.middleware.cors import CORSMiddleware
+from authenticator import authenticator
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    # may need to change this url above MAYBE
+    os.environ.get("CORS_HOST", None),
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 app.include_router(users.router)
+app.include_router(authenticator.router)
 
 
 origins = [

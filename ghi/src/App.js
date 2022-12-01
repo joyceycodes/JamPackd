@@ -11,6 +11,12 @@ import LogoutComponent from './accounts/logout';
 
 
 
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
+
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
+
 function App() {
 
   return (

@@ -31,6 +31,7 @@ services:
     volumes:
       - ./accounts:/app
     environment:
+      SIGNING_KEY: admin
       DATABASE_URL: mongodb://admin:admin@mongo
       MONGOHOST: mongo
       MONGODATABASE: accounts
@@ -53,6 +54,10 @@ services:
       MONGODATABASE: music
       MONGOUSER: admin
       MONGOPASSWORD: admin
+      CLIENT_ID: ${client_ID}
+      CLIENT_SECRET: ${client_SECRET}
+      REDIRECT_URL: ${redirect_url}
+      USER: ${user}
 
   ghi:
     image: node:lts-bullseye

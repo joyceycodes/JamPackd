@@ -1,21 +1,26 @@
-from fastapi import FastAPI, Depends
-
-# from queries.playlists import PlaylistsOut
-# from db import PlaylistQueries as PlaylistQ
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routers import playlists
-from routers import songs
+
+# from routers import spotify
+import os
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    os.environ.get("CORS_HOST", None),
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 app.include_router(playlists.router)
-app.include_router(songs.router)
-# playlist bound for spotify
-# @app.post("/api/playlist")
-# def playlist():
-#     return "X"
-
-
-# playlist stored in database
-# @app.post("/api/local_playlist")
-# def local_playlist():
-#     return "X"
+# app.include_router(spotify.router)
