@@ -190,7 +190,8 @@
 #     # for track in data["tracks"]
 #     #   if used clicks like
 #     #   filter data
-#     #   append tracks["uri"], track["name"], track["artists"][0]["name"] as an object to playlist
+#     #   append tracks["uri"], track["name"], track["artists"]
+# [0]["name"] as an object to playlist
 #     pass
 
 
@@ -211,7 +212,8 @@
 # #     pl_name = input("Enter Playlist Name: ")
 
 # #     result = sp.user_playlist_create(
-# #         keys.user, pl_name, public=False, collaborative=True, description=""
+# #         keys.user, pl_name, public=False, c
+# ollaborative=True, description=""
 # #     )
 
 # #     return result["id"]

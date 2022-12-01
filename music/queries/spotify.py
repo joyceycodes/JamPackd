@@ -145,6 +145,8 @@ genres = [
 ]
 # queries are to access db
 # rename to spotifyAPI later
+
+
 class SpotifyQueries:
     def get_recommendations(self, genre):
         sp = spotipy.Spotify(

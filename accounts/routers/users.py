@@ -10,7 +10,13 @@ from pydantic import BaseModel
 from db import UserQueries
 from authenticator import authenticator
 from jwtdown_fastapi.authentication import Token
-from db import UsersOut, UserIn, UserOut, DuplicateAccountError
+from db import (
+    UsersOut,
+    UserIn,
+    UserOut,
+    DuplicateAccountError,
+    UserOutWithPassword,
+)
 
 
 router = APIRouter()
