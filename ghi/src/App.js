@@ -1,7 +1,6 @@
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 // import { useEffect, useState } from 'react';
 // import { AuthProvider, useToken, useAuthContext } from './accounts/auth.js';
-
 import './css/App.css';
 import MainPage from './mainpage'
 import SignupForm from "./accounts/signup"
