@@ -47,3 +47,27 @@
 11/22/22
 
 - working with James on Update playlist
+- was able to successfully update playlist
+- working with Z on front end stuff
+
+11/26
+
+- met with team on the weekend, started work on last few endpoints, ran in to many errors
+
+11/28/22
+
+- Worked on API endpoints with James and Andrew, have to work more on it tomorrow.
+- Worked with Z for the front end log in log out and signup features.
+- Figuring out how to get the signup router to work keep getting a get error and CORS error.
+- For tomorrow:
+        - Create logged in home page
+        - Create playlist page
+
+11/29/22
+
+- T and J are working on CI/CD stuff, Z and I are working on frontend
+- Worked with group on ci/cd stuff with group
+- Broke off with Z to do frontend work
+- Cleaned up our code with the group to push to main
+- Fixed our error with our post user
+- Now working with our fetch 500 error
