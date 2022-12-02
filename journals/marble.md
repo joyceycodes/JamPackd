@@ -78,3 +78,7 @@
 - Got help from Adrian for our fetch/Token
 - Still need to work on Null token
 - Built our account page just need to flesh out the playlist code.
+
+12/2/22
+
+- FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce. No idea where Tiffany is.
