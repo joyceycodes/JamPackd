@@ -13,14 +13,13 @@ function LoginComponent() {
   const submitHandler = (e) => {
     login(username, password);
     e.preventDefault();
-    navigate("/");
-    // redirect to homepage loggedin, not "/"
+    navigate("/accountpage");
   };
 
   return (
     <div>
       <center>
-        <h1>Welcome! Login using your email and password</h1>
+        <h1>Welcome! Login using your username and password</h1>
         <form onSubmit={submitHandler}>
           <input
             type="text"

@@ -8,12 +8,12 @@ from queries.users import UserQueries, UserOutWithPassword, UserOut
 class UserAuthenticator(Authenticator):
     async def get_account_data(
         self,
-        username: str,
+        full_name: str,
         accounts: UserQueries,
     ):
         # Use your repo to get the account based on the
         # username (which could be an email)
-        return accounts.get_user(username)
+        return accounts.get_user(full_name)
 
     def get_account_getter(
         self,
@@ -30,7 +30,7 @@ class UserAuthenticator(Authenticator):
     def get_account_data_for_cookie(self, account: UserOutWithPassword):
         # Return the username and the data for the cookie.
         # You must return TWO values from this method.
-        return account.email, UserOut(**account.dict())
+        return account.username, UserOut(**account.dict())
 
 
 authenticator = UserAuthenticator(os.environ["SIGNING_KEY"])

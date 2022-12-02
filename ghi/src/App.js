@@ -3,10 +3,10 @@ import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 // import { AuthProvider, useToken, useAuthContext } from './accounts/auth.js';
 import './css/App.css';
 import MainPage from './mainpage'
-import SignupForm from "./accounts/signup"
+import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
 import LogoutComponent from './accounts/logout';
-// import AccountPageComponent from "./accounts/accountpage"
+import AccountPageComponent from "./accounts/accountpage"
 
 
 
@@ -34,9 +34,9 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
-          <Route path="/signup" element={<SignupForm SignupForm={SignupForm} />} />
+          <Route path="/signup" element={<SignupComponent SignupComponent={SignupComponent} />} />
           <Route path="/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
-          {/* <Route path="/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} /> */}
+          <Route path="/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           {/* <Route path="/new_playlist" element={} */}
         </Routes>
       </div>
