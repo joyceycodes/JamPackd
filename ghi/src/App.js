@@ -16,7 +16,7 @@ const basename = process.env.PUBLIC_URL.replace(domain, '');
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <div>
         <div className="nav-container">
           <div className="nav-tabs is-centered">

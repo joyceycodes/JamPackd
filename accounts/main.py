@@ -2,10 +2,11 @@ import os
 from routers import users
 
 # from queries.users import UserIn
-from pydantic import BaseModel
+# from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from authenticator import authenticator
-from fastapi.encoders import jsonable_encoder
+
+# from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 
 
