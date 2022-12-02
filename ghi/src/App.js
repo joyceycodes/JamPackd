@@ -6,7 +6,8 @@ import MainPage from './mainpage'
 import SignupForm from "./accounts/signup"
 import LoginComponent from "./accounts/login"
 import LogoutComponent from './accounts/logout';
-import RecommendationsForm from './music/RecommendationsForm';
+import SongPlayer from './music/player';
+
 // import AccountPageComponent from "./accounts/accountpage"
 
 import Navigation from './nav';
@@ -29,7 +30,10 @@ function App() {
             <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
           </Route>
           <Route path="music">
-            <Route path="/music/recommendations" element={<RecommendationsForm />} />
+            {/* <Route path="/music/recommendations" element={<RecommendationsForm />} /> */}
+            <Route path="/music/player" element={<SongPlayer />} />
+
+
           </Route>
           {/* <Route path="/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} /> */}
           {/* <Route path="/new_playlist" element={} */}
