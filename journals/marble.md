@@ -71,3 +71,10 @@
 - Cleaned up our code with the group to push to main
 - Fixed our error with our post user
 - Now working with our fetch 500 error
+
+12/1
+
+- Pair programmed with Z for the signup and log in pages
+- Got help from Adrian for our fetch/Token
+- Still need to work on Null token
+- Built our account page just need to flesh out the playlist code.
