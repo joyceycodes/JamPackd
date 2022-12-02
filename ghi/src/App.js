@@ -6,7 +6,7 @@ import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
 import LogoutComponent from './accounts/logout';
-// import AccountPageComponent from "./accounts/accountpage"
+import AccountPageComponent from "./accounts/accountpage"
 
 
 
@@ -16,7 +16,7 @@ const basename = process.env.PUBLIC_URL.replace(domain, '');
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <div>
         <div className="nav-container">
           <div className="nav-tabs is-centered">
@@ -36,7 +36,7 @@ function App() {
           <Route path="/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
           <Route path="/signup" element={<SignupComponent SignupComponent={SignupComponent} />} />
           <Route path="/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
-          {/* <Route path="/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} /> */}
+          <Route path="/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           {/* <Route path="/new_playlist" element={} */}
         </Routes>
       </div>
