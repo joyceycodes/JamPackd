@@ -1,3 +1,11 @@
+### Devember 1, 2022
+- Got all the spotify endpoints working using Spotipy. I like using Spotipy's library more than Requests-OAuthlib because the code is a lot cleaner. Andrew came and went over the multiple steps for OAuth and it really helped to fill in some missing pieces. The piece I was missing was updating the redirect_uri to be the same as our endpoint for the authorization function. As well as extracting the code query from the redirect_url. It's working on the backend, but I think it will still be a challenge to get this going on the front end.
+- Created a new router for all the spotify endpoints for better organization and imported to main.py.
+- Updated our api keys in the .env file with Tiffany. We ended up making all the variables in uppercase to prevent confusion.
+- Finished the front end page that gets user input to start music exploration. I created a react component that receives the genre from the user and fetches the recommendations from spotify via our music microservice. We receive the list of songs as a response and need to store that in state and send it over to a component that will display the Spotify iFrame player.
+- Worked with Tiffany to refactor the routes in App.js and Nav.js.
+
+
 ### November 30, 2022
 - Worked more on the create playlist endpoint. Andrew says we're really close! Using OAuth has been really challenging but also exciting to learn how to implement. 
 - There's a lot of back and forth going on between our app, the user, and the external API:
