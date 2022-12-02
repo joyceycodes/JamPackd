@@ -4,30 +4,27 @@ import { useState } from "react";
 
 function LoginComponent() {
   let navigate = useNavigate();
-  let [token, login] = useToken();
-  console.log(token);
-
-  let [email, setEmail] = useState();
+  let [, login] = useToken();
+  let [username, setUsername] = useState();
   let [password, setPassword] = useState();
 
   const submitHandler = (e) => {
-    login(email, password);
+    login(username, password);
     e.preventDefault();
     navigate("/accountpage");
-    // redirect to homepage loggedin, not "/"
   };
 
   return (
     <div>
       <center>
-        <h1>Welcome! Login using your email and password</h1>
+        <h1>Welcome! Login using your username and password</h1>
         <form onSubmit={submitHandler}>
           <input
             type="text"
-            name="email"
+            name="username"
             placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <br />
           <input
@@ -45,40 +42,3 @@ function LoginComponent() {
   );
 }
 export default LoginComponent;
-
-
-// const submitLogin = async () => {
-//   const requestOptions = {
-//     method: "POST",
-
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "Authorization": `Bearer ${fastapi_token}`
-//     },
-//     credentials: "include",
-//     body: JSON.stringify(
-//       `grant_type=&email=${email}&password=${password}&scope=&client_id=&client_secret=`
-//     ),
-//   };
-
-//   const response = await fetch(
-//     `${process.env.REACT_APP_ACCOUNTS_HOST}/token`,
-//     requestOptions
-//   );
-//   const data = await response.json();
-//   if (!response.ok) {
-//     setErrorMessage(data.detail);
-//   } else {
-//     localStorage.setItem("Email", email);
-//     setToken(data.access_token);
-//     navigate("/accountpage");
-//   }
-// };
-
-// const submitHandler = (e) => {
-//   login(email, password);
-//   e.preventDefault();
-//   submitLogin();
-//   navigate("/accountpage");
-//   // redirect to homepage loggedin, not "/"
-// };

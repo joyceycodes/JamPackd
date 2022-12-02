@@ -30,7 +30,7 @@ class UserAuthenticator(Authenticator):
     def get_account_data_for_cookie(self, account: UserOutWithPassword):
         # Return the username and the data for the cookie.
         # You must return TWO values from this method.
-        return account.email, UserOut(**account.dict())
+        return account.username, UserOut(**account.dict())
 
 
 authenticator = UserAuthenticator(os.environ["SIGNING_KEY"])
