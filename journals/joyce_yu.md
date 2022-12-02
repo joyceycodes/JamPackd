@@ -7,7 +7,7 @@
 
 
 ### November 30, 2022
-- Worked more on the create playlist endpoint. Andrew says we're really close! Using OAuth has been really challenging but also exciting to learn how to implement. 
+- Worked more on the create playlist endpoint. Andrew says we're really close! Sorting through Spotify's OAuth has been really challenging but also exciting to learn how to implement. 
 - There's a lot of back and forth going on between our app, the user, and the external API:
 1. User gets to the spotify authorization page where they allow our app to access their Spotify information.
 2. User gets redirected to our render page. 
@@ -22,14 +22,15 @@
 
 ### November 28, 2022
 - Group programming with Andrew and James to get our post requests with Spotify working. We were dealing with the issue of the request hanging on SwaggerUI and thought that it could possibly be an issue of not using async await, however the use of it was never specified in the docs for Spotipy or Spotify API. 
-- We moved away from using Spotipy since it doesn't work well with FastAPI as they both want to handle redirects on their own. Playing around with making requests directly to Spotify API but running into a CORS and HTTPS issue. Andrew says we may need to deploy our site first in order to make this work. 
+- We moved away from using Spotipy since it doesn't work well with FastAPI as they both want to handle redirects on their own. Playing around with making requests directly to Spotify API but running into a CORS and HTTPS issue. Andrew says we need to deploy our site first in order to make this work. 
 
 ### November 25, 2022
 - Group programming to look at the post request endpoints for Spotify. Wasn't making too much progress so we decided to shift gears and work on front end. 
 - Started on auth in the accounts microservice. Moved some things around, specifically the basemodels. I kept running into an issue where there was a circular import, so moved all the pydantic models from routers.users to db.py. Login/logout endpoints are showing up on Swagger UI. 
 
 ### November 23, 2022
-- Group programming to get the Get track recommendations endpoint working with FastAPI. Was able to figure out how to parse the JSON data so that it only returns the information that we want. 
+- Group programming to get the Get track recommendations endpoint working with FastAPI. 
+- Was able to figure out how to parse the JSON data so that it only returns the information that we want. 
 - The POST requests with Spotipy are proving to be a challenge as well. Running into an issue where we'd try to execute the the post request on Swagger UI but it just keeps loading until it times out. No error on the terminal either. The main difference between the get and post requests with Spotipy are that the post requests require user authentication.
 
 ### November 22, 2022
@@ -76,7 +77,7 @@ Today I worked on:
 - Worked with the group on the Docker Compose file to get all the containers running for the playlists, songs, and accounts microservices.
 - Started working on queries for playlists. Created playlists/db.py and playlists/models.py.
 
-We decided on having 3 total microservices. Since songs will all be incoming from a third party API (Spotify), I'm wondering if it's essential for it do have it's own database or if it can be shared with the playlists microservice.
+We decided on having 3 total microservices. Since songs will all be incoming from a third party API (Spotify), I'm wondering if it's essential for it to have it's own database or if it can be shared with the playlists microservice.
 
 ### November 10, 2022
 Today I worked on:
