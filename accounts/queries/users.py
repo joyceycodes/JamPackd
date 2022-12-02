@@ -16,14 +16,14 @@ client = pymongo.MongoClient(mongo_str)
 
 class UserIn(BaseModel):
     full_name: str
-    email: str
+    username: str
     password: str
 
 
 class UserOut(BaseModel):
     id: int | str
     full_name: str
-    email: str
+    username: str
 
 
 class UsersOut(BaseModel):
@@ -34,7 +34,7 @@ class UserOutWithPassword(BaseModel):
     hashed_password: str
     id: int | str
     full_name: str
-    email: str
+    username: str
 
 
 class DuplicateAccountError(ValueError):
@@ -45,9 +45,9 @@ class DuplicateAccountError(ValueError):
 
 
 class UserQueries:
-    def get_user(self, email: str):
+    def get_user(self, username: str):
         db = client[dbname]
-        result = db.users.find_one({"email": email})
+        result = db.users.find_one({"username": username})
         if result:
             result["id"] = str(result["_id"])
         return UserOutWithPassword(**result)
