@@ -15,7 +15,7 @@ function SignupComponent() {
     e.preventDefault();
     await signup(full_name, username, password);
     console.log("token", token)
-    navigate("/account")
+    navigate("/accounts/account")
 
   };
 
