@@ -1,36 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToken, useAuthContext } from "./auth"
 
 function SignupComponent() {
     const navigate = useNavigate();
-    async function signup(full_name, email, password) {
-        const url = `${process.env.REACT_APP_accounts}/api/accounts`;
-        console.log("heloooooooo", url)
-        const response = await fetch(url, {
-            method: "post",
-            body: JSON.stringify({
-                full_name,
-                email,
-                password,
-            }),
-            headers: {
-                "content-type": "application/json",
-            },
-        });
-        if (response.ok) {
-
-            navigate("/accountpage");
-        }
-        return false;
-    };
+    const [, , signup] = useToken()
+    const { token } = useAuthContext
 
     let [full_name, setFullName] = useState();
     let [password, setPassword] = useState();
     let [email, setEmail] = useState();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        signup(full_name, email, password);
+        await signup(full_name, email, password);
+        console.log("token", token)
+        navigate("/accountpage")
 
     };
 
