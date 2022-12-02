@@ -9,11 +9,11 @@ function SignupComponent() {
 
   let [full_name, setFullName] = useState();
   let [password, setPassword] = useState();
-  let [email, setEmail] = useState();
+  let [username, setUsername] = useState();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    await signup(full_name, email, password);
+    await signup(full_name, username, password);
     console.log("token", token)
     navigate("/account")
 
@@ -34,10 +34,10 @@ function SignupComponent() {
           <br />
           Email Address <input
             type="text"
-            name="email"
+            name="username"
             placeholder="john@doe.com"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <br />
           Password: <input

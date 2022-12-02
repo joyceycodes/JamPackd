@@ -7,7 +7,7 @@ export function getToken() {
 }
 
 export async function getTokenInternal() {
-  const url = `${process.env.REACT_APP_accounts}/api/users/me/token/`;
+  const url = `${process.env.REACT_APP_accounts}/api/accounts/me/token/`;
   try {
     const response = await fetch(url, {
       credentials: "include",
@@ -83,10 +83,10 @@ export function useToken() {
     }
   }
 
-  async function login(email, password) {
+  async function login(username, password) {
     const url = `${process.env.REACT_APP_accounts}/token/`;
     const form = new FormData();
-    form.append("email", email);
+    form.append("username", username);
     form.append("password", password);
     const response = await fetch(url, {
       method: "post",
@@ -102,13 +102,13 @@ export function useToken() {
     return handleErrorMessage(error);
   }
 
-  async function signup(full_name, email, password) {
+  async function signup(full_name, username, password) {
     const url = `${process.env.REACT_APP_accounts}/api/accounts/`;
     const response = await fetch(url, {
       method: "post",
       body: JSON.stringify({
         full_name,
-        email,
+        username,
         password
 
       }),
@@ -117,31 +117,10 @@ export function useToken() {
       },
     });
     if (response.ok) {
-      await login(email, password);
+      await login(username, password);
     }
     return false;
   }
-
-  // async function update(username, password, email, firstName, lastName) {
-  //     const url = `${process.env.REACT_APP_accounts}/api/accounts/`;
-  //     const response = await fetch(url, {
-  //         method: "patch",
-  //         body: JSON.stringify({
-  //             username,
-  //             password,
-  //             email,
-  //             first_name: firstName,
-  //             last_name: lastName,
-  //         }),
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //         },
-  //     });
-  //     if (response.ok) {
-  //         await login(username, password);
-  //     }
-  //     return false;
-  // }
 
   return [login, logout, signup];
 }

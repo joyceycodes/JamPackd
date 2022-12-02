@@ -35,11 +35,11 @@ class HttpError(BaseModel):
 
 @router.get("/api/users/{user_id}", response_model=UserOut)
 def get_user(
-    email: str,
+    username: str,
     response: Response,
     queries: UserQueries = Depends(),
 ):
-    record = queries.get_user(email)
+    record = queries.get_user(username)
     print(record)
     if record is None:
         response.status_code = 404
@@ -63,7 +63,7 @@ async def create_user(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(username=info.email, password=info.password)
+    form = AccountForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 

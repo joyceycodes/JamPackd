@@ -72,7 +72,7 @@
 - Fixed our error with our post user
 - Now working with our fetch 500 error
 
-12/1
+12/1/22
 
 - Pair programmed with Z for the signup and log in pages
 - Got help from Adrian for our fetch/Token
