@@ -136,16 +136,17 @@ genres = [
 ]
 
 
-@router.get("/recommendations")
-def get_recommendations(genre: str):
+@router.post("/recommendations")
+def get_recommendations(request: dict):
     sp = spotipy.Spotify(
         auth_manager=SpotifyClientCredentials(
             client_id=os.environ["CLIENT_ID"],
             client_secret=os.environ["CLIENT_SECRET"],
         )
     )
-    if genre in genres:
-        genre = [genre]
+
+    genre = list(request["genre"].split())
+
     data = sp.recommendations(seed_genres=genre, limit=20)
     recommendations = []
     for idx, track in enumerate(data["tracks"]):
