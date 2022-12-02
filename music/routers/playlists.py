@@ -1,10 +1,7 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
-import os
-
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-# from .songs import Song
 from pydantic import BaseModel
+from typing import Optional
 
 router = APIRouter()
 
@@ -24,6 +21,7 @@ class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
     ext_url: str
+    comments: Optional[str] = None
 
 
 class PlaylistOut(BaseModel):
@@ -31,6 +29,7 @@ class PlaylistOut(BaseModel):
     name: str
     songs: list[Song]
     ext_url: str
+    comments: Optional[str] = None
 
 
 class PlaylistsOut(BaseModel):
@@ -76,8 +75,8 @@ def delete_playlist(playlist_id: str, queries: PlaylistQueries = Depends()):
 
 @router.put("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def update_playlist(
-    # playlist_id: str,
+    playlist_id: str,
     playlist: PlaylistIn,
     queries: PlaylistQueries = Depends(),
 ):
-    return queries.update_playlist(playlist)
+    return queries.update_playlist(playlist_id, playlist)
