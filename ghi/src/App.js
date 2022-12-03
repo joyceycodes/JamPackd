@@ -10,7 +10,7 @@ import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
 
 import Navigation from './nav';
-import SpotifyButton from './music/SpotifyExport';
+// import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
 
 
@@ -34,7 +34,7 @@ function App() {
           </Route>
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
-            <Route path="/music/playlist" element={<PlaylistDetail SpotifyButton={SpotifyButton} />} />
+            <Route path="/music/playlist" element={<PlaylistDetail />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes>
