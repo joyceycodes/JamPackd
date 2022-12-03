@@ -81,4 +81,9 @@
 
 12/2/22
 
-- FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce. No idea where Tiffany is.
+- FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce. No idea where Tiffany is. Tiffany eventually came back. She was sick. Did not let us know what was up.
+- Still need to figure out logout button, also when user is logged in vs not logged in,
+- flesh out user account page
+- Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
+- Group coded with Z
+- problem: not creating new token on login. line 77, auth.js
