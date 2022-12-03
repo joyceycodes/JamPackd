@@ -2,15 +2,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 let internalToken = null;
 
-export function getToken() {
-  return internalToken;
-}
+
 
 export async function getTokenInternal() {
   const url = `${process.env.REACT_APP_accounts}/api/accounts/me/token/`;
   try {
     const response = await fetch(url, {
-      credentials: "include",
+      credentials: "",
     });
     if (response.ok) {
       const data = await response.json();
@@ -19,6 +17,9 @@ export async function getTokenInternal() {
     }
   } catch (e) { }
   return false;
+}
+export async function getToken() {
+  return internalToken;
 }
 
 function handleErrorMessage(error) {
@@ -45,13 +46,16 @@ function handleErrorMessage(error) {
 export const AuthContext = createContext({
   token: null,
   setToken: () => null,
+  account: null,
+  setAccount: () => null,
 });
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
+  const [account, setAccount] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, setToken, account, setAccount }}>
       {children}
     </AuthContext.Provider>
   );
@@ -60,25 +64,28 @@ export const AuthProvider = ({ children }) => {
 export const useAuthContext = () => useContext(AuthContext);
 
 export function useToken() {
-  const { token, setToken } = useAuthContext();
+  const { token, setToken, account, setAccount } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchToken() {
-      const token = await getTokenInternal();
+      const [token, account] = await getTokenInternal();
       setToken(token);
+      setAccount(account);
+
     }
-    if (!token) {
-      fetchToken();
-    }
-  }, [setToken, token]);
+    // if (!token) {
+    //   fetchToken();
+    // }
+  }, [setToken, token, setAccount, account]);
 
   async function logout() {
     if (token) {
-      const url = `${process.env.REACT_APP_accounts}/api/token/refresh/logout/`;
+      const url = `${process.env.REACT_APP_accounts}/token/`;
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
+      setAccount(null);
       navigate("/");
     }
   }
@@ -94,8 +101,9 @@ export function useToken() {
       body: form,
     });
     if (response.ok) {
-      const token = await getTokenInternal();
+      const [token, account] = await getTokenInternal();
       setToken(token);
+      setAccount(account);
       return;
     }
     let error = await response.json();
@@ -117,9 +125,9 @@ export function useToken() {
       },
     });
     if (response.ok) {
-      await login(username, password);
+      navigate("/accounts/account");
     }
-    return false;
+
   }
 
   return [login, logout, signup];

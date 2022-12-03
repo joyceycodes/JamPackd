@@ -5,18 +5,20 @@ console.log(internalToken);
 
 function LogoutComponent() {
     const navigate = useNavigate();
-    const { token, setToken } = useAuthContext();
+    const { token } = useAuthContext();
+    console.log(token)
     async function logout() {
         if (token) {
-            console.log("token found");
-            const url = `${process.env.REACT_APP_API_HOST}token`;
-            await fetch(url, { method: "delete", credentials: "include" });
-            // internalToken = null;
-            setToken(null);
-            navigate("/");
+            console.log(token)
+            // console.log("token found");
+            // const url = `${process.env.REACT_APP_accounts}/api/accounts/me/token/`;
+            // await fetch(url, { method: "delete", credentials: "include" });
+            // // internalToken = null;
+            // setToken(null);
+            // navigate("/");
         } else {
             console.log("No token");
-            navigate("/login");
+            navigate("/");
         }
     }
 

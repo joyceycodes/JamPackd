@@ -56,3 +56,17 @@ Now working with our fetch 500 error.
 Merged code and merged to main with the whole group (everything works)
 Still working on debugging the 404 Not Found when trying to make an account frontend
 api user to accounts like 10 in signup.js fixed had to fix const url = `${process.env.REACT_APP_accounts}/token/get`; in auth.js
+
+12/1
+Pair programmed with Scott for the signup and log in pages
+Got help from Adrian for our fetch/Token
+Still need to work on Null token
+Built our account page just need to flesh out the playlist code.
+
+12/2
+FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce
+Still need to figure out logout button, also when user is logged in vs not logged in,
+flesh out user account page
+Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
+Group coded with Scott
+Fixed all the Errors that had to do with clicking signup and login. should work now still need to figure out the token being made when logged in. Auth js ln 77
