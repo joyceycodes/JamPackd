@@ -1,4 +1,9 @@
-### Devember 1, 2022
+### December 2, 2022
+- Created button that exports to the authorization page with Spotify. This will be added to the playlist detail page. It goes to the right page right now but I'm not too sure how to extract the code from the redirect url to be used to make our requests.
+- Added authorization to the music microservice for the backend. Created a new authenticator file that had all the jwtdown-fastapi authenticator functions. Then added a dependency for token data in each of the playlist endpoints.
+- Added a comments option to the playlists model. I originally thought the comments would need full CRUD, but it seems like a better idea to just add it as an attribute of the playlist since all comments will be connected to one playlist only.
+
+### December 1, 2022
 - Got all the spotify endpoints working using Spotipy. I like using Spotipy's library more than Requests-OAuthlib because the code is a lot cleaner. Andrew came and went over the multiple steps for OAuth and it really helped to fill in some missing pieces. The piece I was missing was updating the redirect_uri to be the same as our endpoint for the authorization function. As well as extracting the code query from the redirect url. It's working on the backend, but I think it will still be a challenge to get this going on the front end.
 - Created a new router for all the Spotify endpoints for better organization and imported to main.py.
 - Updated our api keys in the .env file with Tiffany. We ended up making all the variables in uppercase to prevent confusion. May need to get this update on render too.
