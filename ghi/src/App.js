@@ -1,37 +1,46 @@
-import { useEffect, useState } from 'react';
-import Construct from './Construct.js'
-import ErrorNotification from './ErrorNotification';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import { AuthProvider, useToken, useAuthContext } from './accounts/auth.js';
+import './css/App.css';
+import MainPage from './mainpage'
+import SignupComponent from "./accounts/signup"
+import LoginComponent from "./accounts/login"
+import LogoutComponent from './accounts/logout';
+import RecommendationsForm from './music/RecommendationsForm';
+import AccountPageComponent from "./accounts/accountpage"
+
+import Navigation from './nav';
+// import SpotifyButton from './music/SpotifyExport';
+import PlaylistDetail from './music/PlaylistDetail';
+
+
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
 
 function App() {
-  const [launch_info, setLaunchInfo] = useState([]);
-  const [error, setError] = useState(null);  
-
-  useEffect(() => {
-    async function getData() {
-      let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-      console.log('fastapi url: ', url);
-      let response = await fetch(url);
-      console.log("------- hello? -------");
-      let data = await response.json();
-
-      if (response.ok) {
-        console.log("got launch data!");
-        setLaunchInfo(data.launch_details);
-      } else {
-        console.log("drat! something happened");
-        setError(data.message);
-      }
-    }
-    getData();
-  }, [])
-
 
   return (
-    <div>
-      <ErrorNotification error={error} />
-      <Construct info={launch_info} />
-    </div>
+    <BrowserRouter basename={basename}>
+      <Navigation />
+      < div >
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="accounts">
+            <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
+            <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
+            <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
+            <Route path="/accounts/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
+
+          </Route>
+          <Route path="music">
+            <Route path="/music/recommendations" element={<RecommendationsForm />} />
+            <Route path="/music/playlist" element={<PlaylistDetail />} />
+          </Route>
+          {/* /* <Route path="/new_playlist" element={} */}
+        </Routes>
+      </div >
+
+    </BrowserRouter >
   );
 }
 

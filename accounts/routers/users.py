@@ -1,44 +1,45 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import (
+    APIRouter,
+    Depends,
+    Response,
+    Request,
+    HTTPException,
+    status,
+)
 from pydantic import BaseModel
+from authenticator import authenticator
+from jwtdown_fastapi.authentication import Token
+from queries.users import (
+    UserIn,
+    UserOut,
+    DuplicateAccountError,
+    UserQueries,
+)
 
-from db import UserQueries
 
 router = APIRouter()
 
 
-class UserIn(BaseModel):
-    first: str
-    last: str
-    email: str
+class AccountForm(BaseModel):
     username: str
+    password: str
 
 
-class UserOut(BaseModel):
-    id: int | str
-    first: str
-    last: str
-    email: str
-    username: str
+class AccountToken(Token):
+    account: UserOut
 
 
-class UsersOut(BaseModel):
-    users: list[UserOut]
-
-
-@router.get("/api/users", response_model=UsersOut)
-def users_list(queries: UserQueries = Depends()):
-    return {
-        "users": queries.get_all_users(),
-    }
+class HttpError(BaseModel):
+    detail: str
 
 
 @router.get("/api/users/{user_id}", response_model=UserOut)
 def get_user(
-    user_id: str,
+    username: str,
     response: Response,
     queries: UserQueries = Depends(),
 ):
-    record = queries.get_user(user_id)
+    record = queries.get_user(username)
     print(record)
     if record is None:
         response.status_code = 404
@@ -46,26 +47,48 @@ def get_user(
         return record
 
 
-@router.post("/api/users/", response_model=UserOut)
-def create_user(user_in: UserIn, queries: UserQueries = Depends()):
-    return queries.create_user(user_in)
-
-
-@router.put("/api/users/{user_id}", response_model=UserOut)
-def update_user(
-    user_id: str,
-    user_in: UserIn,
+@router.post("/api/accounts", response_model=AccountToken | HttpError)
+async def create_user(
+    info: UserIn,
+    request: Request,
     response: Response,
-    queries: UserQueries = Depends(),
+    accounts: UserQueries = Depends(),
 ):
-    record = queries.update_user(user_id, user_in)
-    if record is None:
-        response.status_code = 404
-    else:
-        return record
+    print(info)
+    hashed_password = authenticator.hash_password(info.password)
+    try:
+        account = accounts.create_user(info, hashed_password)
+    except DuplicateAccountError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot create an account with those credentials",
+        )
+    form = AccountForm(username=info.username, password=info.password)
+    token = await authenticator.login(response, request, form, accounts)
+    return AccountToken(account=account, **token.dict())
 
 
-@router.delete("/api/users/{user_id}", response_model=bool)
+@router.delete("/api/accounts/{user_id}", response_model=bool)
 def delete_user(user_id: str, queries: UserQueries = Depends()):
     queries.delete_user(user_id)
     return True
+
+
+@router.get("/api/accounts/me/token", response_model=AccountToken | None)
+async def get_token(
+    request: Request,
+    account: dict = Depends(authenticator.get_current_account_data),
+) -> AccountToken | None:
+
+    # example of when you might want authenticator.try_get_current_account_data
+    # if account:
+    #     # logged in response
+    # else:
+    #     # non logged in response
+
+    if account and authenticator.cookie_name in request.cookies:
+        return {
+            "access_token": request.cookies[authenticator.cookie_name],
+            "type": "Bearer",
+            "account": account,
+        }

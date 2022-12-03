@@ -44,9 +44,24 @@
     -Explored Spotify's API
     -Attempted to make changes to the playlist endpoints
 
-#### 11/17
+#### 11/18
 
     -Worked on completing the API endpoints 
     -
     -
+    -
+
+#### 11/20
+
+    -
+    -
+    -
+
+#### 11/21
+
+    -While working on the songs endpoints, talking to James we may
+    have decided to go a differnt direaction
+        -The songs design that we(*I*) worked on, it seems as though we might not need it,
+        instead 
+    -Made a piviot to reading through spotiPY's documentation 
     -

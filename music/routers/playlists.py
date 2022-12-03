@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
+from typing import Optional
+from authenticator import authenticator
 
 router = APIRouter()
 
@@ -12,38 +14,40 @@ class Song(BaseModel):
     uri: str
 
 
-# class Playlist(BaseModel):
-#     id: int
-#     name: str
-#     songs: list[Song]
+class Recommendations(BaseModel):
+    recommendations: list[Song]
 
 
 class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
+    ext_url: str
+    comments: Optional[str] = None
 
 
 class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
+    ext_url: str
+    comments: Optional[str] = None
 
 
 class PlaylistsOut(BaseModel):
     playlists: list[PlaylistOut]
 
 
-# get all playlists
+# get all playlists not working currently
 @router.get("/api/playlists/", response_model=PlaylistsOut)
-def get_all_playlists(queries: PlaylistQueries = Depends()):
+def get_all_playlists(
+    queries: PlaylistQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     playlists = []
     for playlist in queries.get_all_playlists():
         playlist["id"] = str(playlist["_id"])
         playlists.append(playlist)
     return {"playlists": playlists}
-    # return {
-    #   "playlists": queries.get_all_playlists()
-    # }
 
 
 # get playlist by ID
@@ -52,6 +56,7 @@ def get_playlist(
     playlist_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     record = queries.get_playlist(playlist_id)
     if record is None:
@@ -62,12 +67,28 @@ def get_playlist(
 
 @router.post("/api/playlists/", response_model=PlaylistOut)
 def create_playlist(
-    playlist_in: PlaylistIn, queries: PlaylistQueries = Depends()
+    playlist_in: PlaylistIn,
+    queries: PlaylistQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return queries.create_playlist(playlist_in)
 
 
-@router.get("/api/recommendations/")
-def get_recommendations():
-    # import requests
-    pass
+@router.delete("/api/playlists/{playlist_id}", response_model=bool)
+def delete_playlist(
+    playlist_id: str,
+    queries: PlaylistQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    queries.delete_playlist(playlist_id),
+    return True
+
+
+@router.put("/api/playlists/{playlist_id}", response_model=PlaylistOut)
+def update_playlist(
+    playlist_id: str,
+    playlist: PlaylistIn,
+    queries: PlaylistQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    return queries.update_playlist(playlist_id, playlist)
