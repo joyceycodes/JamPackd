@@ -33,3 +33,26 @@ Blocker: update playlist need help worked on it for hours
 GOT JAMES IN THE ROOM AND FINALLY HAVE UPDATE WORKING WITH SCOTT
 Now going to start working on front end
 Started on the main page have the buttons and working on the css group coding with Scott again today
+
+11/26
+Got on with the group on the weekend to try and work on last few endpoints.
+Ran into errors, need to wait till monday
+
+11/28
+Worked on api endpoints with James and Andrew, have to work more on it tomorrow.
+Group coding with Marble for the front end log in log out and signup features.
+Figuring out how to get the signup router to work keep getting a get error and cors error.
+For tomorrow:
+Create logged in home page
+Create playlist page
+
+11/29
+Worked on ci/cd stuff with group broke off with Marble to do frontend work
+Cleaned up our code with the group to push to main
+Fixed our error with our post user
+Now working with our fetch 500 error.
+
+11/30
+Merged code and merged to main with the whole group (everything works)
+Still working on debugging the 404 Not Found when trying to make an account frontend
+api user to accounts like 10 in signup.js fixed had to fix const url = `${process.env.REACT_APP_accounts}/token/get`; in auth.js
