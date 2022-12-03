@@ -4,14 +4,16 @@ import { useState } from "react";
 
 function LoginComponent() {
   let navigate = useNavigate();
-  let [, login] = useToken();
   let [username, setUsername] = useState();
   let [password, setPassword] = useState();
+  let [, login] = useToken();
 
-  const submitHandler = (e) => {
-    login(username, password);
+
+
+  const submitHandler = async (e) => {
+    await login(username, password);
     e.preventDefault();
-    navigate("/accountpage");
+    navigate("/accounts/account");
   };
 
   return (
