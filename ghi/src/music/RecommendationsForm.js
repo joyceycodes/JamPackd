@@ -184,6 +184,11 @@ function RecommendationsForm() {
                         </div>
                         <button className="btn btn-outline-dark">Submit</button>
                     </form>
+
+                    {/* <div >
+                        <iframe title="something" src="https://open.spotify.com/embed/playlist/5a2OuIJ1kEttA8X3PaewlI?utm_source=oembed" allowfullscreen allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture;">
+                        </iframe>
+                    </div> */}
                 </div>
             </div >
         </div >
