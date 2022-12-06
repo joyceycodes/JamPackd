@@ -1,16 +1,18 @@
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import RecommendationsForm from "./RecommendationsForm";
 
 // import "../css/Player.css"
 
-const uri = [
-    "5yJM62iiVwUZnfTaNjYbiB",
-    "5S5iEaEeqQncFvtEaTDwNe",
-    "46rvY1HSdviEjKKFweKWbI",
+// const uri = [
+//     "5yJM62iiVwUZnfTaNjYbiB",
+//     "5S5iEaEeqQncFvtEaTDwNe",
+//     "46rvY1HSdviEjKKFweKWbI",
 
-]
+// ]
+
+
 // const songs = ${uri}?utm_source=oembed
 
 // const handleSubmit = async (e) => {

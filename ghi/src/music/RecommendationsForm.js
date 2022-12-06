@@ -4,7 +4,7 @@ import { useState } from "react";
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
-    const [recommendations, SetReccs] = useState("");
+    // const [recommendations, SetReccs] = useState("");
 
 
     const genres = [

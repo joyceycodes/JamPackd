@@ -32,11 +32,10 @@ function App() {
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
             <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
             <Route path="/accounts/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
-
           </Route>
+
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
-            <Route path="/music/player" element={<SongPlayer />} />
             <Route path="/music/playlist" element={<PlaylistDetail />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
