@@ -36,11 +36,8 @@ function App() {
           </Route>
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
-<<<<<<< HEAD
             <Route path="/music/player" element={<SongPlayer />} />
-=======
             <Route path="/music/playlist" element={<PlaylistDetail />} />
->>>>>>> 7418ac7bb1ec52db714805ab67dbd9468b5d4e51
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes>
