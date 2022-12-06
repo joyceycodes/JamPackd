@@ -217,22 +217,22 @@ function RecommendationsForm() {
 
 
 
-                        <iframe title="Current Song" className='container-sm justify-content-center'
+                        <iframe title="Current Song" className='container-sm justify-content-center' allow="encrypted-media"
                             src={em_link} >
                         </iframe>
 
                         {/* Buttons */}
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                            <button class="btn btn-danger me-md-2" type="button">Skip</button>
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button className="btn btn-danger me-md-2" type="button">Skip</button>
                             {/* if button is pressed song_count ++ 1 */}
 
-                            <button class="btn btn-primary" type="button">Like</button>
+                            <button className="btn btn-primary" type="button">Like</button>
                             {/* if button is pressed song_count ++ 1 AND Add song to liked category*/}
 
                         </div>
                         <br />
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                            <button class="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button className="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
                             {/* Redirect to PlaylistDetail */}
                         </div>
 
