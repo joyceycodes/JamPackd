@@ -4,6 +4,8 @@ import { useState } from "react";
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
+    const [recommendations, SetReccs] = useState("");
+
 
     const genres = [
         "acoustic",
@@ -148,9 +150,11 @@ function RecommendationsForm() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const recommendations = await response.json();
+            window.localStorage.setItem("response", JSON.stringify(response));
+            let newObject = window.localStorage.getItem("response");
+            console.log(newObject);
             console.log(recommendations)
         }
-
     }
 
 

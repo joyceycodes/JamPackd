@@ -35,6 +35,7 @@ function App() {
           </Route>
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
+            <Route path="/music/player" element={<SongPlayer />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes>
