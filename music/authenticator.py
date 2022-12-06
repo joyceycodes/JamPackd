@@ -16,4 +16,4 @@ class MyAuthenticator(Authenticator):
         pass
 
 
-authenticator = MyAuthenticator(os.environ["SIGNING_KEY"])
+authenticate = MyAuthenticator(os.environ["SIGNING_KEY"])

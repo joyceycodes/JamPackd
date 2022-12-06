@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
 from typing import Optional
-from authenticator import authenticator
+from authenticator import authenticate
 
 router = APIRouter()
 
@@ -41,7 +41,7 @@ class PlaylistsOut(BaseModel):
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     playlists = []
     for playlist in queries.get_all_playlists():
@@ -56,7 +56,7 @@ def get_playlist(
     playlist_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     record = queries.get_playlist(playlist_id)
     if record is None:
@@ -69,7 +69,7 @@ def get_playlist(
 def create_playlist(
     playlist_in: PlaylistIn,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     return queries.create_playlist(playlist_in)
 
@@ -78,7 +78,7 @@ def create_playlist(
 def delete_playlist(
     playlist_id: str,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     queries.delete_playlist(playlist_id),
     return True
@@ -89,6 +89,6 @@ def update_playlist(
     playlist_id: str,
     playlist: PlaylistIn,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     return queries.update_playlist(playlist_id, playlist)

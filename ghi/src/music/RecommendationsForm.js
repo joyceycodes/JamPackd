@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import Player from "./Player.js";
 
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
+    const [songs, setSongs] = useState([]);
+    const [like, setLike] = useState('');
+    const [dislike, setDislike] = useState('');
 
     const genres = [
         "acoustic",
@@ -149,6 +153,8 @@ function RecommendationsForm() {
         if (response.ok) {
             const recommendations = await response.json();
             console.log(recommendations)
+            setSongs(recommendations)
+            // sessionStorage.setItem("recommendations", recommendations)
         }
 
     }
@@ -160,16 +166,6 @@ function RecommendationsForm() {
                 <div className="shadow p-4 mt-4">
                     <h1>Start jammin'!</h1>
                     <form onSubmit={handleSubmit}>
-                        {/* <div className="form-floating mb-3">
-                            <input
-                                placeholder="Genre"
-                                required type="text"
-                                name="genre" id="genre"
-                                className="form-control"
-                                value={genre}
-                                onChange={(e) => setGenre(e.target.value)} />
-                            <label htmlFor="name"></label>
-                        </div> */}
                         <div className="mb-3">
                             <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
                                 <option value="">Select a genre</option>
@@ -184,14 +180,13 @@ function RecommendationsForm() {
                         </div>
                         <button className="btn btn-outline-dark">Submit</button>
                     </form>
-
-                    {/* <div >
-                        <iframe title="something" src="https://open.spotify.com/embed/playlist/5a2OuIJ1kEttA8X3PaewlI?utm_source=oembed" allowfullscreen allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture;">
-                        </iframe>
-                    </div> */}
                 </div>
             </div >
-        </div >
+            <br />
+            <Player songs={songs} />
+
+
+        </div>
     )
 }
 

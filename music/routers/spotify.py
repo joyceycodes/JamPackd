@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
-from fastapi import APIRouter
+from fastapi import APIRouter, Body
 import os
 
 
@@ -152,7 +152,7 @@ def get_recommendations(request: dict):
     for idx, track in enumerate(data["tracks"]):
         recommendations.append(
             {
-                "uri": track["uri"],
+                "uri": track["uri"].split("track:", 1)[1],
                 "name": track["name"],
                 "artist": track["artists"][0]["name"],
             }
@@ -175,15 +175,16 @@ def login():
     return auth_url
 
 
-@router.get("/authorize")
+@router.post("/music/playlist")
 def authorize(response):
     sp_oauth = create_spotify_oauth()
     # session.clear()
-    code = f"https://jampackd-music.onrender.com/authorize?code={response}"
-
+    code = response.split("code=", 1)[1]
+    # code = f"http://localhost:3000/music/playlist?code={response}"
+    # code = "AQDg83IcgWntDJusk_RuAovd6WVuSnWGTDZG1xfPqcgYnmBnbDaAfudTst2z7LKNDpxjQ7JsE0Yw586tF3FziqqhLS_rUwm2VmNgQ7EHbVpuBR4iZcXzyE1E1zeGe1he-VY_ECkrEM-sWVgD22tGU1LTZpi7avjGDw-MKwBVnmwuSwVGC5pIjNMeXLTqgrOu29DonGeWYKaqCe6P6E2Tm5hVrEBcr_4bCHO28E7Q14-Lak_-ePgCjgOe3nv2KxkvnsI"
     token_info = sp_oauth.get_access_token(code)
     # session["token_info"] = token_info
-    print(token_info)
+    print(token_info, code)
     return token_info
 
 
@@ -201,7 +202,7 @@ def create_playlist():
 
     playlist = spotipy.Spotify(oauth_manager=sp_oauth).user_playlist_create(
         get_user(),
-        "Jam Pack'd Playlist",
+        "Jam Pack'd Playlist 2",
         public=True,
         description="",
     )
@@ -210,9 +211,9 @@ def create_playlist():
 
 
 @router.post("/playlist")
-def update_playlist():
+def update_playlist(uris):
     uris = [
-        "spotify:track:40FLJc17FMZaPmCQEEZgB0",
+        "spotify:track:5Z3GHaZ6ec9bsiI5BenrbY",
     ]
     sp_oauth = create_spotify_oauth()
     playlist = create_playlist()
