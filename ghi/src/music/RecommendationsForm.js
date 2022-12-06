@@ -6,8 +6,7 @@ function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
-    const [like, setLike] = useState('');
-    const [dislike, setDislike] = useState('');
+
 
     const genres = [
         "acoustic",
@@ -152,7 +151,7 @@ function RecommendationsForm() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const recommendations = await response.json();
-            console.log(recommendations)
+            // console.log(recommendations)
             setSongs(recommendations)
             // sessionStorage.setItem("recommendations", recommendations)
         }

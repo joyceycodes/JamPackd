@@ -6,7 +6,7 @@ function Player(songs) {
     const [count, setCount] = useState(0)
 
     const song = songs.songs
-    // let uris = []
+
     const handleLike = (e) => {
         // uris.push(song[count])
         return (
@@ -21,13 +21,16 @@ function Player(songs) {
 
     const getPlayer = () => {
         const currentSong = song[count]
-        return (
-            <iframe title="Current Song" className='container-sm justify-content-center'
-                src={`https://open.spotify.com/embed/track/${currentSong.uri}?utm_source=oembed`} >
-            </iframe>
+        while (song.length > 0) {
+            return (
+                <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
+                    src={`https://open.spotify.com/embed/track/${currentSong.uri}?utm_source=oembed`} >
+                </iframe>
 
-        )
+            )
+        }
     }
+
     return (
 
         <div className='mt-5 container-sm border border-secondary rounded bold justify-content-center'>
@@ -41,6 +44,7 @@ function Player(songs) {
                 <div>
                     {getPlayer()}
                 </div>
+
 
 
                 {/* Buttons */}
