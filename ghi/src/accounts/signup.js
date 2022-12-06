@@ -14,8 +14,14 @@ function SignupComponent() {
   const submitHandler = async (e) => {
     e.preventDefault();
     await signup(full_name, username, password);
-    console.log("token", token)
-    navigate("/accounts/account")
+    // if (token) {
+    //   console.log("token", token)
+
+    // } else {
+    //   console.log("word")
+    // }
+
+    // navigate("/accounts/account")
 
   };
 

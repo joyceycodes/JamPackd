@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import LogoutTest from './newlogout';
 
 function Navigation() {
     return (
@@ -15,6 +16,7 @@ function Navigation() {
                         {/* there are more to add!!!  */}
                         <li><button><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
                     </ul>
+                    <LogoutTest />
                 </div>
             </div>
         </div>
