@@ -67,3 +67,9 @@ Built our account page just need to flesh out the playlist code.
 FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce
 Still need to figure out logout button, also when user is logged in vs not logged in,
 flesh out user account page
+
+12/5
+Lied about the Auth stuff
+Worked on it till 8 with Adrian got it working but now something else broke
+need to figure out why im auto logged in when i navigate to the website
+logg out button should work by now, need to figre out what can be seen vs cant when logged out/in
