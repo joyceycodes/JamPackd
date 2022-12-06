@@ -5,34 +5,11 @@ import RecommendationsForm from "./RecommendationsForm";
 
 // import "../css/Player.css"
 
-// const uri = [
-//     "5yJM62iiVwUZnfTaNjYbiB",
-//     "5S5iEaEeqQncFvtEaTDwNe",
-//     "46rvY1HSdviEjKKFweKWbI",
+const uri = [
+]
 
-// ]
+// https://open.spotify.com/embed/track/5S5iEaEeqQncFvtEaTDwNe?utm_source=oembed
 
-
-// const songs = ${uri}?utm_source=oembed
-
-// const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const data = { genre }
-//     const url = "https://open.spotify.com/embed/track/"
-//     const uri = [
-//         "5yJM62iiVwUZnfTaNjYbiB",
-//         "5S5iEaEeqQncFvtEaTDwNe",
-//         "46rvY1HSdviEjKKFweKWbI",
-//         // will actually need to pass this in from a stored state
-//     ]
-//     navigate("/playlist");
-//     const fetchConfig = {
-//         method: "post",
-//         body: JSON.stringify(data),
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//     };
 
 console.log(RecommendationsForm.response);
 
@@ -59,6 +36,7 @@ function SongPlayer() {
                 <br />
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button class="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
+                    {/* Redirect to PlaylistDetail */}
                 </div>
 
             </div>

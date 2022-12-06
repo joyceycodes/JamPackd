@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
 from typing import Optional
+
 from authenticator import authenticate
 
 router = APIRouter()
