@@ -6,7 +6,7 @@ import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
 import LogoutComponent from './accounts/logout';
-import SongPlayer from './music/player';
+// import SongPlayer from './music/player';
 
 import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
