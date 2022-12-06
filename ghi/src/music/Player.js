@@ -4,14 +4,17 @@ function Player(songs) {
     const [like, setLike] = useState(0);
     const [skip, setSkip] = useState(0);
     const [count, setCount] = useState(0)
+    const [likedSongs, setLikedSongs] = useState([])
 
     const song = songs.songs
 
     const handleLike = (e) => {
-        // uris.push(song[count])
         return (
             setLike(like + 1),
-            setCount(count + 1)
+            setCount(count + 1),
+
+            setLikedSongs(likedSongs => [...likedSongs, song[count]]),
+            console.log(likedSongs)
         )
     }
 
