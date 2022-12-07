@@ -82,7 +82,7 @@ export function useToken() {
   async function logout() {
     if (token) {
       const url = `${process.env.REACT_APP_accounts}/token/`;
-      await fetch(url, { credentials: "include" });
+      await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
       setAccount(null);
@@ -126,7 +126,8 @@ export function useToken() {
       },
     });
     if (response.ok) {
-      navigate("/accounts/account");
+      await login(username, password);
+      navigate("/accountpage")
     }
 
   }

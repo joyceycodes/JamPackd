@@ -15,15 +15,7 @@ function SignupComponent() {
   const submitHandler = async (e) => {
     e.preventDefault();
     await signup(full_name, username, password);
-    if (signup.ok) {
-      internalToken = token
-      console.log("Signup Successful")
-      navigate("/accounts/account");
-      // } else if (!signup.ok) {
-      //   console.log("Signup Failed");
-      //   navigate("/accounts/signup")
-    }
-
+    navigate("/accounts/accountpage")
   };
 
   return (

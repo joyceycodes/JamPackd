@@ -67,6 +67,22 @@ Built our account page just need to flesh out the playlist code.
 FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce
 Still need to figure out logout button, also when user is logged in vs not logged in,
 flesh out user account page
+<<<<<<< HEAD
 Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
 Group coded with Scott
 Fixed all the Errors that had to do with clicking signup and login. should work now still need to figure out the token being made when logged in. Auth js ln 77
+=======
+
+12/5
+Lied about the Auth stuff
+Worked on it till 8 with Adrian got it working but now something else broke
+need to figure out why im auto logged in when i navigate to the website
+logg out button should work by now, need to figre out what can be seen vs cant when logged out/in
+
+12/6
+Group coded with tiff,joyce for ci/cd
+fixed the routing from logging in and signup to go to accounts page
+need to still work on logged in vs out view
+Finished Auth with Scott Finally.
+Able to log in and out and view pages accordingly.
+>>>>>>> 5ca64596ea8da81df256b9818300127983932e07
