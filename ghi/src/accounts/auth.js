@@ -74,15 +74,15 @@ export function useToken() {
       setAccount(account);
 
     }
-    // if (!token) {
-    //   fetchToken();
-    // }
+    if (!token) {
+      fetchToken();
+    }
   }, [setToken, token, setAccount, account]);
 
   async function logout() {
     if (token) {
       const url = `${process.env.REACT_APP_accounts}/token/`;
-      await fetch(url, { method: "delete", credentials: "include" });
+      await fetch(url, { credentials: "include" });
       internalToken = null;
       setToken(null);
       setAccount(null);
@@ -104,6 +104,7 @@ export function useToken() {
       const [token, account] = await getTokenInternal();
       setToken(token);
       setAccount(account);
+      console.log(account, 'c:')
       return;
     }
     let error = await response.json();

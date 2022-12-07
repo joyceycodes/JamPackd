@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken, useAuthContext } from "./auth"
+let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ function SignupComponent() {
     e.preventDefault();
     await signup(full_name, username, password);
     if (signup.ok) {
+      internalToken = token
       console.log("Signup Successful")
       navigate("/accounts/account");
       // } else if (!signup.ok) {
