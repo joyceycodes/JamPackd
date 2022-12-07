@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import Player from "./Player.js";
 
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
     // const [recommendations, SetReccs] = useState({});
 
+    const [songs, setSongs] = useState([]);
 
 
     const genres = [
@@ -151,7 +153,9 @@ function RecommendationsForm() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const recommendations = await response.json();
-            console.log(recommendations)
+            // console.log(recommendations)
+            setSongs(recommendations)
+            // sessionStorage.setItem("recommendations", recommendations)
         }
     }
 
@@ -241,7 +245,11 @@ function RecommendationsForm() {
 
                 </div >
             </div >
-        </div >
+            <br />
+            <Player songs={songs} />
+
+
+        </div>
     )
 }
 

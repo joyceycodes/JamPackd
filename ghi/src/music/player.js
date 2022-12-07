@@ -1,53 +1,73 @@
-// // import { NavLink } from 'react-router-dom'
-// import React from "react";
-// // import { useState } from "react";
-// import RecommendationsForm from "./RecommendationsForm";
+import React, { useState } from "react";
 
-// // import "../css/Player.css"
+function Player(songs) {
+    const [like, setLike] = useState(0);
+    const [skip, setSkip] = useState(0);
+    const [count, setCount] = useState(0)
+    const [likedSongs, setLikedSongs] = useState([])
 
-// const uri = [
-// ]
+    const song = songs.songs
 
-// // https://open.spotify.com/embed/track/5S5iEaEeqQncFvtEaTDwNe?utm_source=oembed
+    const handleLike = (e) => {
+        return (
+            setLike(like + 1),
+            setCount(count + 1),
 
+            setLikedSongs(likedSongs => [...likedSongs, song[count]]),
+            console.log(likedSongs)
+        )
+    }
 
-// console.log(RecommendationsForm.response);
+    const handleSkip = (e) => {
+        return (setSkip(skip + 1), setCount(count + 1))
+    }
 
-// function SongPlayer() {
-//     return (
-//         <div className='container-sm border border-secondary rounded bold justify-content-center'>
-//             <h1 className='text-center'>
-//                 Jam Pack'd Player
-//             </h1>
+    const getPlayer = () => {
+        const currentSong = song[count]
+        while (song.length > 0) {
+            return (
+                <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
+                    src={`https://open.spotify.com/embed/track/${currentSong.uri}?utm_source=oembed`} >
+                </iframe>
 
-//             <div className='container-sm border border-secondary rounded justify-content-center'>
-//                 <h6 className="text-center">Player contents....</h6>
+            )
+        }
+    }
 
-//                 <iframe title="Current Song" className='container-sm justify-content-center'
-//                     src="https://open.spotify.com/embed/track/5S5iEaEeqQncFvtEaTDwNe?utm_source=oembed" >
-//                 </iframe>
+    return (
 
-//                 {/* Buttons */}
-//                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-//                     <button class="btn btn-danger me-md-2" type="button">Skip</button>
+        <div className='mt-5 container-sm border border-secondary rounded bold justify-content-center'>
+            <h1 className='text-center'>
+                Jam Pack'd Player
+            </h1>
 
-//                     <button class="btn btn-primary" type="button">Like</button>
-//                 </div>
-//                 <br />
-//                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-//                     <button class="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
-//                     {/* Redirect to PlaylistDetail */}
-//                 </div>
+            <div className='mt-5 container-sm border border-secondary rounded bold justify-content-center'>
+                <h6 className="text-center">Player contents....</h6>
 
-//             </div>
-//             <div className="text-center">Text 2</div>
-
-//         </div >
-//     )
-// }
-
-
-// export default SongPlayer;
-
+                <div>
+                    {getPlayer()}
+                </div>
 
 
+
+                {/* Buttons */}
+                <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button className="btn btn-danger me-md-2" type="button" onClick={handleSkip}>Skip</button>
+                    <button className="btn btn-primary" type="button" onClick={handleLike}>Like</button>
+                </div>
+                <br />
+                <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button className="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
+                    {/* Redirect to PlaylistDetail */}
+                </div>
+
+            </div>
+            <div className="text-center">Text 2</div>
+
+        </div >
+
+
+    )
+
+}
+export default Player;
