@@ -2,7 +2,11 @@ from fastapi import APIRouter, Depends, Response
 from queries.playlists import PlaylistQueries
 from pydantic import BaseModel
 from typing import Optional
+<<<<<<< HEAD
 from authenticator import authenticate
+=======
+from authenticator_music import authenticate
+>>>>>>> main
 
 router = APIRouter()
 

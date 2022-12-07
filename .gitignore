@@ -162,4 +162,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+<<<<<<< HEAD
+# /node_modules
+=======
 /node_modules
+
+#do we need another relative path for the node module contained within /ghi??????/??
+>>>>>>> bad1ed68fab78cd66d46861f4e63a920ea27350b
