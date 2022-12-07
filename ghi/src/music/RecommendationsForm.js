@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useAuthContext, useToken } from "../accounts/auth";
 
 function RecommendationsForm() {
+    const { token } = useAuthContext()
 
     const [genre, setGenre] = useState("");
 
@@ -153,14 +155,14 @@ function RecommendationsForm() {
 
     }
 
-
-    return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Start jammin'!</h1>
-                    <form onSubmit={handleSubmit}>
-                        {/* <div className="form-floating mb-3">
+    if (token) {
+        return (
+            <div className="row">
+                <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
+                        <h1>Start jammin'!</h1>
+                        <form onSubmit={handleSubmit}>
+                            {/* <div className="form-floating mb-3">
                             <input
                                 placeholder="Genre"
                                 required type="text"
@@ -170,24 +172,25 @@ function RecommendationsForm() {
                                 onChange={(e) => setGenre(e.target.value)} />
                             <label htmlFor="name"></label>
                         </div> */}
-                        <div className="mb-3">
-                            <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
-                                <option value="">Select a genre</option>
-                                {genres.map(genre => {
-                                    return (
-                                        <option value={genre} key={genre}>
-                                            {genre}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <button className="btn btn-outline-dark">Submit</button>
-                    </form>
-                </div>
+                            <div className="mb-3">
+                                <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
+                                    <option value="">Select a genre</option>
+                                    {genres.map(genre => {
+                                        return (
+                                            <option value={genre} key={genre}>
+                                                {genre}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <button className="btn btn-outline-dark">Submit</button>
+                        </form>
+                    </div>
+                </div >
             </div >
-        </div >
-    )
+        )
+    }
 }
 
 export default RecommendationsForm;

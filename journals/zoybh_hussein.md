@@ -78,3 +78,5 @@ logg out button should work by now, need to figre out what can be seen vs cant w
 Group coded with tiff,joyce for ci/cd
 fixed the routing from logging in and signup to go to accounts page
 need to still work on logged in vs out view
+Finished Auth with Scott Finally.
+Able to log in and out and view pages accordingly.

@@ -1,16 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useToken } from "./auth";
+import { useToken, useAuthContext } from "./auth";
 import { useState } from "react";
 
 function LoginComponent() {
-  let navigate = useNavigate();
-  let [, login] = useToken();
+  const navigate = useNavigate();
+  const [login] = useToken();
+  const { token } = useAuthContext
+
+
   let [username, setUsername] = useState();
   let [password, setPassword] = useState();
 
-  const submitHandler = (e) => {
-    login(username, password);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
+    await login(username, password)
     navigate("/accounts/accountpage");
   };
 
@@ -40,5 +44,6 @@ function LoginComponent() {
       </center>
     </div>
   );
+
 }
 export default LoginComponent;
