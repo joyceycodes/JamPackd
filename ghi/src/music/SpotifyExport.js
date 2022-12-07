@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { useLocation } from 'react-router-dom'
 
 function SpotifyButton() {
-    const [url, setUrl] = useState('')
+    const [, setUrl] = useState('')
 
     const getAuthUrl = async (e) => {
 
