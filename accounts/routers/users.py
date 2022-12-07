@@ -77,7 +77,7 @@ def delete_user(user_id: str, queries: UserQueries = Depends()):
 @router.get("/api/accounts/me/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: dict = Depends(authenticator.get_current_account_data),
+    account: dict = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
 
     # example of when you might want authenticator.try_get_current_account_data

@@ -73,3 +73,8 @@ Lied about the Auth stuff
 Worked on it till 8 with Adrian got it working but now something else broke
 need to figure out why im auto logged in when i navigate to the website
 logg out button should work by now, need to figre out what can be seen vs cant when logged out/in
+
+12/6
+Group coded with tiff,joyce for ci/cd
+fixed the routing from logging in and signup to go to accounts page
+need to still work on logged in vs out view

@@ -118,6 +118,7 @@ export function useToken() {
     });
     if (response.ok) {
       await login(username, password);
+      navigate("/accountpage")
     }
     return false;
   }

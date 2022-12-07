@@ -21,7 +21,7 @@ function SignupComponent() {
     //   console.log("word")
     // }
 
-    // navigate("/accounts/account")
+    navigate("/accounts/accountpage")
 
   };
 
