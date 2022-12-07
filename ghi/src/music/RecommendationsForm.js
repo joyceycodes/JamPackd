@@ -5,8 +5,6 @@ import Player from "./Player.js";
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
-    // const [recommendations, SetReccs] = useState({});
-
     const [songs, setSongs] = useState([]);
 
 
