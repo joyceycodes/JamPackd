@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { useAuthContext, useToken } from "../accounts/auth";
 import Player from "./Player.js";
 
 function RecommendationsForm() {
+    const { token } = useAuthContext()
 
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);

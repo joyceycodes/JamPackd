@@ -75,7 +75,7 @@ export function useToken() {
 
   async function logout() {
     if (token) {
-      const url = `${process.env.REACT_APP_accounts}/api/token/refresh/logout/`;
+      const url = `${process.env.REACT_APP_accounts}/token/`;
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
@@ -118,6 +118,7 @@ export function useToken() {
     });
     if (response.ok) {
       await login(username, password);
+      navigate("/accountpage")
     }
     return false;
   }
