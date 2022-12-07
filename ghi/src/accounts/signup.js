@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken, useAuthContext } from "./auth"
+let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
