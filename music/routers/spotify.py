@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
-from fastapi import APIRouter, Body
+from fastapi import APIRouter
 import os
 
 
