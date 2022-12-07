@@ -10,7 +10,6 @@ function LoginComponent() {
 
   let [username, setUsername] = useState();
   let [password, setPassword] = useState();
-  let [, login] = useToken();
 
 
 
