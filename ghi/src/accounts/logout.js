@@ -2,17 +2,20 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./auth";
 let internalToken = null;
 
+
 function LogoutComponent() {
     const navigate = useNavigate();
-    const { token } = useAuthContext();
+    const { token, setToken } = useAuthContext();
     async function logout() {
         if (token) {
-            const url = `${process.env.REACT_APP_accounts}/api/accounts/me/token/`;
+            console.log("token found");
+            const url = `${process.env.REACT_APP_API_HOST}token`;
             await fetch(url, { method: "delete", credentials: "include" });
+            setToken(null);
             navigate("/");
         } else {
-            console.log("No token! C:");
-            navigate("/");
+            console.log("No token");
+            navigate("/login");
         }
     }
 

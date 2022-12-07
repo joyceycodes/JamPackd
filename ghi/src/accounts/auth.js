@@ -2,13 +2,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 let internalToken = null;
 
-
+export function getToken() {
+  return internalToken;
+}
 
 export async function getTokenInternal() {
   const url = `${process.env.REACT_APP_accounts}/api/accounts/me/token/`;
   try {
     const response = await fetch(url, {
-      credentials: "",
+      credentials: "include",
     });
     if (response.ok) {
       const data = await response.json();
@@ -17,9 +19,6 @@ export async function getTokenInternal() {
     }
   } catch (e) { }
   return false;
-}
-export async function getToken() {
-  return internalToken;
 }
 
 function handleErrorMessage(error) {
@@ -46,16 +45,13 @@ function handleErrorMessage(error) {
 export const AuthContext = createContext({
   token: null,
   setToken: () => null,
-  account: null,
-  setAccount: () => null,
 });
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
-  const [account, setAccount] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, account, setAccount }}>
+    <AuthContext.Provider value={{ token, setToken }}>
       {children}
     </AuthContext.Provider>
   );
@@ -64,20 +60,18 @@ export const AuthProvider = ({ children }) => {
 export const useAuthContext = () => useContext(AuthContext);
 
 export function useToken() {
-  const { token, setToken, account, setAccount } = useAuthContext();
+  const { token, setToken } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchToken() {
-      const [token, account] = await getTokenInternal();
+      const token = await getTokenInternal();
       setToken(token);
-      setAccount(account);
-
     }
     if (!token) {
       fetchToken();
     }
-  }, [setToken, token, setAccount, account]);
+  }, [setToken, token]);
 
   async function logout() {
     if (token) {
@@ -85,7 +79,6 @@ export function useToken() {
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
-      setAccount(null);
       navigate("/");
     }
   }
@@ -101,10 +94,8 @@ export function useToken() {
       body: form,
     });
     if (response.ok) {
-      const [token, account] = await getTokenInternal();
+      const token = await getTokenInternal();
       setToken(token);
-      setAccount(account);
-      console.log(account, 'c:')
       return;
     }
     let error = await response.json();
@@ -129,7 +120,7 @@ export function useToken() {
       await login(username, password);
       navigate("/accountpage")
     }
-
+    return false;
   }
 
   return [login, logout, signup];

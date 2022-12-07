@@ -15,14 +15,17 @@ import Container from '@mui/material/Container';
 // import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuthContext, useToken } from "./auth";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// for playlist in database
+const cards = [];
 
 
 
 export default function AccountPageComponent() {
+  const navigate = useNavigate();
   const theme = createTheme();
   const { token } = useAuthContext()
   const [, logout] = useToken()
@@ -31,6 +34,7 @@ export default function AccountPageComponent() {
     await logout()
     console.log("logged out")
   }
+
   if (token) {
     return (
       <ThemeProvider theme={theme}>
@@ -70,8 +74,8 @@ export default function AccountPageComponent() {
                 spacing={2}
                 justifyContent="center"
               >
-                {/* why do this text not pop up */}
-                <Button variant="contained">Create a new playlist</Button>
+                {/* redirects to RecommendationsForm */}
+                <Link to="/music/recommendations" className="btn btn-primary">Create a new Playlist</Link>
               </Stack>
             </Container>
           </Box>
@@ -101,7 +105,6 @@ export default function AccountPageComponent() {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      {/* Button text not displaying here either */}
                       <Button size="small">View</Button>
                       <Button size="small">Edit</Button>
                     </CardActions>
@@ -114,7 +117,6 @@ export default function AccountPageComponent() {
         {/* Footer */}
         <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
           <Typography variant="h6" align="center" gutterBottom>
-            Footer
           </Typography>
           <Typography
             variant="subtitle1"
@@ -122,7 +124,7 @@ export default function AccountPageComponent() {
             color="text.secondary"
             component="p"
           >
-            Something here to give the footer a purpose!
+            Created by: Marble, Zoybh, Joyce and Tiffany, 2022!
           </Typography>
         </Box>
         {/* End footer */}
