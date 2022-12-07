@@ -6,6 +6,7 @@ function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
+    const [got_reccs, setGotReccs] = useState(false)
 
 
     const genres = [
@@ -154,6 +155,7 @@ function RecommendationsForm() {
             // console.log(recommendations)
             setSongs(recommendations)
             // sessionStorage.setItem("recommendations", recommendations)
+            setGotReccs(true)
         }
     }
 
@@ -182,6 +184,7 @@ function RecommendationsForm() {
                 </div>
 
                 <br />
+
                 <Player songs={songs} />
 
 

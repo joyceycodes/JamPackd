@@ -14,7 +14,7 @@ import AccountPageComponent from "./accounts/accountpage"
 import Navigation from './nav';
 // import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
-import Player from './music/Player';
+
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, '');
