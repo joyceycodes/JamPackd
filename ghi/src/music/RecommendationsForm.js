@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import Player from "./Player.js";
 
 function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
+    const [songs, setSongs] = useState([]);
+
 
     const genres = [
         "acoustic",
@@ -148,9 +151,10 @@ function RecommendationsForm() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const recommendations = await response.json();
-            console.log(recommendations)
+            // console.log(recommendations)
+            setSongs(recommendations)
+            // sessionStorage.setItem("recommendations", recommendations)
         }
-
     }
 
 
@@ -160,16 +164,6 @@ function RecommendationsForm() {
                 <div className="shadow p-4 mt-4">
                     <h1>Start jammin'!</h1>
                     <form onSubmit={handleSubmit}>
-                        {/* <div className="form-floating mb-3">
-                            <input
-                                placeholder="Genre"
-                                required type="text"
-                                name="genre" id="genre"
-                                className="form-control"
-                                value={genre}
-                                onChange={(e) => setGenre(e.target.value)} />
-                            <label htmlFor="name"></label>
-                        </div> */}
                         <div className="mb-3">
                             <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
                                 <option value="">Select a genre</option>
@@ -183,10 +177,16 @@ function RecommendationsForm() {
                             </select>
                         </div>
                         <button className="btn btn-outline-dark">Submit</button>
+                        {/* Try to make it so the player doesn't show until after the button is pressed" */}
                     </form>
                 </div>
-            </div >
-        </div >
+
+                <br />
+                <Player songs={songs} />
+
+
+            </div>
+        </div>
     )
 }
 

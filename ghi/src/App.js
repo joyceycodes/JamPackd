@@ -6,12 +6,15 @@ import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
 import LogoutComponent from './accounts/logout';
+// import SongPlayer from './music/player';
+
 import RecommendationsForm from './music/RecommendationsForm';
-// import AccountPageComponent from "./accounts/accountpage"
 import AccountPageComponent from "./accounts/accountpage"
 
 import Navigation from './nav';
-
+// import SpotifyButton from './music/SpotifyExport';
+import PlaylistDetail from './music/PlaylistDetail';
+import Player from './music/Player';
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, '');
@@ -21,7 +24,7 @@ function App() {
   return (
     <BrowserRouter basename={basename}>
       <Navigation />
-      < div >
+      <div >
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="accounts">
@@ -29,13 +32,14 @@ function App() {
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
             <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
             <Route path="/accounts/account" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
-
           </Route>
+
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
+            <Route path="/music/playlist" element={<PlaylistDetail />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
-        </Routes>
+        </Routes >
       </div >
 
     </BrowserRouter >
