@@ -16,12 +16,8 @@ function LoginComponent() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     await login(username, password)
     navigate("/accounts/accountpage");
-=======
-    navigate("/accounts/account");
->>>>>>> main
   };
 
   return (

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import LogoutTest from './newlogout';
+import LogoutTest from './accounts/newlogout';
 
 function Navigation() {
     return (
@@ -9,7 +9,7 @@ function Navigation() {
                     <ul>
                         <li><button><NavLink to="/">Home Page</NavLink></button></li>
                         <li><button><NavLink to="/accounts/signup">Signup</NavLink></button></li>
-                        <li><button><NavLink to="/accounts/login">Login</NavLink></button></li>
+                        <li><LogoutTest /></li>
                         <li><button><NavLink to="/accounts/accountpage">My Account</NavLink></button></li>
                         {/* <li><button><NavLink to="/accounts/account">My Account</NavLink></button></li> */}
                         {/* /* <li><NavLink to="/new_playlist">Create a new Playlist</NavLink></li> */}
@@ -18,7 +18,6 @@ function Navigation() {
                         |
                         <li><button><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
                     </ul>
-                    <LogoutTest />
                 </div>
             </div>
         </div>

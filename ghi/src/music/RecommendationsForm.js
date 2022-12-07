@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
-<<<<<<< HEAD
 import { useAuthContext, useToken } from "../accounts/auth";
-=======
 import Player from "./Player.js";
->>>>>>> main
 
 function RecommendationsForm() {
     const { token } = useAuthContext()
@@ -162,7 +159,6 @@ function RecommendationsForm() {
         }
     }
 
-<<<<<<< HEAD
     if (token) {
         return (
             <div className="row">
@@ -199,39 +195,6 @@ function RecommendationsForm() {
             </div >
         )
     }
-=======
-
-    return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Start jammin'!</h1>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
-                                <option value="">Select a genre</option>
-                                {genres.map(genre => {
-                                    return (
-                                        <option value={genre} key={genre}>
-                                            {genre}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <button className="btn btn-outline-dark">Submit</button>
-                        {/* Try to make it so the player doesn't show until after the button is pressed" */}
-                    </form>
-                </div>
-
-                <br />
-                <Player songs={songs} />
-
-
-            </div>
-        </div>
-    )
->>>>>>> main
 }
 
 export default RecommendationsForm;

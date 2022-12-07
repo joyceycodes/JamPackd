@@ -1,4 +1,6 @@
-import { useAuthContext, useToken } from "./accounts/auth";
+import { useAuthContext, useToken } from "./auth";
+import { NavLink } from 'react-router-dom';
+
 
 export default function LogoutTest() {
     const { token } = useAuthContext()
@@ -16,7 +18,6 @@ export default function LogoutTest() {
                 <div className="logout-container">
 
 
-                    <p className="Verification">Verify Logout</p>
                     <button onClick={checkout} className="logout-btn">Logout</button>
 
 
@@ -26,7 +27,7 @@ export default function LogoutTest() {
     } else {
         return (
             <div>
-                goodbye
+                <button><NavLink to="/accounts/login">Login</NavLink></button>
             </div>
         )
     }
