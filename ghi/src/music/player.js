@@ -6,6 +6,7 @@ function Player(songs) {
     const [count, setCount] = useState(0)
     const [likedSongs, setLikedSongs] = useState([])
 
+
     const song = songs.songs
 
     const handleLike = (e) => {
@@ -20,6 +21,14 @@ function Player(songs) {
 
     const handleSkip = (e) => {
         return (setSkip(skip + 1), setCount(count + 1))
+    }
+
+    const handleDone = (e) => {
+        window.localStorage.setItem("liked_songs", JSON.stringify(likedSongs))
+
+        console.log((window.localStorage.getItem("liked_songs")))
+
+
     }
 
     const getPlayer = () => {
@@ -57,7 +66,7 @@ function Player(songs) {
                 </div>
                 <br />
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button className="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
+                    <button className="btn btn-success me-md-2" type="button" onClick={handleDone}>Done/Make Playlist</button>
                     {/* Redirect to PlaylistDetail */}
                 </div>
 
@@ -71,3 +80,10 @@ function Player(songs) {
 
 }
 export default Player;
+
+
+
+
+
+
+

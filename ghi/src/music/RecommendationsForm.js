@@ -157,26 +157,6 @@ function RecommendationsForm() {
         }
     }
 
-    // example_url = "https://open.spotify.com/embed/track/5S5iEaEeqQncFvtEaTDwNe?utm_source=oembed"
-
-    const url_pre = "https://open.spotify.com/embed/track/"
-
-    const url_post = "?utm_source=oembed"
-
-    // values passed in from the response after getting genres
-    var uris = [
-        "5S5iEaEeqQncFvtEaTDwNe",
-        "reterrg"]
-
-
-    var song_count = 0
-    const em_link = (url_pre + uris[song_count] + url_post);
-
-
-
-
-
-
 
     return (
         <div className="row">
@@ -199,54 +179,13 @@ function RecommendationsForm() {
                         <button className="btn btn-outline-dark">Submit</button>
                         {/* Try to make it so the player doesn't show until after the button is pressed" */}
                     </form>
-
-                    {/* <div >
-                        <iframe title="something" src="https://open.spotify.com/embed/playlist/5a2OuIJ1kEttA8X3PaewlI?utm_source=oembed" allowfullscreen allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture;">
-                        </iframe>
-                    </div> */}
-
-
-
                 </div>
+
                 <br />
-                <div className='container-sm border border-secondary rounded bold justify-content-center'>
-                    <h1 className='text-center'>
-                        Jam Pack'd Player
-                    </h1>
-
-                    <div className='container-sm border border-secondary rounded justify-content-center'>
-                        <h6 className="text-center">Player contents....</h6>
+                <Player songs={songs} />
 
 
-
-                        <iframe title="Current Song" className='container-sm justify-content-center' allow="encrypted-media"
-                            src={em_link} >
-                        </iframe>
-
-                        {/* Buttons */}
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-                            <button className="btn btn-danger me-md-2" type="button">Skip</button>
-                            {/* if button is pressed song_count ++ 1 */}
-
-                            <button className="btn btn-primary" type="button">Like</button>
-                            {/* if button is pressed song_count ++ 1 AND Add song to liked category*/}
-
-                        </div>
-                        <br />
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-                            <button className="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
-                            {/* Redirect to PlaylistDetail */}
-                        </div>
-
-                    </div>
-                    <div className="text-center">Text 2</div>
-
-                </div >
-            </div >
-            <br />
-            <Player songs={songs} />
-
-
+            </div>
         </div>
     )
 }
