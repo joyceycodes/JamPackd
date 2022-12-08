@@ -1,25 +1,21 @@
 
 import DeleteButton from "./DeleteButton";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SpotifyButton from "./SpotifyExport";
+// import { useParams } from "react-router-dom";
 
 
 function PlaylistDetail() {
-    const pres_songs = localStorage.getItem("pres_songs");
-    // const songs = JSON.parse(pres_songs);
-    // const songs = pres_songs.map(song => {
-    //     return (
-    //         song.uri
-    //     )
-    // })
+    // const { playlist_id } = useParams();
+    const [isDeleted, setIsDeleted] = useState(false);
+
+    useEffect(() => {
+        setIsDeleted();
+    }, [])
 
     return (
-
         <>
-            {/* {console.log(songs)} */}
-            {console.log(pres_songs)}
-
             <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
 
@@ -36,14 +32,6 @@ function PlaylistDetail() {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {pres_songs.map(song => {
-                                return (
-                                    <tr key={song.uri}>
-                                        <td> {song.uri} </td>
-                                    </tr>
-                                )
-                            })};
                             <td>
                                 {/* {pres_songs} */}
                                 {/* {pres_songs.title}
@@ -54,15 +42,14 @@ function PlaylistDetail() {
                         </tbody>
                     </table>
                 </div>
-
-
-
+            </div>
+            <SpotifyButton />
+            <br />
+            <DeleteButton setIsDeleted={setIsDeleted} />
+            <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
+                Playlist has been deleted.
             </div>
 
-
-
-            <SpotifyButton />
-            <DeleteButton />
         </>
     )
 }
