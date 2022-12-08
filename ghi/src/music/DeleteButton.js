@@ -8,7 +8,7 @@ function DeleteButton(props) {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        const url = `http://localhost:8003/api/playlists/${playlist_id}`
+        const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
         const fetchConfig = {
             method: "delete",
             headers: {

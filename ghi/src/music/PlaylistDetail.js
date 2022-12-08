@@ -15,7 +15,8 @@ function PlaylistDetail() {
 
     useEffect(() => {
         const getPlaylist = async () => {
-            const url = `http://localhost:8003/api/playlists/${playlist_id}`
+            const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
+            console.log(url)
             const fetchConfig = {
                 method: "get",
                 headers: {
@@ -24,6 +25,7 @@ function PlaylistDetail() {
                 },
             };
             const response = await fetch(url, fetchConfig)
+            console.log(response)
             if (response.ok) {
                 const playlistDetails = await response.json();
                 setPlaylist(playlistDetails)

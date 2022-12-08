@@ -8,7 +8,7 @@ function SpotifyButton() {
 
         e.preventDefault();
 
-        const endpointUrl = "http://localhost:8003/login"
+        const endpointUrl = `${process.env.REACT_APP_MUSIC}/login`
         const fetchConfig = {
             method: "get",
             headers: {
@@ -31,9 +31,9 @@ function SpotifyButton() {
         // e.preventDefault();
         const currentUrl = window.location.href
         setUrl(currentUrl)
-        if (currentUrl.includes('http://localhost:3000/music/playlist?code=')) {
+        if (currentUrl.includes(`${process.env.REACT_APP_MUSIC}/music/playlist?code=`)) {
 
-            const playlistUrl = "http://localhost:8003/music/playlist"
+            const playlistUrl = `${process.env.REACT_APP_MUSIC}/music/playlist`
 
             const fetchConfig = {
                 method: "post",
@@ -58,7 +58,7 @@ function SpotifyButton() {
 
     const getUserId = async (e) => {
         e.preventDefault();
-        const url = "http://localhost:8003/user"
+        const url = `${process.env.REACT_APP_MUSIC}/user`
         const fetchConfig = {
             method: "get",
             headers: {

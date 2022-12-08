@@ -9,8 +9,6 @@ function RecommendationsForm() {
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
 
-
-
     const genres = [
         "acoustic",
         "afrobeat",
@@ -143,7 +141,7 @@ function RecommendationsForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = { genre }
-        const url = "http://localhost:8003/recommendations"
+        const url = `${process.env.REACT_APP_MUSIC}/recommendations`
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
