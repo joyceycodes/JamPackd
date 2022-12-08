@@ -33,3 +33,56 @@ Blocker: update playlist need help worked on it for hours
 GOT JAMES IN THE ROOM AND FINALLY HAVE UPDATE WORKING WITH SCOTT
 Now going to start working on front end
 Started on the main page have the buttons and working on the css group coding with Scott again today
+
+11/26
+Got on with the group on the weekend to try and work on last few endpoints.
+Ran into errors, need to wait till monday
+
+11/28
+Worked on api endpoints with James and Andrew, have to work more on it tomorrow.
+Group coding with Marble for the front end log in log out and signup features.
+Figuring out how to get the signup router to work keep getting a get error and cors error.
+For tomorrow:
+Create logged in home page
+Create playlist page
+
+11/29
+Worked on ci/cd stuff with group broke off with Marble to do frontend work
+Cleaned up our code with the group to push to main
+Fixed our error with our post user
+Now working with our fetch 500 error.
+
+11/30
+Merged code and merged to main with the whole group (everything works)
+Still working on debugging the 404 Not Found when trying to make an account frontend
+api user to accounts like 10 in signup.js fixed had to fix const url = `${process.env.REACT_APP_accounts}/token/get`; in auth.js
+
+12/1
+Pair programmed with Scott for the signup and log in pages
+Got help from Adrian for our fetch/Token
+Still need to work on Null token
+Built our account page just need to flesh out the playlist code.
+
+12/2
+FINALLY GOT AUTH WORKING WITH NO TOKEN ERRORS!!! Scott/Z/Joyce
+Still need to figure out logout button, also when user is logged in vs not logged in,
+flesh out user account page
+<<<<<<< HEAD
+Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
+Group coded with Scott
+Fixed all the Errors that had to do with clicking signup and login. should work now still need to figure out the token being made when logged in. Auth js ln 77
+=======
+
+12/5
+Lied about the Auth stuff
+Worked on it till 8 with Adrian got it working but now something else broke
+need to figure out why im auto logged in when i navigate to the website
+logg out button should work by now, need to figre out what can be seen vs cant when logged out/in
+
+12/6
+Group coded with tiff,joyce for ci/cd
+fixed the routing from logging in and signup to go to accounts page
+need to still work on logged in vs out view
+Finished Auth with Scott Finally.
+Able to log in and out and view pages accordingly.
+>>>>>>> 5ca64596ea8da81df256b9818300127983932e07

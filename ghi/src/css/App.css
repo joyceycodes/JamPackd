@@ -1,3 +1,8 @@
+/* * {
+  background-color: #E75296;
+  color: black;
+} */
+
 .JP_title {
   display: flex;
   align-items: stretch;
@@ -40,115 +45,26 @@ nav ul{
   font-size: 35px;
 }
 
-/* .borderstyle{
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-/* Glowing Button Stuff */
-
-      /* <td><a href="#" style="--clr:#9fd8f5"><span>Login</span><i></i></a></td>#glowing button with css
-      <td><a href="#" style="--clr:#E75296"><span>Sign Up</span><i></i></a></td> */
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #27282c;
-    flex-direction: column;
-    gap: 75px;
-}
-a
-{
-    position: relative;
-    background: #fff;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.5em;
-    letter-spacing: 0.1em;
-    font-weight: 400;
-    padding: 10px 30px;
-    transition: 0.5s;
-}
-a:hover
-{
-    background: var(--clr);
-    color: var(--clr);
-    letter-spacing: 0.25em;
-    box-shadow: 0 0 35px var(--clr)
-}
-a:before
-{
-    content: none;
-    position: absolute;
-    inset: 2px;
-    background: #27282c;
-}
-a span
-{
-  position: relative;
-  z-index: 1;
-}
-a i 
-{
-  position: absolute;
-  inset: 0;
-  display: block;
-}
-a i::before
-{
-  content: none;
-  position: absolute;
-  top: 0;
-  left: 80%;
-  width: 10px;
-  height: 4px;
-  background: #27282c;
-  transform: translateX(-50%) skewX(325deg);
-  transition: 0.5s;
+.nav-tabs ul{
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  font-size: 25px;
 }
 
-a:hover i::before
-{
-  width: 20px;
-  left: 20%;
+.nav-tabs ul a{
+  text-decoration: none;
 }
 
-a i::after
-{
-  content: none;
-  position: absolute;
-  bottom: 0;
-  left: 11%;
-  width: 10px;
-  height: 4px;
-  background: #27282c;
-  transform: translateX(-50%) skewX(325deg);
-  transition: 0.5s;
+.logout-container button{
+  cursor: pointer;
+  margin: 0px 0px 0px 0px;
 }
 
-a:hover i::after
-{
-  width: 33px;
-  left: 69%;
-} */
+.logout-container{
+  color: red;
+  font-size: 48px;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  margin: 0px;
+}
