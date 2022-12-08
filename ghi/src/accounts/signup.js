@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToken, useAuthContext } from "./auth"
-let internalToken = null;
+import { useToken } from "./auth"
+// let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
   const [, , signup] = useToken()
-  const { token } = useAuthContext
+  // const { token } = useAuthContext
 
   let [full_name, setFullName] = useState();
   let [password, setPassword] = useState();

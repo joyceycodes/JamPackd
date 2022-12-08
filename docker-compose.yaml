@@ -37,7 +37,6 @@ services:
       MONGODATABASE: accounts
       MONGOUSER: admin
       MONGOPASSWORD: admin
-      # DATABASE_NAME: accounts
       # WAIT_HOSTS: mongo:27017
 
   music:
