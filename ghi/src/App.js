@@ -15,6 +15,7 @@ import Navigation from './nav';
 // import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
 import CreatePlaylist from './music/CreatePlaylist';
+import UpdatePlaylist from './music/UpdatePlaylist';
 
 
 const domain = /https:\/\/[^/]+/;
@@ -38,6 +39,7 @@ function App() {
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
             <Route path="/music/playlist/new" element={<CreatePlaylist />} />
             <Route path="/music/playlist/:playlist_id" element={<PlaylistDetail />} />
+            <Route path="/music/playlist/update/:playlist_id" element={<UpdatePlaylist />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes >
