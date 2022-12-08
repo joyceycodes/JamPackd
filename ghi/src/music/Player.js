@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Player(songs) {
+    const navigate = useNavigate();
     const [like, setLike] = useState(0);
     const [skip, setSkip] = useState(0);
     const [count, setCount] = useState(0)
     const [likedSongs, setLikedSongs] = useState([])
-    const navigate = useNavigate();
+
     const song = songs.songs
 
     const handleLike = (e) => {
@@ -29,14 +30,13 @@ function Player(songs) {
 
     const getPlayer = () => {
         const currentSong = song[count]
+        // while (song.length > 0)
         while (count < 20)
             return (
                 <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
                     src={`https://open.spotify.com/embed/track/${currentSong.uri}?utm_source=oembed`} >
                 </iframe>
-
             )
-
     }
 
     const handleSubmit = () => {
@@ -76,8 +76,6 @@ function Player(songs) {
                 <div className="text-center">Text 2</div>
 
             </div >
-
-
         )
     }
 }
