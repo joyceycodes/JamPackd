@@ -6,7 +6,6 @@ function DeleteButton(props) {
     let { playlist_id } = useParams();
     const { token } = useAuthContext()
 
-    console.log(playlist_id)
     const handleDelete = async (e) => {
         e.preventDefault();
         const url = `http://localhost:8003/api/playlists/${playlist_id}`

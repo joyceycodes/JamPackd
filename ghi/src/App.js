@@ -5,7 +5,7 @@ import './css/App.css';
 import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
-import LogoutComponent from './accounts/logout';
+// import LogoutComponent from './accounts/logout';
 // import SongPlayer from './music/player';
 
 import RecommendationsForm from './music/RecommendationsForm';
@@ -31,7 +31,7 @@ function App() {
           <Route path="accounts">
             <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
-            <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
+            {/* <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} /> */}
             <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           </Route>
           <Route path="music">
