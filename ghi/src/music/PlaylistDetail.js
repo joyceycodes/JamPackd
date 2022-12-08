@@ -1,9 +1,11 @@
 
-import React, { useState } from "react";
+import DeleteButton from "./DeleteButton";
+
+import React from "react";
 import SpotifyButton from "./SpotifyExport";
 
 
-function PlaylistDetail(props) {
+function PlaylistDetail() {
     const pres_songs = localStorage.getItem("pres_songs");
     // const songs = JSON.parse(pres_songs);
     // const songs = pres_songs.map(song => {
@@ -60,6 +62,7 @@ function PlaylistDetail(props) {
 
 
             <SpotifyButton />
+            <DeleteButton />
         </>
     )
 }
