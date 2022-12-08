@@ -1,18 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useToken, useAuthContext } from "./auth";
+import { useToken } from "./auth";
 import { useState } from "react";
 
 function LoginComponent() {
   const navigate = useNavigate();
   const [login] = useToken();
-  const { token } = useAuthContext
-
 
   let [username, setUsername] = useState();
   let [password, setPassword] = useState();
-
-
-
 
   const submitHandler = async (e) => {
     e.preventDefault();

@@ -14,6 +14,7 @@ import AccountPageComponent from "./accounts/accountpage"
 import Navigation from './nav';
 // import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
+import CreatePlaylist from './music/CreatePlaylist';
 
 
 const domain = /https:\/\/[^/]+/;
@@ -32,12 +33,11 @@ function App() {
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
             <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
             <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
-
           </Route>
-
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
             <Route path="/music/playlist" element={<PlaylistDetail />} />
+            <Route path="/music/playlist/new" element={<CreatePlaylist />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes >

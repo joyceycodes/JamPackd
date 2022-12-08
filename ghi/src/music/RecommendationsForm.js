@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useAuthContext, useToken } from "../accounts/auth";
+import { useAuthContext } from "../accounts/auth";
 import Player from "./Player.js";
 
 function RecommendationsForm() {
@@ -8,7 +8,7 @@ function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
-    const [got_reccs, setGotReccs] = useState(false)
+    // const [got_reccs, setGotReccs] = useState(false)
 
 
     const genres = [
@@ -157,42 +157,43 @@ function RecommendationsForm() {
             // console.log(recommendations)
             setSongs(recommendations)
             // sessionStorage.setItem("recommendations", recommendations)
-            setGotReccs(true)
+            // setGotReccs(true)
         }
     }
 
+    if (token) {
+        return (
+            <div className="row">
+                <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
+                        <h1>Start jammin'!</h1>
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
+                                    <option value="">Select a genre</option>
+                                    {genres.map(genre => {
+                                        return (
+                                            <option value={genre} key={genre}>
+                                                {genre}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <button className="btn btn-outline-dark">Submit</button>
+                            {/* Try to make it so the player doesn't show until after the button is pressed" */}
+                        </form>
+                    </div>
 
-    return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Start jammin'!</h1>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <select onChange={(e) => setGenre(e.target.value)} required id="genre" name="genre" className="form-select">
-                                <option value="">Select a genre</option>
-                                {genres.map(genre => {
-                                    return (
-                                        <option value={genre} key={genre}>
-                                            {genre}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <button className="btn btn-outline-dark">Submit</button>
-                        {/* Try to make it so the player doesn't show until after the button is pressed" */}
-                    </form>
+                    <br />
+
+                    <Player songs={songs} />
+
+
                 </div>
-
-                <br />
-
-                <Player songs={songs} />
-
-
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default RecommendationsForm;

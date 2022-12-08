@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 class Song(BaseModel):
-    id: str
+    # id: str
     name: str
     artist: str
     uri: str
@@ -21,7 +21,7 @@ class Recommendations(BaseModel):
 class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
-    ext_url: str
+    # ext_url: str
     comments: Optional[str] = None
 
 
@@ -29,7 +29,7 @@ class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
-    ext_url: str
+    # ext_url: str
     comments: Optional[str] = None
 
 

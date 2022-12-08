@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Player(songs) {
+    const navigate = useNavigate();
     const [like, setLike] = useState(0);
     const [skip, setSkip] = useState(0);
     const [count, setCount] = useState(0)
@@ -13,8 +14,7 @@ function Player(songs) {
             setLike(like + 1),
             setCount(count + 1),
 
-            setLikedSongs(likedSongs => [...likedSongs, song[count]]),
-            console.log(likedSongs)
+            setLikedSongs(likedSongs => [...likedSongs, song[count]])
         )
     }
 
@@ -33,6 +33,12 @@ function Player(songs) {
             )
         }
     }
+
+    const handleSubmit = () => {
+        window.localStorage.setItem("uris", JSON.stringify(likedSongs))
+        navigate("/music/playlist/new")
+    }
+
 
     return (
 
@@ -57,7 +63,7 @@ function Player(songs) {
                 </div>
                 <br />
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button className="btn btn-success me-md-2" type="button">Done/Make Playlist</button>
+                    <button className="btn btn-success me-md-2" type="button" onClick={handleSubmit}>Done/Make Playlist</button>
                     {/* Redirect to PlaylistDetail */}
                 </div>
 

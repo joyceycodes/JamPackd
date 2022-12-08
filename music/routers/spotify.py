@@ -180,6 +180,7 @@ def authorize(response):
     sp_oauth = create_spotify_oauth()
     # session.clear()
     code = response.split("code=", 1)[1]
+    # code = f"http://localhost:3000/music/playlist?code={response}"
     token_info = sp_oauth.get_access_token(code)
     print(token_info, code)
     return token_info

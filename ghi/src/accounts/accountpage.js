@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 // import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useAuthContext, useToken } from "./auth";
+import { useAuthContext } from "./auth";
 
 
 
@@ -25,12 +25,14 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function AccountPageComponent() {
   const theme = createTheme();
   const { token } = useAuthContext()
-  const [, logout] = useToken()
-  const checkout = async e => {
-    e.preventDefault()
-    await logout()
-    console.log("logged out")
-  }
+  // const [, logout] = useToken()
+
+  // const checkout = async e => {
+  //   e.preventDefault()
+  //   await logout()
+  //   console.log("logged out")
+  // }
+
   if (token) {
     return (
       <ThemeProvider theme={theme}>

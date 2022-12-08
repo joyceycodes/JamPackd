@@ -31,7 +31,7 @@ class PlaylistQueries:
     def create_playlist(self, data):
         db = client[dbname]
         result = db.playlists.insert_one(data.dict())
-        print("INSERTED ID:", result.inserted_id)
+        # print("INSERTED ID:", result.inserted_id)
         if result.inserted_id:
             result = self.get_playlist(str(result.inserted_id))
             result["id"] = str(result["_id"])
