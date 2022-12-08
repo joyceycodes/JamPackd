@@ -30,7 +30,7 @@ function App() {
           <Route path="accounts">
             <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
-            {/* <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} /> */}
+            {/* {/* <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} /> */} */}
             <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           </Route>
           <Route path="music">

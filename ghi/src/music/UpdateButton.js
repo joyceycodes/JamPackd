@@ -2,15 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
 
-function DeleteButton(props) {
+function UpdateButton() {
     let { playlist_id } = useParams();
     const { token } = useAuthContext()
 
-    const handleDelete = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
         const url = `http://localhost:8003/api/playlists/${playlist_id}`
         const fetchConfig = {
-            method: "delete",
+            method: "put",
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json",
@@ -18,14 +18,14 @@ function DeleteButton(props) {
         };
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            // const deleted = await response.json();
-            // console.log("Deleted", deleted)
-            props.setIsDeleted(true)
+            // const Updated = await response.json();
+            // console.log("Updated", Updated)
+
         }
     }
 
     return (
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleUpdate}>Update</button>
     )
 }
-export default DeleteButton
+export default UpdateButton
