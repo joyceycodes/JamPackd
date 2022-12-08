@@ -42,11 +42,13 @@ function CreatePlaylist() {
                         <h1>Create Playlist</h1>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3 form-floating">
-                                <input onChange={(e) => setName(e.target.value)} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+                                <input onChange={(e) => setName(e.target.value)} placeholder="Name"
+                                    required type="text" name="name" id="name" className="form-control" />
                                 <label htmlFor="name">Name</label>
                             </div>
                             <div className="mb-3 form-floating">
-                                <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" />
+                                <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments"
+                                    required name="comments" id="comments" className="form-control" />
                                 <label htmlFor="name">Comments</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>

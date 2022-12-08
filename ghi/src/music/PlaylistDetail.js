@@ -23,7 +23,7 @@ function PlaylistDetail() {
             <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
 
-                <h1 className="text-center">My Playlist- Pass in Dynamically Later</h1>
+                <h1 className="text-center">My Playlist</h1>
                 <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
                     <table className="table table-striped 
