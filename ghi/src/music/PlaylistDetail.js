@@ -36,33 +36,33 @@ function PlaylistDetail() {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {/* {pres_songs.map(song => {
-                                return (
-                                    <tr key={song.uri}>
-                                        <td> {song.uri} </td>
-                                    </tr>
-                                )
-                            })}; */}
-                            <td>
-                                {/* {pres_songs} */}
-                                {/* {pres_songs.title}
+                            <tr>
+                                <td>
+                                    {/* {pres_songs} */}
+                                    {/* {pres_songs.title}
                                 <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
-                                    src={`https://open.spotify.com/embed/track/${pres_songs.uri}?utm_source=oembed`} >
+                                    src={`https://open.spotify.com/embed/track/${song.uri}?utm_source=oembed`} >
                                 </iframe> */}
-                            </td>
+
+                                    {pres_songs?.map(song => {
+                                        return (
+                                            <tr key={song.uri}>
+                                                <td> {song.uri} </td>
+                                            </tr>
+                                        )
+                                    })}
+
+
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-
-
             </div>
 
-
-
-            <SpotifyButton />
-            <DeleteButton />
+            {/* <SpotifyButton />
+            <DeleteButton /> */}
         </>
     )
 }
