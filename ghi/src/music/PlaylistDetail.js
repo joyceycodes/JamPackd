@@ -55,19 +55,21 @@ function PlaylistDetail() {
                                 <th>Player</th>
                             </tr>
                         </thead>
-                        {playlist.songs?.map(song => {
-                            return (
-                                <tbody>
-                                    <td>{song.name}</td>
-                                    <td>{song.artist}</td>
-                                    <td>
-                                        <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
-                                            src={`https://open.spotify.com/embed/track/${song.uri}?utm_source=oembed`} >
-                                        </iframe>
-                                    </td>
-                                </tbody>
-                            )
-                        })}
+                        <tbody>
+                            {playlist.songs?.map(song => {
+                                return (
+                                    <tr key={song.uri}>
+                                        <td>{song.name}</td>
+                                        <td>{song.artist}</td>
+                                        <td>
+                                            <iframe title="Current Song" className='container-sm justify-content-center' allow='encrypted-media'
+                                                src={`https://open.spotify.com/embed/track/${song.uri}?utm_source=oembed`} >
+                                            </iframe>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
 
                     </table>
                 </div>
