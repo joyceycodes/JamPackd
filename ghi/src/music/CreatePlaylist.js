@@ -18,8 +18,8 @@ function CreatePlaylist() {
             songs,
         }
 
+        const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
 
-        const url = "http://localhost:8003/api/playlists/"
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -31,7 +31,7 @@ function CreatePlaylist() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const newPlaylist = await response.json();
-            console.log(newPlaylist)
+
             navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }
@@ -49,7 +49,7 @@ function CreatePlaylist() {
                             </div>
                             <div className="mb-3 form-floating">
                                 <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" />
-                                <label htmlFor="name">Comments</label>
+                                <label htmlFor="name">Add your thoughts about this playlist...</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
                         </form>

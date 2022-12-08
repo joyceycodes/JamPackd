@@ -15,7 +15,7 @@ function UpdatePlaylist() {
             name,
             comments,
         }
-        const url = `http://localhost:8003/api/playlists/${playlist_id}`
+        const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
         const fetchConfig = {
             method: "put",
             headers: {
@@ -25,6 +25,7 @@ function UpdatePlaylist() {
             body: JSON.stringify(data),
         };
         const response = await fetch(url, fetchConfig)
+
         if (response.ok) {
             const updatedPlaylist = await response.json();
             console.log(updatedPlaylist)

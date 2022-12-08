@@ -44,6 +44,7 @@ build-front-end-job:
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
     PUBLIC_URL: https://semi-serious-solutions.gitlab.io/jam-packd/
     REACT_APP_MUSIC: https://jampackd-music.onrender.com/
+    REACT_APP_accounts: https://jampackd-accounts.onrender.com/
   script:
     - cd ghi
     - npm install
