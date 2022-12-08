@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
+import { useNavigate } from "react-router-dom";
 
 function CreatePlaylist() {
     const { token } = useAuthContext()
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [comments, setComments] = useState("");
     const songs = JSON.parse(window.localStorage.getItem("uris"))
@@ -17,7 +18,7 @@ function CreatePlaylist() {
             songs,
         }
 
-        // console.log(data)
+
         const url = "http://localhost:8003/api/playlists/"
         const fetchConfig = {
             method: "post",
@@ -31,6 +32,7 @@ function CreatePlaylist() {
         if (response.ok) {
             const newPlaylist = await response.json();
             console.log(newPlaylist)
+            navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }
 
