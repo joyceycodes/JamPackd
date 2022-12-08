@@ -186,10 +186,7 @@ function RecommendationsForm() {
                     </div>
 
                     <br />
-
                     <Player songs={songs} />
-
-
                 </div>
             </div>
         )
