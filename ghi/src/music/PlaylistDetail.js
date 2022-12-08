@@ -1,13 +1,15 @@
 
 import DeleteButton from "./DeleteButton";
+import UpdateButton from "./UpdatePlaylist";
 import React, { useState, useEffect } from "react";
 // import SpotifyButton from "./SpotifyExport";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
-
+import { useNavigate } from "react-router-dom";
 
 function PlaylistDetail() {
-    let { playlist_id } = useParams();
+    const navigate = useNavigate();
+    const { playlist_id } = useParams();
     const { token } = useAuthContext()
     const [isDeleted, setIsDeleted] = useState(false);
     const [playlist, setPlaylist] = useState({})
@@ -34,6 +36,11 @@ function PlaylistDetail() {
         }
         setIsDeleted();
     }, [playlist_id, token])
+
+    const handleUpdate = () => {
+        navigate(`/music/playlist/update/${playlist_id}`)
+
+    }
 
 
     return (
@@ -74,7 +81,8 @@ function PlaylistDetail() {
                     </table>
                 </div>
             </div>
-            {/* <SpotifyButton /> */}
+
+            <button onClick={handleUpdate}>Update</button>
             <br />
             <DeleteButton setIsDeleted={setIsDeleted} />
             <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
