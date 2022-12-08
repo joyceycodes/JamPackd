@@ -88,3 +88,5 @@ Able to log in and out and view pages accordingly.
 Worked with the group on merging to main
 Also started working on deployment again with the group
 Going to pair program with marble for the playlists pge tiffany doing the playlist page.
+Jumped on to pair program with marble on the playlists detail page
+Need to figure out how to pull playlist data "blocker"
