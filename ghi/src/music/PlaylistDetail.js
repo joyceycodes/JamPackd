@@ -41,8 +41,8 @@ function PlaylistDetail() {
             <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
 
-                <h1 className="text-center">{playlist.name}</h1>
-                <p className="text-center">{playlist.comments}</p>
+                <h1 className="text-center">Playlist: {playlist.name}</h1>
+                <p className="text-center">Comments: {playlist.comments}</p>
                 {/* <p className="text-center">{playlist.songs}</p> */}
                 <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
