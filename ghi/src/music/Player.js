@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Player(songs) {
-    const navigate = useNavigate();
     const [like, setLike] = useState(0);
     const [skip, setSkip] = useState(0);
     const [count, setCount] = useState(0)
     const [likedSongs, setLikedSongs] = useState([])
-
+    const navigate = useNavigate();
     const song = songs.songs
 
     const handleLike = (e) => {
@@ -15,13 +14,18 @@ function Player(songs) {
             setLike(like + 1),
             setCount(count + 1),
 
-            setLikedSongs(likedSongs => [...likedSongs, song[count]])
+            setLikedSongs(likedSongs => [...likedSongs, song[count]]),
+            console.log(likedSongs)
         )
     }
 
     const handleSkip = (e) => {
         return (setSkip(skip + 1), setCount(count + 1))
     }
+
+    // const handleDone = (e) => {
+    //     localStorage.setItem("pres_songs", JSON.stringify(likedSongs));
+    // }
 
     const getPlayer = () => {
         const currentSong = song[count]
