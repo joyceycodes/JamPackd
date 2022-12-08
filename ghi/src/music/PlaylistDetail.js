@@ -3,7 +3,7 @@ import SpotifyButton from "./SpotifyExport";
 
 
 function PlaylistDetail(props) {
-    const pres_songs = localStorage.getItem("pres_songs");
+    const songs = "";
     // const songs = JSON.parse(pres_songs);
     // const songs = pres_songs.map(song => {
     //     return (
@@ -15,7 +15,7 @@ function PlaylistDetail(props) {
 
         <>
             {/* {console.log(songs)} */}
-            {console.log(pres_songs)}
+            {/* {console.log(pres_songs)} */}
 
             <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
@@ -34,13 +34,13 @@ function PlaylistDetail(props) {
                         </thead>
                         <tbody>
 
-                            {pres_songs.map(song => {
+                            {/* {pres_songs.map(song => {
                                 return (
                                     <tr key={song.uri}>
                                         <td> {song.uri} </td>
                                     </tr>
                                 )
-                            })};
+                            })}; */}
                             <td>
                                 {/* {pres_songs} */}
                                 {/* {pres_songs.title}
