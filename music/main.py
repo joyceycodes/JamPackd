@@ -13,6 +13,7 @@ origins = [
     "http://localhost:8001",
     "http://localhost:8003",
     "http://localhost:8081",
+    "https://imgur.com",
 ]
 
 

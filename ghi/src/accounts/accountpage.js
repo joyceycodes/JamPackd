@@ -1,10 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -15,23 +11,24 @@ import Container from '@mui/material/Container';
 // import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuthContext } from "./auth";
+import { Link } from 'react-router-dom';
+import CardsComponent from './card'
 
 
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1];
 
 
 
-export default function AccountPageComponent() {
+export default function AccountPageComponent(props) {
   const theme = createTheme();
   const { token } = useAuthContext()
-  // const [, logout] = useToken()
+  // const playlist = get_all_playlists()
 
-  // const checkout = async e => {
-  //   e.preventDefault()
-  //   await logout()
-  //   console.log("logged out")
-  // }
+  // for (each user in db)
+  //   for each playlist in user
+  //     playlist.name
+
 
   if (token) {
     return (
@@ -40,7 +37,7 @@ export default function AccountPageComponent() {
         <AppBar position="relative">
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
-              JamPak'd
+              <Link to="/"><img className="header-img" src="https://i.imgur.com/HxIEBd3.png" /></Link>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -56,15 +53,14 @@ export default function AccountPageComponent() {
             <Container maxWidth="sm">
               <Typography
                 component="h1"
-                variant="h2"
+                variant="h3"
                 align="center"
                 color="text.primary"
                 gutterBottom
               >
-                Album Layout
+                😎 Here's your jams 😎
               </Typography>
               <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                😎 Here's your jams 😎
               </Typography>
               <Stack
                 sx={{ pt: 4 }}
@@ -72,8 +68,7 @@ export default function AccountPageComponent() {
                 spacing={2}
                 justifyContent="center"
               >
-                {/* why do this text not pop up */}
-                <Button variant="contained">Create a new playlist</Button>
+                <Button className="recs-btn" variant="outlined" text_decoration="none"><Link to="/music/recommendations">Create a new Jam</Link></Button>
               </Stack>
             </Container>
           </Box>
@@ -82,32 +77,8 @@ export default function AccountPageComponent() {
             <Grid container spacing={4}>
               {cards.map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
-                  <Card
-                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                  >
-                    <CardMedia
-                      component="img"
-                      sx={{
-                        // 16:9
-                        pt: '56.25%',
-                      }}
-                      image="https://source.unsplash.com/random"
-                      alt="random"
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        Playlist.Name
-                      </Typography>
-                      <Typography>
-                        Playlist.description
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* Button text not displaying here either */}
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
-                    </CardActions>
-                  </Card>
+                  {/* for card in cards? */}
+                  {/* {CardsComponent} */}
                 </Grid>
               ))}
             </Grid>
@@ -124,7 +95,7 @@ export default function AccountPageComponent() {
             color="text.secondary"
             component="p"
           >
-            Something here to give the footer a purpose!
+            JamPackd - Created 2022 by Marble, Zoybh, Joyce & Tiffany
           </Typography>
         </Box>
         {/* End footer */}

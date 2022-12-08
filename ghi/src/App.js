@@ -5,7 +5,6 @@ import './css/App.css';
 import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
-import LogoutComponent from './accounts/logout';
 // import SongPlayer from './music/player';
 
 import RecommendationsForm from './music/RecommendationsForm';
@@ -46,5 +45,6 @@ function App() {
     </BrowserRouter >
   );
 }
+
 
 export default App;
