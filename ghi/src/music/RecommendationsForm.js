@@ -8,7 +8,7 @@ function RecommendationsForm() {
 
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
-    // const [got_reccs, setGotReccs] = useState(false)
+
 
 
     const genres = [
@@ -154,10 +154,7 @@ function RecommendationsForm() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const recommendations = await response.json();
-            // console.log(recommendations)
             setSongs(recommendations)
-            // sessionStorage.setItem("recommendations", recommendations)
-            // setGotReccs(true)
         }
     }
 
@@ -181,7 +178,6 @@ function RecommendationsForm() {
                                 </select>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
-                            {/* Try to make it so the player doesn't show until after the button is pressed" */}
                         </form>
                     </div>
 
