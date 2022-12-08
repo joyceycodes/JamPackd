@@ -19,7 +19,7 @@ function CreatePlaylist() {
         }
 
         const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
-        console.log(url)
+
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -31,7 +31,7 @@ function CreatePlaylist() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const newPlaylist = await response.json();
-            console.log(newPlaylist)
+
             navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }

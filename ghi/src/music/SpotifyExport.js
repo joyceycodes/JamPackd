@@ -42,7 +42,7 @@ function SpotifyButton() {
                 },
                 body: currentUrl,
             }
-            console.log(fetchConfig)
+
             const response = await fetch(playlistUrl, fetchConfig)
             if (response.ok) {
                 const data = await response.json()

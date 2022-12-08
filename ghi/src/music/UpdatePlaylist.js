@@ -25,7 +25,7 @@ function UpdatePlaylist() {
             body: JSON.stringify(data),
         };
         const response = await fetch(url, fetchConfig)
-        console.log(response)
+
         if (response.ok) {
             const updatedPlaylist = await response.json();
             console.log(updatedPlaylist)

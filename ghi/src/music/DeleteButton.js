@@ -18,8 +18,7 @@ function DeleteButton(props) {
         };
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            // const deleted = await response.json();
-            // console.log("Deleted", deleted)
+
             props.setIsDeleted(true)
         }
     }

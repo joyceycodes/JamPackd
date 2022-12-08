@@ -15,8 +15,8 @@ function Player(songs) {
             setLike(like + 1),
             setCount(count + 1),
 
-            setLikedSongs(likedSongs => [...likedSongs, song[count]]),
-            console.log(likedSongs)
+            setLikedSongs(likedSongs => [...likedSongs, song[count]])
+
         )
     }
 
