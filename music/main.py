@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import playlists, spotify
+from routers import playlists, spotify, spotify2
 import os
 
 app = FastAPI()
@@ -28,3 +28,4 @@ app.add_middleware(
 
 app.include_router(playlists.router)
 app.include_router(spotify.router)
+app.include_router(spotify2.router)

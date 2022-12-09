@@ -54,6 +54,7 @@ function PlaylistDetail(props) {
                 <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
                     Playlist has been deleted.
                 </div>
+                {/* <SpotifyButton /> */}
 
                 <h1 className="text-center">{playlist.name}</h1>
                 <p className="text-center">{playlist.comments}</p>
