@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
-function PlaylistDetail(props) {
+function PlaylistDetail() {
     const navigate = useNavigate();
     const { playlist_id } = useParams();
     const { token } = useAuthContext()
