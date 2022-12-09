@@ -33,7 +33,7 @@ function CreatePlaylist() {
         if (response.ok) {
             const newPlaylist = await response.json();
 
-            navigate(`/music/playlists/${newPlaylist.id}`)
+            navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }
 
