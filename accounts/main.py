@@ -1,5 +1,5 @@
 import os
-from routers import users
+from accounts.routers import users
 
 # from queries.users import UserIn
 # from pydantic import BaseModel
