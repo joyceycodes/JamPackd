@@ -15,7 +15,7 @@ function UpdatePlaylist() {
             name,
             comments,
         }
-        const url = `http://localhost:8003/api/playlists/${playlist_id}`
+        const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
         const fetchConfig = {
             method: "put",
             headers: {
@@ -25,6 +25,7 @@ function UpdatePlaylist() {
             body: JSON.stringify(data),
         };
         const response = await fetch(url, fetchConfig)
+
         if (response.ok) {
             const updatedPlaylist = await response.json();
             console.log(updatedPlaylist)
@@ -38,15 +39,15 @@ function UpdatePlaylist() {
         <div className="row">
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h1>Create Playlist</h1>
+                    <h1>Update Playlist</h1>
                     <form onSubmit={handleUpdate}>
                         <div className="mb-3 form-floating">
                             <input onChange={(e) => setName(e.target.value)} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
-                            <label htmlFor="name">Rename</label>
+                            <label htmlFor="name">New Playlist Name</label>
                         </div>
                         <div className="mb-3 form-floating">
                             <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" />
-                            <label htmlFor="name">Update comments</label>
+                            <label htmlFor="name">New Playlist Comments</label>
                         </div>
                         <button className="btn btn-outline-dark">Submit</button>
                     </form>

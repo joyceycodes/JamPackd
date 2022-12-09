@@ -1,16 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-// import { AuthProvider, useToken, useAuthContext } from './accounts/auth.js';
 import './css/App.css';
 import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
-// import LogoutComponent from './accounts/logout';
-// import SongPlayer from './music/player';
-
 import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
-
 import Navigation from './nav';
 // import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
