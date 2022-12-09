@@ -4,12 +4,15 @@ from bson.objectid import ObjectId
 
 from pydantic import BaseModel
 
-dbhost = os.environ["MONGOHOST"]
+# dbhost = os.environ["MONGOHOST"]
 dbname = os.environ["MONGODATABASE"]
-dbuser = os.environ["MONGOUSER"]
-dbpass = os.environ["MONGOPASSWORD"]
+# dbuser = os.environ["MONGOUSER"]
+# dbpass = os.environ["MONGOPASSWORD"]
 
-mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+# mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
+
+
+mongo_str = os.environ["DATABASE_URL"]
 
 client = pymongo.MongoClient(mongo_str)
 

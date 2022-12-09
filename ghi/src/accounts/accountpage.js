@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
+import SpotifyButton from "../music/SpotifyExport.js";
 
 
-
-export default function AccountPageComponent(props) {
+export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
 
+  const href = window.location.href
+  const [currentUrl, setCurrentUrl] = useState(href)
 
   useEffect(() => {
     const playlistDetails = async () => {
@@ -24,37 +26,39 @@ export default function AccountPageComponent(props) {
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
-        console.log(data)
+
       }
     }
-
-
 
     if (token) {
       playlistDetails();
     }
-  }, [token])
+    setCurrentUrl(href);
+  }, [token, href])
 
-
-  return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Your Jams</th>
-        </tr>
-      </thead>
-      <tbody>
-        {playlists.map(pingus => {
-          const playlist_id = pingus.id
-          return (
-            <tr key={pingus.id}>
-              <td>
-                <Link to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table >
-  );
+  if (token) {
+    return (
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Your Jams</th>
+            <th><SpotifyButton href={href} /></th>
+            <th>{currentUrl}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {playlists.map(pingus => {
+            const playlist_id = pingus.id
+            return (
+              <tr key={pingus.id}>
+                <td>
+                  <Link to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table >
+    );
+  }
 };
