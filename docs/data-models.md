@@ -1,6 +1,7 @@
 # Music microservice
 
 - Song
+
 | Property | Type | unique |
 |--------|--------| -----|
 | name | string | no
@@ -9,6 +10,7 @@
 
 
 - Playlist
+
 | Property | Type | unique |
 |--------|--------| -----|
 | name | string | no
@@ -19,7 +21,9 @@ The playlist contains a list of songs with the data shape from the Song model.
 
 
 # Accounts microservice
+
 - User
+
 | Property | Type | unique |
 |--------|--------| -----|
 | full_name | string | no
