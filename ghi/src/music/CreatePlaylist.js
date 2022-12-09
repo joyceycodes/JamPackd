@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
+
 function CreatePlaylist() {
     const { token } = useAuthContext()
     const navigate = useNavigate();
@@ -18,8 +19,8 @@ function CreatePlaylist() {
             songs,
         }
 
+        const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
 
-        const url = "http://localhost:8003/api/playlists/"
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -49,7 +50,7 @@ function CreatePlaylist() {
                             </div>
                             <div className="mb-3 form-floating">
                                 <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" />
-                                <label htmlFor="name">Comments</label>
+                                <label htmlFor="name">Add your thoughts about this playlist...</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
                         </form>

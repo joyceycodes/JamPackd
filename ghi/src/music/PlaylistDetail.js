@@ -3,25 +3,19 @@ import React, { useState, useEffect } from "react";
 // import SpotifyButton from "./SpotifyExport";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
-
-
-// let mappedPlaylist = playlist?.map(x => {
-//     return (
-//         playlist.name
-//     )
-// })
-
-
+import { useNavigate } from "react-router-dom";
 
 function PlaylistDetail() {
-    let { playlist_id } = useParams();
+    const navigate = useNavigate();
+    const { playlist_id } = useParams();
     const { token } = useAuthContext()
     const [isDeleted, setIsDeleted] = useState(false);
     const [playlist, setPlaylist] = useState({})
 
     useEffect(() => {
         const getPlaylist = async () => {
-            const url = `http://localhost:8003/api/playlists/${playlist_id}`
+            const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
+
             const fetchConfig = {
                 method: "get",
                 headers: {
@@ -30,9 +24,9 @@ function PlaylistDetail() {
                 },
             };
             const response = await fetch(url, fetchConfig)
+
             if (response.ok) {
                 const playlistDetails = await response.json();
-                console.log(playlistDetails)
                 setPlaylist(playlistDetails)
             }
         }
@@ -42,11 +36,22 @@ function PlaylistDetail() {
         setIsDeleted();
     }, [playlist_id, token])
 
+    const handleUpdate = () => {
+        navigate(`/music/playlist/update/${playlist_id}`)
+
+    }
+
 
     return (
         <>
-            <div className='mt-5 container-sm border 
+            <div className='container-sm 
             border-secondary rounded bold justify-content-center'>
+                <button onClick={handleUpdate}>Update</button>
+                <br />
+                <DeleteButton setIsDeleted={setIsDeleted} />
+                <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
+                    Playlist has been deleted.
+                </div>
 
                 <h1 className="text-center">{playlist.name}</h1>
                 <p className="text-center">{playlist.comments}</p>
@@ -81,12 +86,7 @@ function PlaylistDetail() {
                     </table>
                 </div>
             </div>
-            {/* <SpotifyButton /> */}
-            <br />
-            <DeleteButton setIsDeleted={setIsDeleted} />
-            <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
-                Playlist has been deleted.
-            </div>
+
 
         </>
     )

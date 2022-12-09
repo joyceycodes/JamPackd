@@ -37,6 +37,11 @@ class PlaylistsOut(BaseModel):
     playlists: list[PlaylistOut]
 
 
+class PlaylistUpdate(BaseModel):
+    comments: Optional[str] = None
+    name: str
+
+
 # get all playlists not working currently
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(
@@ -87,7 +92,7 @@ def delete_playlist(
 @router.put("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def update_playlist(
     playlist_id: str,
-    playlist: PlaylistIn,
+    playlist: PlaylistUpdate,
     queries: PlaylistQueries = Depends(),
     account_data: dict = Depends(authenticate.get_current_account_data),
 ):
