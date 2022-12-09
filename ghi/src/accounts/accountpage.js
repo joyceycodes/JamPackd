@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
-import SpotifyButton from "../music/SpotifyExport.js";
 
 
 export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
-
-  const href = window.location.href
-  const [currentUrl, setCurrentUrl] = useState(href)
 
   useEffect(() => {
     const playlistDetails = async () => {
@@ -33,8 +29,8 @@ export default function AccountPageComponent() {
     if (token) {
       playlistDetails();
     }
-    setCurrentUrl(href);
-  }, [token, href])
+
+  }, [token])
 
   if (token) {
     return (
@@ -42,8 +38,7 @@ export default function AccountPageComponent() {
         <thead>
           <tr>
             <th>Your Jams</th>
-            <th><SpotifyButton href={href} /></th>
-            <th>{currentUrl}</th>
+
           </tr>
         </thead>
         <tbody>
