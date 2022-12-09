@@ -6,7 +6,6 @@ import LoginComponent from "./accounts/login"
 import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
 import Navigation from './nav';
-// import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
 import CreatePlaylist from './music/CreatePlaylist';
 import UpdatePlaylist from './music/UpdatePlaylist';
@@ -24,9 +23,9 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="accounts">
-            <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
-            <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
-            <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
+            <Route path="/accounts/login" element={<LoginComponent />} />
+            <Route path="/accounts/signup" element={<SignupComponent />} />
+            <Route path="/accounts/accountpage" element={<AccountPageComponent />} />
           </Route>
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
