@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
+
 function CreatePlaylist() {
     const { token } = useAuthContext()
     const navigate = useNavigate();
@@ -44,7 +45,8 @@ function CreatePlaylist() {
                         <h1>Create Playlist</h1>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3 form-floating">
-                                <input onChange={(e) => setName(e.target.value)} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+                                <input onChange={(e) => setName(e.target.value)} placeholder="Name"
+                                    required type="text" name="name" id="name" className="form-control" />
                                 <label htmlFor="name">Name</label>
                             </div>
                             <div className="mb-3 form-floating">
