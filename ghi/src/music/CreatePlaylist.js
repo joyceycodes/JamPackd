@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
+
 function CreatePlaylist() {
     const { token } = useAuthContext()
     const navigate = useNavigate();
