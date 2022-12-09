@@ -32,7 +32,7 @@ function CreatePlaylist() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const newPlaylist = await response.json();
-            console.log(newPlaylist)
+
             navigate(`/music/playlists/${newPlaylist.id}`)
         }
     }

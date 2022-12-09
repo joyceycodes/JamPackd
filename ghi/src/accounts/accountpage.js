@@ -58,7 +58,7 @@ export default function AccountPageComponent() {
             <tr key={pingus.id}>
               {/* <a href={pingus.id}><td>{pingus.name}</td></a> */}
               <td>
-                <Link to={`/music/playlists/${playlist_id}`}>{pingus.name}</Link>
+                <Link to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
               </td>
             </tr>
           );

@@ -3,9 +3,6 @@ import './css/App.css';
 import MainPage from './mainpage'
 import SignupComponent from "./accounts/signup"
 import LoginComponent from "./accounts/login"
-import LogoutComponent from './accounts/logout';
-// import SongPlayer from './music/player';
-
 import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
 import Navigation from './nav';
@@ -29,13 +26,13 @@ function App() {
           <Route path="accounts">
             <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
-            <Route path="/accounts/logout" element={<LogoutComponent LogoutComponent={LogoutComponent} />} />
             <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           </Route>
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
             <Route path="/music/playlist/new" element={<CreatePlaylist />} />
             <Route path="/music/playlist/:playlist_id" element={<PlaylistDetail />} />
+            <Route path="/music/playlist/update/:playlist_id" element={<UpdatePlaylist />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes >
