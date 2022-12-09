@@ -22,7 +22,6 @@ class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
     comments: Optional[str] = None
-    user_id: str
 
 
 class PlaylistOut(BaseModel):
@@ -30,7 +29,6 @@ class PlaylistOut(BaseModel):
     name: str
     songs: list[Song]
     comments: Optional[str] = None
-    user_id: str
 
 
 class PlaylistsOut(BaseModel):
@@ -40,18 +38,16 @@ class PlaylistsOut(BaseModel):
 class PlaylistUpdate(BaseModel):
     comments: Optional[str] = None
     name: str
-    user_id: str
 
 
 # get all playlists not working currently
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(
-    user_id: str,
     queries: PlaylistQueries = Depends(),
     account: dict = Depends(authenticate.get_current_account_data),
 ):
     playlists = []
-    for playlist in queries.get_all_playlists(user_id):
+    for playlist in queries.get_all_playlists(account["id"]):
         playlist["id"] = str(playlist["_id"])
         playlists.append(playlist)
     return {"playlists": playlists}
@@ -61,12 +57,11 @@ def get_all_playlists(
 @router.get("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def get_playlist(
     playlist_id: str,
-    user_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
     account: dict = Depends(authenticate.get_current_account_data),
 ):
-    record = queries.get_playlist(playlist_id, user_id)
+    record = queries.get_playlist(playlist_id, account["id"])
     if record is None:
         response.status_code = 404
     else:
@@ -79,7 +74,7 @@ def create_playlist(
     queries: PlaylistQueries = Depends(),
     account: dict = Depends(authenticate.get_current_account_data),
 ):
-    return queries.create_playlist(playlist_in, user_id)
+    return queries.create_playlist(playlist_in, account["id"])
 
 
 @router.delete("/api/playlists/{playlist_id}", response_model=bool)
