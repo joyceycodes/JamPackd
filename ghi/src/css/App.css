@@ -68,3 +68,11 @@ nav ul{
   -webkit-text-stroke-color: black;
   margin: 0px;
 }
+
+.recs-btn a {
+  text-decoration: none;
+}
+
+.header-img {
+  height: 8rem;
+}

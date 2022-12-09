@@ -3,17 +3,16 @@ import { useToken } from "./auth";
 import { useState } from "react";
 
 function LoginComponent() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const [login] = useToken();
+
   let [username, setUsername] = useState();
   let [password, setPassword] = useState();
-  let [, login] = useToken();
-
-
 
   const submitHandler = async (e) => {
-    await login(username, password);
     e.preventDefault();
-    navigate("/accounts/account");
+    await login(username, password)
+    navigate("/accounts/accountpage");
   };
 
   return (
@@ -42,5 +41,7 @@ function LoginComponent() {
       </center>
     </div>
   );
+
 }
+
 export default LoginComponent;

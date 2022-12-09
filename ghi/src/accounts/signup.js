@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToken, useAuthContext } from "./auth"
+import { useToken } from "./auth"
+// let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
   const [, , signup] = useToken()
-  const { token } = useAuthContext
+  // const { token } = useAuthContext
 
   let [full_name, setFullName] = useState();
   let [password, setPassword] = useState();
@@ -14,14 +15,7 @@ function SignupComponent() {
   const submitHandler = async (e) => {
     e.preventDefault();
     await signup(full_name, username, password);
-    if (signup.ok) {
-      console.log("Signup Successful")
-      navigate("/accounts/account");
-      // } else if (!signup.ok) {
-      //   console.log("Signup Failed");
-      //   navigate("/accounts/signup")
-    }
-
+    navigate("/accounts/accountpage")
   };
 
   return (
