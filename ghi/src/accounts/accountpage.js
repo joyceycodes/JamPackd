@@ -4,7 +4,7 @@ import { useAuthContext } from "../accounts/auth.js";
 
 
 
-export default function AccountPageComponent(props) {
+export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
 
@@ -24,7 +24,7 @@ export default function AccountPageComponent(props) {
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
-        console.log(data)
+
       }
     }
 

@@ -28,7 +28,6 @@ function UpdatePlaylist() {
 
         if (response.ok) {
             const updatedPlaylist = await response.json();
-            console.log(updatedPlaylist)
             navigate(`/music/playlist/${updatedPlaylist.id}`)
 
         }

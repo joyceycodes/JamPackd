@@ -17,7 +17,6 @@ function CreatePlaylist() {
             comments,
             songs,
         }
-        console.log(data)
         const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
 
         const fetchConfig = {
@@ -29,7 +28,6 @@ function CreatePlaylist() {
             },
         };
         const response = await fetch(url, fetchConfig)
-        console.log(response)
         if (response.ok) {
             const newPlaylist = await response.json();
             navigate(`/music/playlist/${newPlaylist.id}`)
