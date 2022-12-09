@@ -68,3 +68,10 @@ nav ul{
 .header-img {
   height: 8rem;
 }
+
+.testimonial{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}

@@ -8,27 +8,6 @@ export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
 
-<<<<<<< HEAD
-  useEffect(() => {
-    const playlistDetails = async () => {
-      const playlistUrl = "http://localhost:8003/api/playlists";
-      const fetchConfig = {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      };
-      const response = await fetch(playlistUrl, fetchConfig);
-      console.log(response)
-
-      if (response.ok) {
-        const data = await response.json();
-        setPlaylists(data.playlists);
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa", data.playlists)
-      }
-    }
-=======
 
   useEffect(() => {
     const playlistDetails = async () => {
@@ -51,7 +30,6 @@ export default function AccountPageComponent() {
 
 
 
->>>>>>> main
     if (token) {
       playlistDetails();
     }
