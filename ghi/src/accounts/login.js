@@ -6,8 +6,8 @@ function LoginComponent() {
   const navigate = useNavigate();
   const [login] = useToken();
 
-  let [username, setUsername] = useState();
-  let [password, setPassword] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ function LoginComponent() {
   return (
     <div>
       <center>
-        <h1>Welcome! Login using your username and password</h1>
+        <h1>Welcome! Login using your email and password</h1>
         <form onSubmit={submitHandler}>
           <input
             type="text"

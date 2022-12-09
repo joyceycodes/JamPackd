@@ -40,7 +40,6 @@ def get_user(
     queries: UserQueries = Depends(),
 ):
     record = queries.get_user(username)
-    print(record)
     if record is None:
         response.status_code = 404
     else:
