@@ -8,9 +8,9 @@ function Navigation() {
                 <div className="nav-tabs is-centered">
                     <ul>
                         <li><button><NavLink to="/">Home Page</NavLink></button></li>
-                        <li><button><NavLink to="/accounts/signup">Signup</NavLink></button></li>
+                        {/* <li><button><NavLink to="/accounts/signup">Signup</NavLink></button></li> */}
+                        {/* <li><button><NavLink to="/accounts/accountpage">My Account</NavLink></button></li> */}
                         <li><LogoutTest /></li>
-                        <li><button><NavLink to="/accounts/accountpage">My Account</NavLink></button></li>
                         {/* <li><button><NavLink to="/accounts/account">My Account</NavLink></button></li> */}
                         {/* /* <li><NavLink to="/new_playlist">Create a new Playlist</NavLink></li> */}
                         {/* <li><NavLink to="/playlist">My Playlists</NavLink></li> */}
