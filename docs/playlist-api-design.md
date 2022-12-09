@@ -88,7 +88,16 @@
 {
   "playlists": [
     {
-        "name": "string",
+      "id": 0,
+      "name": "string",
+      "songs": [
+        {
+          "name": "string",
+          "artist": "string",
+          "uri": "string"
+        }
+      ],
+      "comments": "string"
     }
   ]
 }

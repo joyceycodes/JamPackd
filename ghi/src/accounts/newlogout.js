@@ -18,7 +18,7 @@ export default function LogoutTest() {
                 <div className="logout-container">
 
 
-                    <button><NavLink to="/accounts/accountpage">My Account</NavLink></button>
+                    <button><NavLink to="/accounts/accountpage">My Playlists</NavLink></button>
                     <button onClick={checkout} className="logout-btn">Logout</button>
 
 
