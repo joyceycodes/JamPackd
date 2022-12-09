@@ -8,7 +8,6 @@ router = APIRouter()
 
 
 class Song(BaseModel):
-    # id: str
     name: str
     artist: str
     uri: str
