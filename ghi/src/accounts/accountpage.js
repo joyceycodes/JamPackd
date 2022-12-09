@@ -7,6 +7,7 @@ export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
 
+
   useEffect(() => {
     const playlistDetails = async () => {
       const playlistUrl = `${process.env.REACT_APP_MUSIC}/api/playlists/`;
@@ -22,6 +23,7 @@ export default function AccountPageComponent() {
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
+
 
       }
     }

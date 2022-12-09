@@ -17,7 +17,6 @@ function CreatePlaylist() {
             comments,
             songs,
         }
-
         const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
 
         const fetchConfig = {

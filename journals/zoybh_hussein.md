@@ -71,7 +71,6 @@ flesh out user account page
 Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
 Group coded with Scott
 Fixed all the Errors that had to do with clicking signup and login. should work now still need to figure out the token being made when logged in. Auth js ln 77
-=======
 
 12/5
 Lied about the Auth stuff
@@ -85,4 +84,10 @@ fixed the routing from logging in and signup to go to accounts page
 need to still work on logged in vs out view
 Finished Auth with Scott Finally.
 Able to log in and out and view pages accordingly.
->>>>>>> 5ca64596ea8da81df256b9818300127983932e07
+
+12/7
+Worked with the group on merging to main
+Also started working on deployment again with the group
+Going to pair program with marble for the playlists pge tiffany doing the playlist page.
+Jumped on to pair program with marble on the playlists detail page
+Need to figure out how to pull playlist data "blocker"
