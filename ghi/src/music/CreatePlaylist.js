@@ -10,7 +10,6 @@ function CreatePlaylist() {
     const [comments, setComments] = useState("");
     const songs = JSON.parse(window.localStorage.getItem("uris"))
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -18,7 +17,6 @@ function CreatePlaylist() {
             comments,
             songs,
         }
-
         const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
 
         const fetchConfig = {
@@ -32,7 +30,6 @@ function CreatePlaylist() {
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
             const newPlaylist = await response.json();
-
             navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }
@@ -45,11 +42,12 @@ function CreatePlaylist() {
                         <h1>Create Playlist</h1>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3 form-floating">
-                                <input onChange={(e) => setName(e.target.value)} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+                                <input onChange={(e) => setName(e.target.value)} placeholder="Name"
+                                    required type="text" name="name" id="name" className="form-control" />
                                 <label htmlFor="name">Name</label>
                             </div>
                             <div className="mb-3 form-floating">
-                                <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" />
+                                <textarea onChange={(e) => setComments(e.target.value)} placeholder="Comments" required name="comments" id="comments" className="form-control" rows="5" />
                                 <label htmlFor="name">Add your thoughts about this playlist...</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>

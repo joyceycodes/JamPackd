@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "./auth"
+import { useAuthContext } from "../accounts/auth.js";
 // let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
-  const [, , signup] = useToken()
-  // const { token } = useAuthContext
+  const [, , signup] = useToken();
+  const { token } = useAuthContext();
 
   let [full_name, setFullName] = useState();
   let [password, setPassword] = useState();
@@ -17,41 +18,43 @@ function SignupComponent() {
     await signup(full_name, username, password);
     navigate("/accounts/accountpage")
   };
+  if (!token) {
 
-  return (
-    <div>
-      <center>
-        <h2>Sign Up for JamPack'd</h2>
-        <form onSubmit={submitHandler}>
-          Full Name: <input
-            type="text"
-            name="full_name"
-            placeholder="John Doe"
-            value={full_name}
-            onChange={(event) => setFullName(event.target.value)}
-          />
-          <br />
-          Email Address <input
-            type="text"
-            name="username"
-            placeholder="john@doe.com"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <br />
-          Password: <input
-            type="password"
-            name="password"
-            placeholder="ilikepizza123"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <br />
-          <input type="submit" name="submit" />
-        </form>
-      </center>
-    </div>
-  );
+    return (
+      <div>
+        <center>
+          <h2>Sign Up for JamPack'd</h2>
+          <form onSubmit={submitHandler}>
+            Full Name: <input
+              type="text"
+              name="full_name"
+              placeholder="John Doe"
+              value={full_name}
+              onChange={(event) => setFullName(event.target.value)}
+            />
+            <br />
+            Email Address <input
+              type="text"
+              name="username"
+              placeholder="john@doe.com"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <br />
+            Password: <input
+              type="password"
+              name="password"
+              placeholder="ilikepizza123"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <br />
+            <input type="submit" name="submit" />
+          </form>
+        </center>
+      </div>
+    );
+  }
 };
 
 

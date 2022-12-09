@@ -8,6 +8,7 @@ export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
 
+<<<<<<< HEAD
   useEffect(() => {
     const playlistDetails = async () => {
       const playlistUrl = "http://localhost:8003/api/playlists";
@@ -27,6 +28,30 @@ export default function AccountPageComponent() {
         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa", data.playlists)
       }
     }
+=======
+
+  useEffect(() => {
+    const playlistDetails = async () => {
+      const playlistUrl = `${process.env.REACT_APP_MUSIC}/api/playlists/`;
+      const fetchConfig = {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+
+      };
+      const response = await fetch(playlistUrl, fetchConfig);
+      if (response.ok) {
+        const data = await response.json();
+        setPlaylists(data.playlists);
+
+      }
+    }
+
+
+
+>>>>>>> main
     if (token) {
       playlistDetails();
     }

@@ -8,7 +8,6 @@ router = APIRouter()
 
 
 class Song(BaseModel):
-    # id: str
     name: str
     artist: str
     uri: str
@@ -21,7 +20,6 @@ class Recommendations(BaseModel):
 class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
-    # ext_url: str
     comments: Optional[str] = None
 
 
@@ -29,7 +27,6 @@ class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
-    # ext_url: str
     comments: Optional[str] = None
 
 
@@ -46,10 +43,10 @@ class PlaylistUpdate(BaseModel):
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
     playlists = []
-    for playlist in queries.get_all_playlists():
+    for playlist in queries.get_all_playlists(account["id"]):
         playlist["id"] = str(playlist["_id"])
         playlists.append(playlist)
     return {"playlists": playlists}
@@ -61,9 +58,9 @@ def get_playlist(
     playlist_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
-    record = queries.get_playlist(playlist_id)
+    record = queries.get_playlist(playlist_id, account["id"])
     if record is None:
         response.status_code = 404
     else:
@@ -74,9 +71,9 @@ def get_playlist(
 def create_playlist(
     playlist_in: PlaylistIn,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
-    return queries.create_playlist(playlist_in)
+    return queries.create_playlist(playlist_in, account["id"])
 
 
 @router.delete("/api/playlists/{playlist_id}", response_model=bool)
@@ -94,6 +91,6 @@ def update_playlist(
     playlist_id: str,
     playlist: PlaylistUpdate,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
     return queries.update_playlist(playlist_id, playlist)

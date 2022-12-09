@@ -1,6 +1,5 @@
 import DeleteButton from "./DeleteButton";
 import React, { useState, useEffect } from "react";
-// import SpotifyButton from "./SpotifyExport";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +13,7 @@ function PlaylistDetail() {
 
     useEffect(() => {
         const getPlaylist = async () => {
+
             const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
 
             const fetchConfig = {
@@ -22,6 +22,7 @@ function PlaylistDetail() {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
+
             };
             const response = await fetch(url, fetchConfig)
 
@@ -55,7 +56,6 @@ function PlaylistDetail() {
 
                 <h1 className="text-center">{playlist.name}</h1>
                 <p className="text-center">{playlist.comments}</p>
-                {/* <p className="text-center">{playlist.songs}</p> */}
                 <div className='mt-5 container-sm border 
             border-secondary rounded bold justify-content-center'>
                     <table className="table table-striped 
