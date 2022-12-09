@@ -35,8 +35,9 @@ function App() {
           <Route path="music">
             <Route path="/music/recommendations" element={<RecommendationsForm />} />
             <Route path="/music/playlist/new" element={<CreatePlaylist />} />
-            <Route path="/music/playlist/:playlist_id" element={<PlaylistDetail />} />
-            <Route path="/music/playlist/:playlist_id" element={<PlaylistDetail />} />
+            {/* list of playlists? */}
+            {/* <Route path="/music/playlists" element={<AllPlaylists />} /> */}
+            <Route path="/music/playlists/:playlist_id" element={<PlaylistDetail />} />
           </Route>
           {/* /* <Route path="/new_playlist" element={} */}
         </Routes >
