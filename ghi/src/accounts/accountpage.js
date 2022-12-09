@@ -4,24 +4,28 @@ import { useAuthContext } from "../accounts/auth.js";
 
 
 
-export default function AccountPageComponent() {
+export default function AccountPageComponent(props) {
   const [playlists, setPlaylists] = useState([]);
   const { token } = useAuthContext()
+  const username = props.username
+  console.log("LISTPAGE", username)
 
   useEffect(() => {
     const playlistDetails = async () => {
       const playlistUrl = `${process.env.REACT_APP_MUSIC}/api/playlists/`;
       const fetchConfig = {
-        method: "get",
+        method: "post",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ username })
       };
       const response = await fetch(playlistUrl, fetchConfig);
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
+        console.log(data)
       }
     }
 
@@ -30,7 +34,7 @@ export default function AccountPageComponent() {
     if (token) {
       playlistDetails();
     }
-  }, [token])
+  }, [username, token])
 
 
   return (

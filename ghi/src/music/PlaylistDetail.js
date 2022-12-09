@@ -5,23 +5,29 @@ import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
-function PlaylistDetail() {
+function PlaylistDetail(props) {
     const navigate = useNavigate();
     const { playlist_id } = useParams();
     const { token } = useAuthContext()
     const [isDeleted, setIsDeleted] = useState(false);
     const [playlist, setPlaylist] = useState({})
-
+    const username = props.username
+    console.log("DETAIL", username)
     useEffect(() => {
         const getPlaylist = async () => {
+            const data = {
+                playlist_id,
+                username
+            }
             const url = `${process.env.REACT_APP_MUSIC}/api/playlists/${playlist_id}`
 
             const fetchConfig = {
-                method: "get",
+                method: "post",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify(data)
             };
             const response = await fetch(url, fetchConfig)
 
@@ -34,7 +40,7 @@ function PlaylistDetail() {
             getPlaylist();
         }
         setIsDeleted();
-    }, [playlist_id, token])
+    }, [playlist_id, token, username])
 
     const handleUpdate = () => {
         navigate(`/music/playlist/update/${playlist_id}`)

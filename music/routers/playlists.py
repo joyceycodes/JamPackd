@@ -48,7 +48,7 @@ class PlaylistUpdate(BaseModel):
 def get_all_playlists(
     user_id: str,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
     playlists = []
     for playlist in queries.get_all_playlists(user_id):
@@ -64,7 +64,7 @@ def get_playlist(
     user_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
     record = queries.get_playlist(playlist_id, user_id)
     if record is None:
@@ -77,9 +77,9 @@ def get_playlist(
 def create_playlist(
     playlist_in: PlaylistIn,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
-    return queries.create_playlist(playlist_in)
+    return queries.create_playlist(playlist_in, user_id)
 
 
 @router.delete("/api/playlists/{playlist_id}", response_model=bool)
@@ -97,6 +97,6 @@ def update_playlist(
     playlist_id: str,
     playlist: PlaylistUpdate,
     queries: PlaylistQueries = Depends(),
-    account_data: dict = Depends(authenticate.get_current_account_data),
+    account: dict = Depends(authenticate.get_current_account_data),
 ):
     return queries.update_playlist(playlist_id, playlist)

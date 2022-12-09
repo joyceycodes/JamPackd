@@ -3,20 +3,21 @@ import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
 
 
-function CreatePlaylist() {
+function CreatePlaylist(props) {
     const { token } = useAuthContext()
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [comments, setComments] = useState("");
     const songs = JSON.parse(window.localStorage.getItem("uris"))
-
-
+    const username = props.username
+    console.log("CREATE", username)
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             name,
             comments,
             songs,
+            username
         }
         console.log(data)
         const url = `${process.env.REACT_APP_MUSIC}/api/playlists/`
@@ -33,7 +34,6 @@ function CreatePlaylist() {
         console.log(response)
         if (response.ok) {
             const newPlaylist = await response.json();
-
             navigate(`/music/playlist/${newPlaylist.id}`)
         }
     }

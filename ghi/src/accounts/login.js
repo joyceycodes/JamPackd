@@ -2,30 +2,30 @@ import { useNavigate } from "react-router-dom";
 import { useToken } from "./auth";
 import { useState } from "react";
 
-function LoginComponent() {
+function LoginComponent(props) {
   const navigate = useNavigate();
   const [login] = useToken();
 
-  const [username, setUsername] = useState();
+  // const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    await login(username, password)
+    await login(props.username, password)
     navigate("/accounts/accountpage");
   };
 
   return (
     <div>
       <center>
-        <h1>Welcome! Login using your username and password</h1>
+        <h1>Welcome! Login using your email and password</h1>
         <form onSubmit={submitHandler}>
           <input
             type="text"
             name="username"
             placeholder="Email"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={props.username}
+            onChange={(event) => props.setUsername(event.target.value)}
           />
           <br />
           <input

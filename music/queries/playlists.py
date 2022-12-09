@@ -16,38 +16,40 @@ client = pymongo.MongoClient(mongo_str)
 
 
 class PlaylistQueries:
-    def get_all_playlists(self):
+    # def get_all_playlists(self):
+    # db = client[dbname]
+    # result = list(db.playlists.find())
+    # return result
+
+    def get_all_playlists(self, user_id):
         db = client[dbname]
-        result = list(db.playlists.find())
+        result = list(db.playlists.find({"user_id": user_id}))
         return result
 
-    # def get_all_playlists(self, user_id):
-    #     db = client[dbname]
-    #     result = list(db.playlists.find({"user_id": user_id}))
-    #     return result
-
-    def get_playlist(self, playlist_id):
-        db = client[dbname]
-        result = db.playlists.find_one({"_id": ObjectId(playlist_id)})
-        if result:
-            result["id"] = str(result["_id"])
-        return result
-
-    # def get_playlist(self, playlist_id, user_id):
+    # def get_playlist(self, playlist_id):
     #     db = client[dbname]
     #     result = db.playlists.find_one({"_id": ObjectId(playlist_id)})
     #     if result:
     #         result["id"] = str(result["_id"])
-    #         if result["user_id"] != user_id:
-    #             return None
     #     return result
 
-    def create_playlist(self, data):
+    def get_playlist(self, playlist_id, user_id):
+        db = client[dbname]
+        result = db.playlists.find_one({"_id": ObjectId(playlist_id)})
+        if result:
+            result["id"] = str(result["_id"])
+            if result["user_id"] != user_id:
+                return None
+        return result
+
+    def create_playlist(self, data, user_id):
         db = client[dbname]
         result = db.playlists.insert_one(data.dict())
         # print("INSERTED ID:", result.inserted_id)
         if result.inserted_id:
-            result = self.get_playlist(str(result.inserted_id))
+            result = self.get_playlist(
+                str(result.inserted_id),
+            )
             result["id"] = str(result["_id"])
             print(result["id"], str(result["_id"]))
             return result
