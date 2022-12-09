@@ -25,7 +25,7 @@ function SpotifyButton(props) {
                 }
             }
             if (props.href) {
-                getAccessToken();
+                getAccessToken(props.href);
             }
         }
 

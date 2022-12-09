@@ -1,6 +1,5 @@
 import DeleteButton from "./DeleteButton";
 import React, { useState, useEffect } from "react";
-import SpotifyButton from "./SpotifyExport";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +53,6 @@ function PlaylistDetail() {
                 <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
                     Playlist has been deleted.
                 </div>
-                <SpotifyButton />
 
                 <h1 className="text-center">{playlist.name}</h1>
                 <p className="text-center">{playlist.comments}</p>
