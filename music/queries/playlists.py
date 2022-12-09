@@ -21,12 +21,26 @@ class PlaylistQueries:
         result = list(db.playlists.find())
         return result
 
-    def get_playlist(self, id):
+    # def get_all_playlists(self, user_id):
+    #     db = client[dbname]
+    #     result = list(db.playlists.find({"user_id": user_id}))
+    #     return result
+
+    def get_playlist(self, playlist_id):
         db = client[dbname]
-        result = db.playlists.find_one({"_id": ObjectId(id)})
+        result = db.playlists.find_one({"_id": ObjectId(playlist_id)})
         if result:
             result["id"] = str(result["_id"])
         return result
+
+    # def get_playlist(self, playlist_id, user_id):
+    #     db = client[dbname]
+    #     result = db.playlists.find_one({"_id": ObjectId(playlist_id)})
+    #     if result:
+    #         result["id"] = str(result["_id"])
+    #         if result["user_id"] != user_id:
+    #             return None
+    #     return result
 
     def create_playlist(self, data):
         db = client[dbname]

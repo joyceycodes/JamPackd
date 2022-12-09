@@ -6,6 +6,7 @@ import LoginComponent from "./accounts/login"
 import RecommendationsForm from './music/RecommendationsForm';
 import AccountPageComponent from "./accounts/accountpage"
 import Navigation from './nav';
+import { useState, useEffect } from 'react'
 // import SpotifyButton from './music/SpotifyExport';
 import PlaylistDetail from './music/PlaylistDetail';
 import CreatePlaylist from './music/CreatePlaylist';
@@ -16,6 +17,11 @@ const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, '');
 
 function App() {
+  const [username, setUsername] = useState();
+
+  useEffect(() => {
+    setUsername();
+  }, [])
 
   return (
     <BrowserRouter basename={basename}>
@@ -24,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="accounts">
-            <Route path="/accounts/login" element={<LoginComponent LoginComponent={LoginComponent} />} />
+            <Route path="/accounts/login" element={<LoginComponent />} />
             <Route path="/accounts/signup" element={<SignupComponent SignupForm={SignupComponent} />} />
             <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
           </Route>

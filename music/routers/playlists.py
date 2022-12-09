@@ -21,7 +21,6 @@ class Recommendations(BaseModel):
 class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]
-    # ext_url: str
     comments: Optional[str] = None
     user_id: str
 
@@ -30,8 +29,8 @@ class PlaylistOut(BaseModel):
     id: int | str
     name: str
     songs: list[Song]
-    # ext_url: str
     comments: Optional[str] = None
+    user_id: str
 
 
 class PlaylistsOut(BaseModel):
@@ -47,11 +46,12 @@ class PlaylistUpdate(BaseModel):
 # get all playlists not working currently
 @router.get("/api/playlists/", response_model=PlaylistsOut)
 def get_all_playlists(
+    user_id: str,
     queries: PlaylistQueries = Depends(),
     account_data: dict = Depends(authenticate.get_current_account_data),
 ):
     playlists = []
-    for playlist in queries.get_all_playlists():
+    for playlist in queries.get_all_playlists(user_id):
         playlist["id"] = str(playlist["_id"])
         playlists.append(playlist)
     return {"playlists": playlists}
@@ -61,11 +61,12 @@ def get_all_playlists(
 @router.get("/api/playlists/{playlist_id}", response_model=PlaylistOut)
 def get_playlist(
     playlist_id: str,
+    user_id: str,
     response: Response,
     queries: PlaylistQueries = Depends(),
     account_data: dict = Depends(authenticate.get_current_account_data),
 ):
-    record = queries.get_playlist(playlist_id)
+    record = queries.get_playlist(playlist_id, user_id)
     if record is None:
         response.status_code = 404
     else:

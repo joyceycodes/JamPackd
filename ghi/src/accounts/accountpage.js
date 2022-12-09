@@ -10,7 +10,7 @@ export default function AccountPageComponent() {
 
   useEffect(() => {
     const playlistDetails = async () => {
-      const playlistUrl = "http://localhost:8003/api/playlists";
+      const playlistUrl = `${process.env.REACT_APP_MUSIC}/api/playlists/`;
       const fetchConfig = {
         method: "get",
         headers: {
@@ -19,14 +19,14 @@ export default function AccountPageComponent() {
         },
       };
       const response = await fetch(playlistUrl, fetchConfig);
-      console.log(response)
-
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa", data.playlists)
       }
     }
+
+
+
     if (token) {
       playlistDetails();
     }

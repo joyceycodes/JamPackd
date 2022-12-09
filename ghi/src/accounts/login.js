@@ -6,8 +6,8 @@ function LoginComponent() {
   const navigate = useNavigate();
   const [login] = useToken();
 
-  let [username, setUsername] = useState();
-  let [password, setPassword] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   const submitHandler = async (e) => {
     e.preventDefault();
