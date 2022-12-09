@@ -23,6 +23,7 @@ class PlaylistIn(BaseModel):
     songs: list[Song]
     # ext_url: str
     comments: Optional[str] = None
+    user_id: str
 
 
 class PlaylistOut(BaseModel):
@@ -40,6 +41,7 @@ class PlaylistsOut(BaseModel):
 class PlaylistUpdate(BaseModel):
     comments: Optional[str] = None
     name: str
+    user_id: str
 
 
 # get all playlists not working currently
