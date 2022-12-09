@@ -12,7 +12,6 @@ class EmptyPlaylistQueries:
 
 
 def test_get_all_playlists():
-
     # Arrange
     account = {"id": 123}
     app.dependency_overrides[PlaylistQueries] = EmptyPlaylistQueries
