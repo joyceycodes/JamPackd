@@ -2,7 +2,7 @@
 
 ### Song
 
-| Property | Type | unique |
+| Field | Type | Unique |
 |--------|--------| -----|
 | name | string | no
 | artist | string | no
@@ -11,7 +11,7 @@
 
 ### Playlist
 
-| Property | Type | unique |
+| Field | Type | Unique |
 |--------|--------| -----|
 | name | string | no
 | songs | list | no
@@ -24,7 +24,7 @@ The playlist contains a list of songs with the data shape from the Song model.
 
 ### User
 
-| Property | Type | unique |
+| Field | Type | Unique |
 |--------|--------| -----|
 | full_name | string | no
 | username | string | no
