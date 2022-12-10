@@ -10,17 +10,23 @@ Created by:
 
 ## Design
 
-- [Accounts Design](docs/accounts-api-design.md)
-- [Playlist Design](docs/playlist-api-design.md)
+- [Accounts API Design](docs/accounts-api-design.md)
+- [Music API Design](docs/playlist-api-design.md)
 - [Integrations](docs/integrations.md)
 - [Data Models](docs/data-models.md)
 
-## MVP
+## Functionality
 - JamPack'd is a music discovery app that will create a playlist based on randomly generated music that you can like or dislike.
 - You need an account to use this app.
+- Navigate to the Get Songs page to begin making a playlist.
+- Select a genre from the dropdown menu and a song player will appear on the same page.
 - If you dislike a song, the song will not be added to the playlist.
-- If you like the song, the song will be added to a playlist for you that you can view after you're finished making your selections. 
-- Created playlists can be viewed from Home Page-Logged In.
+- If you like the song, the song will be added to a playlist.
+- You may change genres at any time, be sure to hit the Submit button after selecting a knew genre.
+- Hit Done when you are finished exploring songs.
+- Add a name for your new playlist and jot down any thoughts that you have while listening to these new jams!
+- You will be navigated to your new playlist for you to jam out.
+- Created playlists can be viewed on My Playlists page.
 
 ## Project Initialization
 
@@ -49,7 +55,6 @@ docker volume create music
 Starting up Docker in terminal:
 ```
 docker compose build
-
 docker compose up
 ```
 Once you open your docker app:
