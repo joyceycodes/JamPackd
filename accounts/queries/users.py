@@ -50,6 +50,7 @@ class UserQueries:
     def get_user(self, username: str):
         db = client[dbname]
         result = db.users.find_one({"username": username})
+        print("AAAAAAAAAAAAAAAAAAAAA", username)
         if result:
             result["id"] = str(result["_id"])
         return UserOutWithPassword(**result)

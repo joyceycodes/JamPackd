@@ -91,3 +91,13 @@ Also started working on deployment again with the group
 Going to pair program with marble for the playlists pge tiffany doing the playlist page.
 Jumped on to pair program with marble on the playlists detail page
 Need to figure out how to pull playlist data "blocker"
+
+12/8
+Worked on deployment with the group
+Did some cleanup with the nav bar with adrian
+Made it so you do not see certain buttons when logged in
+
+12/9
+app full rendered
+working on unit tests today
+need to do the readme as well
