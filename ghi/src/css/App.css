@@ -19,13 +19,11 @@
   
 }
 
-
-
-nav ul{
+.nav-container{
   display: flex;
-  justify-content: space-between;
-  border: none;
-  list-style: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0%
 }
 
 .fbstyle{
@@ -39,27 +37,16 @@ nav ul{
 
 .nav-tabs ul{
   display: flex;
-  justify-content: space-evenly;
   list-style: none;
   font-size: 25px;
 }
 
 .nav-tabs ul a{
+  display: flex;
+  justify-content: space-between;
   text-decoration: none;
 }
 
-.logout-container button{
-  cursor: pointer;
-  margin: 0px 0px 0px 0px;
-}
-
-.logout-container{
-  color: red;
-  font-size: 48px;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
-  margin: 0px;
-}
 
 .recs-btn a {
   text-decoration: none;
@@ -69,9 +56,24 @@ nav ul{
   height: 8rem;
 }
 
+.testimonial-h{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.25rem;}
+
 .testimonial{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.JP_logo{
+  height: 10rem;
+}
+.logo-container{
+  padding: 0px;
+  margin: 0px;
+  width: 1rem;
 }

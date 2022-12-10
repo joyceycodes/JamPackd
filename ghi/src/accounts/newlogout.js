@@ -16,21 +16,16 @@ export default function LogoutTest() {
         return (
             <div>
                 <div className="logout-container">
-
-
                     <button><NavLink to="/accounts/accountpage">My Account</NavLink></button>
                     <button onClick={checkout} className="logout-btn">Logout</button>
-
-
                 </div>
             </div>
         )
     } else {
         return (
-            <div style={{ justifyContent: "space-between" }}>
-
-                <button className="me-4"><NavLink to="/accounts/login">Login</NavLink></button>
-                <button className="ms-4"><NavLink to="/accounts/signup">Signup</NavLink></button>
+            <div>
+                <button><NavLink to="/accounts/login">Login</NavLink></button>
+                <button><NavLink to="/accounts/signup">Signup</NavLink></button>
             </div>
         )
     }
