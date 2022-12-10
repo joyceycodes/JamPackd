@@ -1,4 +1,4 @@
-## Jam Pack'd
+# Jam Pack'd
 
 -Joyce Yu
 -Marble (Scott) Nideffer
