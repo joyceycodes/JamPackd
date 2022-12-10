@@ -98,6 +98,8 @@ Did some cleanup with the nav bar with adrian
 Made it so you do not see certain buttons when logged in
 
 12/9
-app full rendered
+App full rendered
 working on unit tests today
 need to do the readme as well
+Completed my unit test with the help ok Scott, Junnella, And Yesenia
+also finished my contribution to the readme file.
