@@ -9,7 +9,6 @@ Created by:
 - Zoybh Hussein
 
 ## Design
-
 - [Accounts API Design](docs/accounts-api-design.md)
 - [Music API Design](docs/playlist-api-design.md)
 - [Integrations](docs/integrations.md)
@@ -42,9 +41,10 @@ CD into the new project directory
 Create a .ENV file:
 
 Sign in or create a Spotify dev account and input these parameters within the .env file filling in the needed codes.
+```
 CLIENT_ID = "Your id"
 CLIENT_SECRET = "Your secret"
-
+```
 
 Create the Volumes in terminal:
 ```

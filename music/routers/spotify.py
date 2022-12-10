@@ -18,7 +18,7 @@ def get_recommendations(request: dict):
 
     genre = list(request["genre"].split())
 
-    data = sp.recommendations(seed_genres=genre, limit=20)
+    data = sp.recommendations(seed_genres=genre, limit=50)
     recommendations = []
     for idx, track in enumerate(data["tracks"]):
         recommendations.append(
