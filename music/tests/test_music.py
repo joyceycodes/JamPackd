@@ -7,7 +7,7 @@ client = TestClient(app)
 
 
 class EmptyPlaylistQueries:
-    def get_all_playlists(sel, user_id):
+    def get_all_playlists(self, user_id):
         return []
 
 
