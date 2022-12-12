@@ -20,20 +20,26 @@ music-unit-test-job:
   stage: test
   needs:
     - lint-test-job
+  variables:
+    MONGODATABASE_MUSIC: ${MONGODATABASE_MUSIC}
+    DATABASE_URL: ${DATABASE_URL}
   script:
     - cd music
     - pip install -r requirements.txt
-    - MONGODATABASE_MUSIC=music python -m pytest
+    - python -m pytest
 
 accounts-unit-test-job:
   image: python:3-bullseye
   stage: test
   needs:
     - lint-test-job
+  variables:
+    MONGODATABASE_ACCOUNTS: ${MONGODATABASE_ACCOUNTS}
+    DATABASE_URL: ${DATABASE_URL}
   script:
     - cd accounts
     - pip install -r requirements.txt
-    - MONGODATABASE_ACCOUNTS=accounts python -m pytest
+    - python -m pytest
 
 
 # Build the React/JavaScript front-end
