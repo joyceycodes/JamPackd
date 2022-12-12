@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 from pydantic import BaseModel
 
 # dbhost = os.environ["MONGOHOST"]
-dbname = os.environ["MONGODATABASE"]
+dbname = os.environ["MONGODATABASE_ACCOUNTS"]
 # dbuser = os.environ["MONGOUSER"]
 # dbpass = os.environ["MONGOPASSWORD"]
 
