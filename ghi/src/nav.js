@@ -2,25 +2,18 @@ import { NavLink } from 'react-router-dom';
 import LogoutTest from './accounts/newlogout';
 
 function Navigation() {
-    return (
-        <div>
-            <div className="nav-container">
-                <div className="nav-tabs is-centered">
-                    <ul>
-                        <li><button><NavLink to="/">Home Page</NavLink></button></li>
-                        {/* <li><button><NavLink to="/accounts/signup">Signup</NavLink></button></li> */}
-                        {/* <li><button><NavLink to="/accounts/accountpage">My Account</NavLink></button></li> */}
-                        <li><LogoutTest /></li>
-                        {/* <li><button><NavLink to="/accounts/account">My Account</NavLink></button></li> */}
-                        {/* /* <li><NavLink to="/new_playlist">Create a new Playlist</NavLink></li> */}
-                        {/* <li><NavLink to="/playlist">My Playlists</NavLink></li> */}
-                        {/* there are more to add!!!  */}
-                        |
-                        <li><button><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
-                    </ul>
-                </div>
-            </div>
+  return (
+    <div className='background'>
+      <div className="logo-container"><NavLink to="/"><img className="JP_logo" src="https://i.imgur.com/HxIEBd3.png" alt="JamPackd Logo"></img></NavLink></div>
+      <div className="nav-container">
+        <div className="nav-tabs">
+          <ul>
+            <li><LogoutTest /></li>
+            <li><button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
+          </ul>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 export default Navigation;
