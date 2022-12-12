@@ -17,30 +17,26 @@ export default function AccountPageComponent() {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-
       };
       const response = await fetch(playlistUrl, fetchConfig);
       if (response.ok) {
         const data = await response.json();
         setPlaylists(data.playlists);
-
-
       }
     }
-
     if (token) {
       playlistDetails();
     }
 
   }, [token])
 
-  if (token) {
-    return (
+
+  return (
+    <div>
       <table className="table table-striped">
         <thead>
           <tr>
             <th>Your Jams</th>
-
           </tr>
         </thead>
         <tbody>
@@ -49,13 +45,13 @@ export default function AccountPageComponent() {
             return (
               <tr key={pingus.id}>
                 <td>
-                  <Link to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
+                  <Link className="text-decoration-none text-muted" to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table >
-    );
-  }
+    </div>
+  );
 };
