@@ -2,11 +2,11 @@
 
 - In your browser, naviagating to <https://semi-serious-solutions.gitlab.io/jam-packd/> will bring you to the home page
 
-![Alt text](images/Screenshot 2022-12-12 at 10.32.03 AM.png)
+![Alt text](images/1.png)
 
 - To make use of the site's functions you must first have an account.
 - Use the navigation buttons to enter the sign-up page and enter you personal details to create an account
-![Alt text](images/Screenshot 2022-12-12 at 10.32.34 AM.png
+![Alt text](images/2.png
 
 - Once you have created an account you will be automatically redirected to the songs page.
 - There you can select a genere from the drop down menu and start jamin'!
