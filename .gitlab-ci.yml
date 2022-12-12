@@ -23,7 +23,7 @@ music-unit-test-job:
   script:
     - cd music
     - pip install -r requirements.txt
-    - python -m pytest
+    - MONGODATABASE_ACCOUNTS=accounts python -m pytest
 
 accounts-unit-test-job:
   image: python:3-bullseye
@@ -33,7 +33,7 @@ accounts-unit-test-job:
   script:
     - cd accounts
     - pip install -r requirements.txt
-    - python -m pytest
+    - MONGODATABASE_MUSIC=music python -m pytest
 
 
 # Build the React/JavaScript front-end
@@ -62,41 +62,6 @@ build-front-end-job:
   artifacts:
     paths:
       - ghi/build/
-
-
-
-
-# build-back-end-job:
-#   # rules:
-#   #   # Only run if pushing to the main branch
-#   #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-#   stage: build
-#   image: docker:20.10.16
-#   services:
-#     - docker:20.10.16-dind
-#   script:
-#     # DO THIS FOR EACH SERVICE YOU NEED TO BUILD A DOCKER
-#     # IMAGE FOR
-#     - cd api
-#     #double check next 2 lines
-#     - cd accounts
-#     - cd music 
-
-#     # Builds the image CHANGE THE /app FOR EACH SERVICE
-#     - docker build -t ${CI_REGISTRY_IMAGE}/app:latest .
-
-#     # Gives the image a specific name
-#     - docker tag ${CI_REGISTRY_IMAGE}/app:latest ${CI_REGISTRY_IMAGE}/app:$CI_JOB_ID
-
-#     # Authenticates with the GitLab image registry
-#     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-
-#     # Stores your image in the GitLab image registry
-#     # with two different tags, the version from the tag
-#     # and the name "latest"
-#     - docker push ${CI_REGISTRY_IMAGE}/app:$CI_JOB_ID
-#     - docker push ${CI_REGISTRY_IMAGE}/app:latest
-
 
 
 # Deploy the React/JavaScript front-end to GitLab pages
