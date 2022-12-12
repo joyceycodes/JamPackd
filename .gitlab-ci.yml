@@ -15,15 +15,15 @@ lint-test-job:
 # Run the unit tests
 #un-comment relevant code below in buildfrontend jobs
 
-# api-unit-test-job:
-#   image: python:3-bullseye
-#   stage: test
-#   needs:
-#     - lint-test-job
-#   script:
-#     - cd sample_service
-#     - pip install -r requirements.txt
-#     - python -m pytest
+music-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  needs:
+    - lint-test-job
+  script:
+    - cd music
+    - pip install -r requirements.txt
+    - python -m pytest
 
 
 
