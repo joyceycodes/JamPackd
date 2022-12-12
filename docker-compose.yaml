@@ -25,7 +25,7 @@ services:
       SIGNING_KEY: admin
       DATABASE_URL: mongodb://admin:admin@mongo
       MONGOHOST: mongo
-      MONGODATABASE: accounts
+      MONGODATABASE_ACCOUNTS: accounts
       MONGOUSER: admin
       MONGOPASSWORD: admin
       # WAIT_HOSTS: mongo:27017
@@ -41,7 +41,7 @@ services:
     environment:
       DATABASE_URL: mongodb://admin:admin@mongo
       MONGOHOST: mongo
-      MONGODATABASE: music
+      MONGODATABASE_MUSIC: music
       MONGOUSER: admin
       MONGOPASSWORD: admin
       CLIENT_ID: ${CLIENT_ID}
