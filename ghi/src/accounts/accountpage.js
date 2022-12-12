@@ -31,7 +31,7 @@ export default function AccountPageComponent() {
 
 
   return (
-    <div className='background'>
+    <div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -44,7 +44,7 @@ export default function AccountPageComponent() {
             return (
               <tr key={pingus.id}>
                 <td>
-                  <Link to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
+                  <Link className="text-decoration-none text-muted" to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
                 </td>
               </tr>
             );
