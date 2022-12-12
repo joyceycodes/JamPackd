@@ -14,9 +14,7 @@ function Player(songs) {
         return (
             setLike(like + 1),
             setCount(count + 1),
-
             setLikedSongs(likedSongs => [...likedSongs, song[count]])
-
         )
     }
 
@@ -43,6 +41,7 @@ function Player(songs) {
                 </div>
             )
     }
+
 
     const handleSubmit = () => {
         window.localStorage.setItem("uris", JSON.stringify(likedSongs))

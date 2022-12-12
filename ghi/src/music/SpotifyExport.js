@@ -1,8 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import { useLocation } from 'react-router-dom'
 
-function SpotifyButton() {
-    const [, setUrl] = useState('')
+function SpotifyButton(props) {
+    useEffect(() => {
+        const getAccessToken = async (e) => {
+            // e.preventDefault();
+            if (props.href.includes(`${process.env.REACT_APP_MUSIC}/accounts/accountpage?code=`)) {
+
+                const playlistUrl = `${process.env.REACT_APP_MUSIC}/music/playlist`
+                const data = props.href
+                const fetchConfig = {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                }
+
+                const response = await fetch(playlistUrl, fetchConfig)
+                if (response.ok) {
+                    const data = await response.json()
+                    console.log(data)
+                    return response
+                }
+            }
+            if (props.href) {
+                getAccessToken(props.href);
+            }
+        }
+
+    }, [props.href]);
 
     const getAuthUrl = async (e) => {
 
@@ -22,55 +49,31 @@ function SpotifyButton() {
             window.location.href = data
             window.onload = localStorage.setItem("code", window.location.href)
             return data
+
+
         }
     }
 
     // }
 
-    const getAccessToken = async (e) => {
-        // e.preventDefault();
-        const currentUrl = window.location.href
-        setUrl(currentUrl)
-        if (currentUrl.includes(`${process.env.REACT_APP_MUSIC}/music/playlist?code=`)) {
-
-            const playlistUrl = `${process.env.REACT_APP_MUSIC}/music/playlist`
-
-            const fetchConfig = {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: currentUrl,
-            }
-
-            const response = await fetch(playlistUrl, fetchConfig)
-            if (response.ok) {
-                const data = await response.json()
-                console.log(data)
-                return response
-            }
-        } else {
-            setUrl(currentUrl)
-        }
-
-    }
 
 
-    const getUserId = async (e) => {
-        e.preventDefault();
-        const url = `${process.env.REACT_APP_MUSIC}/user`
-        const fetchConfig = {
-            method: "get",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        const response = await fetch(url, fetchConfig)
-        if (response.ok) {
-            const data = await response.json()
-            console.log(data)
-        }
-    }
+
+    // const getUserId = async (e) => {
+    //     e.preventDefault();
+    //     const url = `${process.env.REACT_APP_MUSIC}/user`
+    //     const fetchConfig = {
+    //         method: "get",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     };
+    //     const response = await fetch(url, fetchConfig)
+    //     if (response.ok) {
+    //         const data = await response.json()
+    //         console.log(data)
+    // }
+    // }
     // const createPlaylist = async (e, token) => {
     //     e.preventDefault();
     //     let uris = [
@@ -97,19 +100,17 @@ function SpotifyButton() {
         try {
             await getAuthUrl(e);
             // await getAccessToken(e);
-            await getUserId(e);
+            // await getUserId(e);
         }
         catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        getAccessToken();
-    }, [setUrl]);
+
 
     return (
-        <button onClick={runFunctions}>Export to Spotify</button>
+        <button onClick={runFunctions}>Sign in to Spotify</button>
     )
 
 }

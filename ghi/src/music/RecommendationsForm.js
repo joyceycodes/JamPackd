@@ -9,8 +9,6 @@ function RecommendationsForm() {
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
 
-
-
     const genres = [
         "acoustic",
         "afrobeat",

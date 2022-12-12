@@ -4,7 +4,7 @@ import pymongo
 
 
 # dbhost = os.environ["MONGOHOST"]
-dbname = os.environ["MONGODATABASE"]
+dbname = os.environ["MONGODATABASE_MUSIC"]
 # dbuser = os.environ["MONGOUSER"]
 # dbpass = os.environ["MONGOPASSWORD"]
 

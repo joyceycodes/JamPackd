@@ -27,6 +27,7 @@ export default function AccountPageComponent() {
     if (token) {
       playlistDetails();
     }
+
   }, [token])
 
 
