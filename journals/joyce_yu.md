@@ -1,8 +1,9 @@
 ### December 9, 2022
+
 - Had a morning meeting with Andrew and discussed deployment. Our backend wasn't linked properly to Mongo Atlas. Updated the mongo_str in the queries file for both microservices and that fixed it. Rather than using string interpolation to create the mongo_str, we use a new variable, DATABASE_URL, that holds the entire connection string. The docker compose has the value that points to mongo express, and for production in Gitlab and Render, we use the Mongo Atlas string. 
 - In Render, we had the environment variables for CLIENT_ID equal to the value ${CLIENT_ID}. This works in our docker compose because it's able to link to the .env file, however on Gitlab and Render, I needed to update these values.
 - Finished the unit test for the get all playlists endpoint. We needed to create a fake account since it's a protected endpoint that depends on the user_id.
-- Updated signing key to be something more secure. Added to the .env file.
+- Worked on the ReadME. Added information about the data models. Updated the api-design endpoints.
 ### December 8, 2022
 
 - Finished the Update Playlist functionality with the help of some insight from James. Created a new Pydantic model that'll shape the data of the input for playlist update. It'll only take in data to change the name and comments for the playlist. In the future, I'd want to add functionality for the user to delete songs in a playlist and also allow users to add songs by navigating back to the Recommendations page.
