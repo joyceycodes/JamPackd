@@ -23,7 +23,7 @@ music-unit-test-job:
   script:
     - cd music
     - pip install -r requirements.txt
-    - MONGODATABASE_ACCOUNTS=accounts python -m pytest
+    - MONGODATABASE_MUSIC=music python -m pytest
 
 accounts-unit-test-job:
   image: python:3-bullseye
@@ -33,7 +33,7 @@ accounts-unit-test-job:
   script:
     - cd accounts
     - pip install -r requirements.txt
-    - MONGODATABASE_MUSIC=music python -m pytest
+    - MONGODATABASE_ACCOUNTS=accounts python -m pytest
 
 
 # Build the React/JavaScript front-end
