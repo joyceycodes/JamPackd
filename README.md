@@ -3,18 +3,22 @@
 Jam Pack'd - Jam packed full of tasty jams
 
 Created by:
+
 - Joyce Yu
-- Marble (Scott) Nideffer
+- Scott (Marble) Nideffer
 - Tiffany Ameral
 - Zoybh Hussein
 
 ## Design
+
 - [Accounts API Design](docs/accounts-api-design.md)
 - [Music API Design](docs/playlist-api-design.md)
 - [Integrations](docs/integrations.md)
 - [Data Models](docs/data-models.md)
+- [Site navigation and Usage](docs/Navigation_Usage.md)
 
 ## Functionality
+
 - JamPack'd is a music discovery app that will create a playlist based on randomly generated music that you can like or dislike.
 - You need an account to use this app.
 - Navigate to the Get Songs page to begin making a playlist.
@@ -41,22 +45,26 @@ CD into the new project directory
 Create a .ENV file:
 
 Sign in or create a Spotify dev account and input these parameters within the .env file filling in the needed codes.
+
 ```
 CLIENT_ID = "Your id"
 CLIENT_SECRET = "Your secret"
 ```
 
 Create the Volumes in terminal:
+
 ```
 docker volume create accounts
 docker volume create music  
 ```
 
 Starting up Docker in terminal:
+
 ```
 docker compose build
 docker compose up
 ```
+
 Once you open your docker app:
 
 Find ghi
