@@ -3,14 +3,13 @@ import LogoutTest from './accounts/newlogout';
 
 function Navigation() {
   return (
-    <div>
-      <div className="logo-container"><img className="JP_logo" src="https://i.imgur.com/HxIEBd3.png"></img></div>
+    <div className='background'>
+      <div className="logo-container"><NavLink to="/"><img className="JP_logo" src="https://i.imgur.com/HxIEBd3.png"></img></NavLink></div>
       <div className="nav-container">
         <div className="nav-tabs">
           <ul>
-            <li><button><NavLink to="/">Home Page</NavLink></button></li>
             <li><LogoutTest /></li>
-            <li><button><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
+            <li><button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
           </ul>
         </div>
       </div>

@@ -37,8 +37,11 @@
 
 .nav-tabs ul{
   display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
   font-size: 25px;
+  gap: 2rem;
 }
 
 .nav-tabs ul a{
@@ -60,14 +63,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.25rem;}
+  font-size: 2.25rem;
+  color:#9fd8f5;
+}
 
-.testimonial{
+.testimonial-a{
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  color:#E75296;
 }
+
+.testimonial-b{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color:#9fd8f5;
+}
+
 
 .JP_logo{
   height: 10rem;
@@ -76,4 +91,12 @@
   padding: 0px;
   margin: 0px;
   width: 1rem;
+}
+
+.background{
+  background-color: #4174e2;
+}
+
+.logout-btn button{
+  color: #4174e2;
 }

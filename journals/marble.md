@@ -109,3 +109,15 @@
 - Going to pair program with Z for the playlists page 
 - Jumped on to pair program with Z on the playlists detail page
 - Need to figure out how to pull playlist data "blocker"
+
+12/8/22
+- Worked on deployment with the group
+- Did some cleanup with the nav bar with Adrian
+- Made it so you do not see certain buttons when logged in
+
+12/9/22
+
+- App fully rendered
+- working on unit tests today
+- need to do the readme as well
+- Completed my unit test with the help of Z, Junnella, And Yesenia
