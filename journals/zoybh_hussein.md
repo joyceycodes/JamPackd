@@ -103,3 +103,7 @@ working on unit tests today
 need to do the readme as well
 Completed my unit test with the help ok Scott, Junnella, And Yesenia
 also finished my contribution to the readme file.
+
+12/12
+Finished last min merges and fixed some code
+Presented to Andrew and passed!!
