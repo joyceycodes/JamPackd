@@ -78,7 +78,6 @@ def test_delete_playlist():
     response = client.delete("api/playlists/1")
 
     assert response.status_code == 200
-    assert response.json() == {"playlists": []}
     assert response.json() == True  # noqa
 
     app.dependency_overrides = {}
