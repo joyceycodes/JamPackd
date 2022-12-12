@@ -13,10 +13,6 @@ class Song(BaseModel):
     uri: str
 
 
-class Recommendations(BaseModel):
-    recommendations: list[Song]
-
-
 class PlaylistIn(BaseModel):
     name: str
     songs: list[Song]

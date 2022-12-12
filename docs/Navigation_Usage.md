@@ -16,14 +16,14 @@
 
 - Once you have selected a genre the player window will appear.
 - Here you may press play to start lsitening to the track(s), like, skip songs, and create a playlist when you feel you are done.
-- Currently you are limited to a beggining seelction of 20 songs
+- Currently you are limited to a beginning selection of 50 songs
 - If you have spotify premium you will be able to listen to an entire song, otherwise you are lmited to a 30 second clip.
 ![Alt text](images/5.png)
 
 - Once you have finished all the songs availble the like and skip buttons as well as the song player will dissapear, leaving only the option to get new songs from another genre or to make a playlist
 ![Alt text](images/6.png)
 
-- If you choose to make a playlist at this step you will be redicreted to a page to enter the playlist name and comments about the playlist
+- If you choose to make a playlist at this step you will be redirected to a page to enter the playlist name and comments about the playlist
 ![Alt text](images/7.png)
 
 - Once you've named and commented on playlist and hit done you will be navigated to the page containing your newly created playlist.
@@ -35,7 +35,7 @@
 ![Alt text](images/9.png)
 ![Alt text](images/10.png)
 
-- If you delete your playlist a notification will appear informing you that the deletion was sucessful
+- If you delete your playlist a notification will appear informing you that the deletion was successful
 ![Alt text](images/11.png)
 
 ![Alt text](images/12.png)
