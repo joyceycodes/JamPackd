@@ -44,5 +44,3 @@
 ![Alt text](images/13.png)
 
 And that is the basics of our current site navigation! Hope you enjoy!
-
-<img src = "images/13.png" alt= "Testing">
