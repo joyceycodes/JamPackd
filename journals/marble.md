@@ -87,3 +87,37 @@
 - Fixed Errors when it came to Signup and Login links everyone should work now with no errors.
 - Group coded with Z
 - problem: not creating new token on login. line 77, auth.js
+
+12/5/22
+
+- Lied about the Auth stuff, worked on it with Z and Adrian till 8, got it working but now something else broke
+- need to figure out why im auto logged in when I navigate to the website
+- logout button should work by now, need to figre out what can be seen vs cant when logged out/in
+
+12/6/22
+
+- Group coded with whole group for CI/CD
+- fixed the routing from logging in and signup to go to accounts page
+- need to still work on logged in vs out view
+- Finally finished Auth with Z for real this time.
+- Able to log in and out and view pages accordingly.
+
+12/7/22
+
+- Worked with the group on merging to main
+- Also started working on deployment again with the group
+- Going to pair program with Z for the playlists page 
+- Jumped on to pair program with Z on the playlists detail page
+- Need to figure out how to pull playlist data "blocker"
+
+12/8/22
+- Worked on deployment with the group
+- Did some cleanup with the nav bar with Adrian
+- Made it so you do not see certain buttons when logged in
+
+12/9/22
+
+- App fully rendered
+- working on unit tests today
+- need to do the readme as well
+- Completed my unit test with the help of Z, Junnella, And Yesenia

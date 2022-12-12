@@ -2,23 +2,20 @@ function HomePage() {
 
 
   return (
-    <div>
-      <header>
+    <main>
+      <div className="p-3 mb-2 bg-light text-white">
         <title>JamPack'd</title>
         <p className="JP_title borderstyle">JamPack'd</p>
         <p className="JP_subtitle borderstyle">Pack'd Full of Tasty Jams!</p>
-        <nav>
-          <ul>
-            {/* <li>
-              <button type="button" className="login-btn fbstyle">Login</button>
-            </li> */}
-            {/* <li>
-              <button type="button" className="signup-btn fbstyle">Sign Up</button>
-            </li> */}
-          </ul>
-        </nav>
-      </header>
-    </div>
+      </div>
+      <div className="p-3 mb-2 bg-light text-white">
+        <p className="testimonial-h">Here's what people have to say about JamPack'd!</p>
+        <p className="testimonial-a">"It's good!" - Scott's Mom</p>
+        <p className="testimonial-b">"zzzzz" - Habibi, Zoybh's Cat</p>
+        <p className="testimonial-a"> "It's REALLY good!" - Star Elite Team Captain Joyce's Dad</p>
+        <p className="testimonial-b"> "Oh hey it actually works!" - Tiffany's Friend Emma</p>
+      </div >
+    </main >
   );
 }
 export default HomePage;

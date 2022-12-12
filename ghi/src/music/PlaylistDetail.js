@@ -50,7 +50,7 @@ function PlaylistDetail() {
                 <button onClick={handleUpdate}>Update</button>
                 <br />
                 <DeleteButton setIsDeleted={setIsDeleted} />
-                <div className={isDeleted ? "alert alert-success mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
+                <div className={isDeleted ? "alert alert-danger mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
                     Playlist has been deleted.
                 </div>
 
