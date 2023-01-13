@@ -2,20 +2,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "./auth"
 import { useAuthContext } from "../accounts/auth.js";
+import { Audio } from 'react-loader-spinner'
 // let internalToken = null;
 
 function SignupComponent() {
   const navigate = useNavigate();
   const [, , signup] = useToken();
   const { token } = useAuthContext();
-
+  const [loading, setLoading] = useState(false);
   let [full_name, setFullName] = useState();
   let [password, setPassword] = useState();
   let [username, setUsername] = useState();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     await signup(full_name, username, password);
+    setLoading(false)
     navigate("/accounts/accountpage")
   };
   if (!token) {
@@ -61,6 +64,13 @@ function SignupComponent() {
               </div>
               <button className="btn btn-outline-dark">Submit</button>
             </form>
+            {loading &&
+              < Audio
+                className="justify-content-center"
+                height="50"
+                width="80"
+                color='blue'
+                ariaLabel='three-dots-loading' />}
           </div>
         </div >
       </div>
