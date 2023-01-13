@@ -25,7 +25,7 @@ function SignupComponent() {
 
     return (
       <div className="row">
-        <div className="offset-3 col-6">
+        <div className="offset-4 col-4">
           <div className="shadow p-4 mt-4">
             <h1>Sign Up for JamPack'd</h1>
             <form onSubmit={submitHandler}>

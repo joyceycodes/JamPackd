@@ -5,13 +5,13 @@ function Navigation() {
   return (
     <div className='background'>
       <div className="logo-container"><NavLink to="/"><img className="JP_logo" src="https://i.imgur.com/HxIEBd3.png" alt="JamPackd Logo"></img></NavLink></div>
+      <div className="nav-tabs">
+        <ul>
+          <LogoutTest />
+          <button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs</NavLink></button>
+        </ul>
+      </div>
       <div className="nav-container">
-        <div className="nav-tabs">
-          <ul>
-            <LogoutTest />
-            <button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs</NavLink></button>
-          </ul>
-        </div>
       </div>
     </div>
   )

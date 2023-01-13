@@ -20,9 +20,9 @@ function LoginComponent() {
 
   return (
     <div className="row">
-      <div className="offset-3 col-6">
+      <div className="offset-4 col-4">
         <div className="shadow p-4 mt-4">
-          <h1>Welcome! Login using your email and password:</h1>
+          <h1>Login:</h1>
           <form onSubmit={submitHandler}>
             <div className="mb-3 form-floating">
               <input
