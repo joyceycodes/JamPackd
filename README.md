@@ -68,6 +68,7 @@ docker compose up
 Once you open your docker app:
 
 Find ghi
+
 Open in browser
   or
 Navigate to :
