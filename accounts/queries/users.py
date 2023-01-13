@@ -12,7 +12,6 @@ dbname = os.environ["MONGODATABASE_ACCOUNTS"]
 # mongo_str = f"mongodb://{dbuser}:{dbpass}@{dbhost}"
 mongo_str = os.environ["DATABASE_URL"]
 
-
 client = pymongo.MongoClient(mongo_str)
 
 
