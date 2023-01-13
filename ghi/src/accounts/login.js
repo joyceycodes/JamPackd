@@ -16,29 +16,38 @@ function LoginComponent() {
   };
 
   return (
-    <div>
-      <center>
-        <h1>Welcome! Login using your email and password</h1>
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            name="username"
-            placeholder="Email"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <br />
-          <input type="submit" name="submit" />
-        </form>
-      </center>
+    <div className="row">
+      <div className="offset-3 col-6">
+        <div className="shadow p-4 mt-4">
+          <h1>Welcome! Login using your email and password:</h1>
+          <form onSubmit={submitHandler}>
+            <div className="mb-3 form-floating">
+              <input
+                type="text"
+                name="username"
+                placeholder="Email"
+                id="email"
+                value={username}
+                className="form-control"
+                onChange={(event) => setUsername(event.target.value)}
+              />
+              <label htmlFor="email">Email</label>
+            </div>
+            <div className="mb-3 form-floating">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                className="form-control"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+            <button className="btn btn-outline-dark">Submit</button>
+          </form>
+        </div>
+      </div >
     </div>
   );
 
