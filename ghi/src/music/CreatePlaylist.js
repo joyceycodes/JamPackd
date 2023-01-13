@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
 import { useNavigate } from "react-router-dom";
-
+import { Audio } from 'react-loader-spinner'
 
 function CreatePlaylist() {
     const { token } = useAuthContext()
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [comments, setComments] = useState("");
+    const [loading, setLoading] = useState(false);
     const songs = JSON.parse(window.localStorage.getItem("uris"))
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         const data = {
             name,
             comments,
@@ -30,6 +32,7 @@ function CreatePlaylist() {
         const response = await fetch(url, fetchConfig)
 
         if (response.ok) {
+            setLoading(false)
             const newPlaylist = await response.json();
             navigate(`/music/playlist/${newPlaylist.id}`)
         }
@@ -52,7 +55,15 @@ function CreatePlaylist() {
                                 <label htmlFor="name">Add your thoughts about this playlist...</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
+
                         </form>
+                        {loading &&
+                            < Audio
+                                className="justify-content-center"
+                                height="50"
+                                width="80"
+                                color='blue'
+                                ariaLabel='three-dots-loading' />}
                     </div>
                 </div >
             </div>

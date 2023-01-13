@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useAuthContext } from "../accounts/auth";
 import Player from "./Player.js";
+import { Audio } from 'react-loader-spinner'
 
 function RecommendationsForm() {
     const { token } = useAuthContext()
-
+    const [loading, setLoading] = useState(false);
     const [genre, setGenre] = useState("");
     const [songs, setSongs] = useState([]);
 
@@ -140,6 +141,7 @@ function RecommendationsForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const data = { genre }
         const url = `${process.env.REACT_APP_MUSIC}/recommendations`
         const fetchConfig = {
@@ -151,6 +153,7 @@ function RecommendationsForm() {
         };
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
+            setLoading(false)
             const recommendations = await response.json();
             setSongs(recommendations)
         }
@@ -177,6 +180,13 @@ function RecommendationsForm() {
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
                         </form>
+                        {loading &&
+                            < Audio
+                                className="justify-content-center"
+                                height="50"
+                                width="80"
+                                color='blue'
+                                ariaLabel='three-dots-loading' />}
                     </div>
 
                     <br />
