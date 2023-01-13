@@ -8,8 +8,8 @@ function Navigation() {
       <div className="nav-container">
         <div className="nav-tabs">
           <ul>
-            <li><LogoutTest /></li>
-            <li><button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs!</NavLink></button></li>
+            <LogoutTest />
+            <button type="button" className="btn btn-light"><NavLink to="/music/recommendations">Get Songs</NavLink></button>
           </ul>
         </div>
       </div>

@@ -15,18 +15,19 @@ export default function LogoutTest() {
   if (token) {
     return (
       <div>
-        <div className="nav-tabs">
-          <button type="button" className="btn btn-light"><NavLink to="/accounts/accountpage">My Playlists</NavLink></button>
-          <button type="button" style={{ color: "light-blue", margin: "8px", }} className="btn btn-light" onClick={checkout}>Logout</button>
+        <div>
+          <button type="button" className="btn btn-light m-2"><NavLink to="/accounts/accountpage">My Playlists</NavLink></button>
+          <button type="button" className="btn btn-light m-2" onClick={checkout}>Logout</button>
         </div>
       </div >
     )
   } else {
     return (
-      <div className="nav-tabs">
-        <button type="button" className="btn btn-light"><NavLink to="/accounts/login">Login</NavLink></button>
-        <button type="button" className="btn btn-light"><NavLink to="/accounts/signup">Signup</NavLink></button>
+      <div>
+        <button type="button" className="btn btn-light m-2"><NavLink to="/accounts/login">Login</NavLink></button>
+        <button type="button" className="btn btn-light m-2"><NavLink to="/accounts/signup">Signup</NavLink></button>
       </div>
+
     )
   }
 }

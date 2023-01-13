@@ -1,3 +1,7 @@
+### January 12, 2023
+- Deployed our project to Render using a forked repo, had some trouble with CORS because I didn't have the CORS_HOST env variable added on Render.
+- Installed react-loader-spinner and used it to include a loading icon whenever we're waiting for data from an API call. I'm still working on getting it centered within the parent element.
+
 ### December 9, 2022
 - Had a morning meeting with Andrew and discussed deployment. Our backend wasn't linked properly to Mongo Atlas. Updated the mongo_str in the queries file for both microservices and that fixed it. Rather than using string interpolation to create the mongo_str, we use a new variable, DATABASE_URL, that holds the entire connection string. The docker compose has the value that points to mongo express, and for production in Gitlab and Render, we use the Mongo Atlas string. 
 - In Render, we had the environment variables for CLIENT_ID equal to the value ${CLIENT_ID}. This works in our docker compose because it's able to link to the .env file, however on Gitlab and Render, I needed to update these values.
