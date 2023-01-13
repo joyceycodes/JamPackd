@@ -33,7 +33,7 @@ Created by:
 
 ## Project Initialization
 
-To Start Jamming to new Tunes Follow these steps:
+To Start Jamming to new Tunes, follow these steps:
 
 Clone the repository down to your local machine from:
 <https://gitlab.com/semi-serious-solutions/jam-packd>
