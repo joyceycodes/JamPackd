@@ -44,7 +44,7 @@ CD into the new project directory
 
 Create a .ENV file:
 
-Sign in or create a Spotify dev account and input these parameters within the .env file filling in the needed codes.
+Sign in or create a Spotify developer account and input these parameters within the .env file filling in the needed codes.
 
 ```
 CLIENT_ID = "Your id"
