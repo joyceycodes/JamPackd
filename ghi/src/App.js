@@ -44,6 +44,7 @@ function App() {
         <BrowserRouter basename={basename}>
           <Navigation />
           <Routes>
+            <Route path="/" element={<MainPage />} />
             <Route path="accounts">
               <Route path="/accounts/accountpage" element={<AccountPageComponent AccountPageComponent={AccountPageComponent} />} />
             </Route>
