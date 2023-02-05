@@ -1,3 +1,8 @@
+### February 4, 2023
+- Updated the homepage to include the logo 
+- Removed the "get songs" button on the nav bar for users that are not logged in. It'll only be seen when users have logged in.
+- Added a button to the playlists page for the user to more easily navigate to create a new playlist. Still want to have a message display so that users know when they have not created any playlists.
+
 ### January 12, 2023
 - Deployed our project to Render using a forked repo, had some trouble with CORS because I didn't have the CORS_HOST env variable added on Render.
 - Installed react-loader-spinner and used it to include a loading icon whenever we're waiting for data from an API call. I'm still working on getting it centered within the parent element.
