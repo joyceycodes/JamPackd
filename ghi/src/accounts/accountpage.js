@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../accounts/auth.js";
-
+import { NavLink } from 'react-router-dom';
 
 export default function AccountPageComponent() {
   const [playlists, setPlaylists] = useState([]);
@@ -40,16 +40,20 @@ export default function AccountPageComponent() {
           </tr>
         </thead>
         <tbody>
-          {playlists.map(pingus => {
-            const playlist_id = pingus.id
+
+          {playlists.map(playlist => {
+            const playlist_id = playlist.id
             return (
-              <tr key={pingus.id}>
+              <tr key={playlist.id}>
                 <td>
-                  <Link className="text-decoration-none text-muted" to={`/music/playlist/${playlist_id}`}>{pingus.name}</Link>
+                  <Link className="text-decoration-none text-muted" to={`/music/playlist/${playlist_id}`}>{playlist.name}</Link>
                 </td>
               </tr>
             );
           })}
+          <div>
+            <button className="btn btn-outline-dark m-2"><NavLink to="/music/recommendations">Create a new playlist!</NavLink></button>
+          </div>
         </tbody>
       </table >
     </div>

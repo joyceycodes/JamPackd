@@ -23,7 +23,6 @@ function App() {
   if (!token) {
     return (
       <div>
-
         <BrowserRouter basename={basename}>
           <Navigation />
           <Routes>
@@ -62,7 +61,5 @@ function App() {
 
   }
 }
-
-
 
 export default App;
