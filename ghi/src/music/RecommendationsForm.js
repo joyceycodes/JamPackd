@@ -159,7 +159,11 @@ function RecommendationsForm() {
         }
     }
 
-    if (token) {
+    if (!token) {
+        return (
+            <h1>Please sign in to start jammin'</h1>
+        )
+    } else {
         return (
             <div className="row">
                 <div className="offset-3 col-6">
