@@ -15,6 +15,13 @@
   display: flex;
   justify-content: center;
   margin: auto;
+  font-size: 8em;
+}
+
+.JP_image {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .JP_subtitle {
@@ -44,10 +51,11 @@
 .nav-tabs ul{
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   list-style: none;
   font-size: 25px;
   gap: 2rem;
+  margin-bottom: 0;
   margin-bottom: 0;
 }
 
@@ -92,6 +100,7 @@
 
 
 .JP_logo{
+  height: 100px;
   height: 100px;
 }
 .logo-container{
