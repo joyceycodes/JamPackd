@@ -24,8 +24,8 @@ export default function LogoutTest() {
   } else {
     return (
       <div>
-        <button type="button" className="btn btn-light m-2"><NavLink to="/accounts/login">Login</NavLink></button>
-        <button type="button" className="btn btn-light m-2"><NavLink to="/accounts/signup">Signup</NavLink></button>
+        <button type="button" className="btn btn-light m-2 mt-4"><NavLink to="/accounts/login">Login</NavLink></button>
+        <button type="button" className="btn btn-light m-2 mt-4"><NavLink to="/accounts/signup">Signup</NavLink></button>
       </div>
 
     )

@@ -196,6 +196,10 @@ function RecommendationsForm() {
                 <br />
             </div >
         )
+    } else {
+        return (
+            <h3>Please sign in to start jammin'!</h3>
+        )
     }
 }
 
