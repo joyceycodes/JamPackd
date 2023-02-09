@@ -1,3 +1,9 @@
+### February 9, 2023
+
+- Updated Mongo Atlas connection string to be the same as the one for the mod3 project so now auth is working again and it's connected properly to the database. Am still not sure why the connection string from my personal Mongo account was not working.
+- Updated loading icon on signup and login pages
+  - Moved the element to be outside the form tag 
+
 ### February 4, 2023
 
 - Updated the homepage to include the logo 

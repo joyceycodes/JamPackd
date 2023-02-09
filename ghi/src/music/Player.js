@@ -50,8 +50,7 @@ function Player(songs) {
 
     while (song.length > 0) {
         return (
-
-            <div className='mt-5 container-sm border border-secondary rounded bold justify-content-center'>
+            <div className='mt-4 mb- 2 container-sm border border-secondary rounded bold justify-content-center'>
                 <h1 className='text-center'>
                     Jam Pack'd Player
                 </h1>
