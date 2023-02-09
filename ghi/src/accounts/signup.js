@@ -64,9 +64,11 @@ function SignupComponent() {
               </div>
               <button className="btn btn-outline-dark">Submit</button>
             </form>
+          </div>
+          <div className="d-flex justify-content-center m-3">
             {loading &&
               < Audio
-                className="justify-content-center"
+                className="d-flex justify-content-center"
                 height="50"
                 width="80"
                 color='blue'

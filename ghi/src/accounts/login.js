@@ -48,16 +48,18 @@ function LoginComponent() {
               <label htmlFor="password">Password</label>
             </div>
             <button className="btn btn-outline-dark" disabled={loading}>Submit</button>
-            {loading &&
-              < Audio
-                className="justify-content-center"
-                height="50"
-                width="80"
-                color='blue'
-                ariaLabel='three-dots-loading' />}
           </form>
+        </div >
+        <div className="d-flex justify-content-center m-3">
+          {loading &&
+            < Audio
+              className="d-flex justify-content-center"
+              height="50"
+              width="80"
+              color='blue'
+              ariaLabel='three-dots-loading' />}
         </div>
-      </div >
+      </div>
     </div>
   );
 
