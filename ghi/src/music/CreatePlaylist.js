@@ -55,8 +55,9 @@ function CreatePlaylist() {
                                 <label htmlFor="name">Add your thoughts about this playlist...</label>
                             </div>
                             <button className="btn btn-outline-dark">Submit</button>
-
                         </form>
+                    </div>
+                    <div className="d-flex justify-content-center m-3">
                         {loading &&
                             < Audio
                                 className="justify-content-center"
