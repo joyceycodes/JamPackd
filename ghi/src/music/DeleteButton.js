@@ -24,7 +24,7 @@ function DeleteButton(props) {
     }
 
     return (
-        <button onClick={handleDelete}>Delete</button>
+        <button type="button" className="btn btn-light m-2 col-4" onClick={handleDelete}>Delete</button>
     )
 }
 export default DeleteButton

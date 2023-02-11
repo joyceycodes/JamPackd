@@ -47,16 +47,19 @@ function PlaylistDetail() {
         <>
             <div className='container-sm 
             border-secondary rounded bold justify-content-center'>
-                <button onClick={handleUpdate}>Update</button>
-                <br />
-                <DeleteButton setIsDeleted={setIsDeleted} />
-                <div className={isDeleted ? "alert alert-danger mb-0 mt-3" : "alert alert-success d-none mb-0"} id="delete-message">
-                    Playlist has been deleted.
-                </div>
 
-                <h1 className="text-center">{playlist.name}</h1>
+                <h1 className="text-center m-4">{playlist.name}</h1>
                 <p className="text-center">{playlist.comments}</p>
-                <div className='mt-5 container-sm border 
+                <div className="d-flex justify-content-center row">
+                    <button type="button" className="btn btn-light m-2 col-4" onClick={handleUpdate}>Update</button>
+                    <br />
+                    <DeleteButton setIsDeleted={setIsDeleted} />
+                    <div class="w-100"></div>
+                    <div className={isDeleted ? "alert alert-danger mb-0 mt-3 col-6" : "alert alert-success d-none mb-0"} id="delete-message">
+                        Playlist has been deleted.
+                    </div>
+                </div>
+                <div className='mt-3 container-sm border 
             border-secondary rounded bold justify-content-center'>
                     <table className="table table-striped 
                     justify-content-center">
