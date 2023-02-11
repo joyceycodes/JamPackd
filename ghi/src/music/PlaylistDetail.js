@@ -55,7 +55,7 @@ function PlaylistDetail() {
                     <br />
                     <DeleteButton setIsDeleted={setIsDeleted} />
                     <div class="w-100"></div>
-                    <div className={isDeleted ? "alert alert-danger mb-0 mt-3 col-6" : "alert alert-success d-none mb-0"} id="delete-message">
+                    <div className={isDeleted ? "alert alert-danger mb-0 mt-3 col-5" : "alert alert-success d-none mb-0"} id="delete-message">
                         Playlist has been deleted.
                     </div>
                 </div>
