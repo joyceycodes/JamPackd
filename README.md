@@ -2,6 +2,10 @@
 
 Jam Pack'd - Jam packed full of tasty jams
 
+Feel free to login using our test account:
+User: test@gmail.com
+Password: test
+
 Created by:
 
 - Joyce Yu
