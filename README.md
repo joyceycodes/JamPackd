@@ -2,11 +2,11 @@
 
 Jam Pack'd - Jam packed full of tasty jams
 
-Feel free to login using our test account:
-User: test@gmail.com
-Password: test
+#### Feel free to login using our test account:
+- User: test@gmail.com
+- Password: test
 
-Created by:
+#### Created by:
 
 - Joyce Yu
 - Scott (Marble) Nideffer
